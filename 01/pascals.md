@@ -2,9 +2,41 @@
 
 ## Problem Statment
 
+Create a function, `pascals_triangle`, that returns the first `num_rows` of Pascal's Triangle. 
 
+In Pascal's triangle, each number is the sum of the two numbers directly above it as shown:
+
+![pascals triangle visualization](../images/pascal-triangle-animated.gif)
+
+The function will return a 2D array where the outer list stores the entire triangle and each index of the list stores the numbers in the nth row of Pascal's triangle. Index 0 will store the first row, index 1 will store the second row, and so on. 
+
+The first row will always contain [1], the second row will always contain [1, 1]. Each row afterwards will have 1 as the first and last element and the middle elements will be calculated using the two numbers directly above it.
+
+If the function receives a number that is less than 0, a `ValueError` is thrown.
 
 (This problem is sourced from [LeetCode](https://leetcode.com/problems/pascals-triangle/description/))
+
+**Example 1:**
+
+```
+Input: num_rows = 3
+Output: [[1], [1, 1], [1, 2, 1]]
+Explanation: The first index in the outer list contains one number: [1]. The second row contains two numbers: [1, 1]. The third row can be calculated by setting the first and last indexes to 1 and calculating the middle index using the two elements above it (1 + 1) so the third row is [1, 2, 1].
+```
+
+**Example 2:**
+```
+Input: num_rows = 0
+Output: []
+Explanation: If there are 0 rows, the outer list will be empty.
+```
+
+**Example 3:**
+```
+Input: num_rows = 6
+Output: [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1], [1, 5, 10, 10, 5, 1]]
+Explanation: The first index in the outer list contains one number: [1]. The second row contains two numbers: [1, 1]. Each row afterwards can be calculated by setting the first and last index to 1 and calculating the middle elements using the two elements above it.
+```
 
 ## Prompts
 
@@ -12,7 +44,7 @@
 <!-- prettier-ignore-start -->
 ### !challenge
 * type: paragraph
-* id: 733d51d0-bad2-4a5c-8475-68dc11e91618
+* id: c5a19c81-1e98-416e-8bd6-4f32bb9975aa
 * title: Ask Clarifying Questions
 * topics: pse
 ##### !question
@@ -39,7 +71,7 @@ Here are some example clarifying questions:
 ### !challenge
 * type: code-snippet
 * language: python3.6
-* id: cbb95ff3-17ef-438b-9f84-755a3d184ab8
+* id: afcb3fb9-b225-4d48-b255-b0f3508de237
 * title: Write Unit Tests
 * topics: pse
 ##### !question
@@ -101,7 +133,23 @@ class TestPython1(unittest.TestCase):
 Example tests:
 
 ```python
+def test_pascals_two_rows(self):
+    # Arrange
+    numRows = 2
 
+    # Act
+    result = pascals_triangle(numRows)
+
+    # Assert
+    self.assertEqual(result, [[1], [1, 1]])
+
+def test_pascals_out_of_range(self):
+    # Arrange
+    numRows = -1
+
+    # Assert
+    with self.assertRaises(ValueError):
+        pascals_triangle(numRows)
 ```
 
 ##### !end-explanation
@@ -112,7 +160,7 @@ Example tests:
 <!-- prettier-ignore-start -->
 ### !challenge
 * type: paragraph
-* id: 4d19dc79-3595-4e24-a88a-78b007805cfb
+* id: 2df04c34-94fb-45f3-869a-09f96fef5e6b
 * title: Create Logical Steps
 * topics: pse
 ##### !question

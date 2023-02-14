@@ -2,7 +2,7 @@
 Standards:
   -
     Title: IPQ 01
-    Description: Algorithms
+    Description: Dynamic Programming
     UID: 6308bf63-d177-4da8-91d3-d4bfa72be1e2
     SuccessCriteria:
       - success criteria
