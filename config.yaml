@@ -1,0 +1,21 @@
+---
+Standards:
+  -
+    Title: IPQ 01
+    Description: Algorithms
+    UID: 6308bf63-d177-4da8-91d3-d4bfa72be1e2
+    SuccessCriteria:
+      - success criteria
+    ContentFiles:
+      -
+        Type: Instructor
+        UID: 60f8ae34-eaa3-48ff-9d1e-74d8cfb3c71a
+        Path: /01/implement-pascals.instructor.md
+      -
+        Type: Lesson
+        UID: f627ccef-7fde-464b-bdf7-5f867dc9de90
+        Path: /01/pascals.md
+      -
+        Type: Checkpoint
+        UID: c05ba773-44dc-4891-8e96-35db8e3d8e86
+        Path: /01/implement-pascals.checkpoint.md
