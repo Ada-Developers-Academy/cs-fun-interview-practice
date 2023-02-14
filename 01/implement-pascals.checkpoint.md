@@ -28,7 +28,11 @@ If the function receives a number that is less than 0, a `ValueError` is thrown.
 ```
 Input: num_rows = 3
 Output: [[1], [1, 1], [1, 2, 1]]
-Explanation: The first index in the outer list contains one number: [1]. The second row contains two numbers: [1, 1]. The third row can be calculated by setting the first and last indexes to 1 and calculating the middle index using the two elements above it (1 + 1) so the third row is [1, 2, 1].
+Explanation: The first index in the outer list contains one number: [1]. 
+The second row contains two numbers: [1, 1]. 
+The third row can be calculated by setting the first and last indexes to 1 
+and calculating the middle index using the two elements above it (1 + 1) 
+so the third row is [1, 2, 1].
 ```
 
 **Example 2:**
@@ -41,8 +45,18 @@ Explanation: If there are 0 rows, the outer list will be empty.
 **Example 3:**
 ```
 Input: num_rows = 6
-Output: [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1], [1, 5, 10, 10, 5, 1]]
-Explanation: The first index in the outer list contains one number: [1]. The second row contains two numbers: [1, 1]. Each row afterwards can be calculated by setting the first and last index to 1 and calculating the middle elements using the two elements above it.
+Output: [
+    [1], 
+    [1, 1], 
+    [1, 2, 1], 
+    [1, 3, 3, 1], 
+    [1, 4, 6, 4, 1], 
+    [1, 5, 10, 10, 5, 1]
+]
+Explanation: The first index in the outer list contains one number: [1].
+The second row contains two numbers: [1, 1]. 
+Each row afterwards can be calculated by setting the first and last index to 1 
+and calculating the middle elements using the two elements above it.
 ```
 
 ### !end-question
