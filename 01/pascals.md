@@ -8,7 +8,7 @@ In Pascal's triangle, each number is the sum of the two numbers directly above i
 
 ![pascals triangle visualization](../images/pascal-triangle-animated.gif)
 
-The function will return a 2D array where the outer list stores the entire triangle and each index of the list stores the numbers in the nth row of Pascal's triangle. Index 0 will store the first row, index 1 will store the second row, and so on. 
+The function will return a 2D array where the outer list stores the entire triangle and each index of the list stores the numbers in row `index + 1` of Pascal's triangle. For example, index 0 will store the first row, index 1 will store the second row, and so on. 
 
 The first row will always contain [1], the second row will always contain [1, 1]. Each row afterwards will have 1 as the first and last element and the middle elements will be calculated using the two numbers directly above it.
 
