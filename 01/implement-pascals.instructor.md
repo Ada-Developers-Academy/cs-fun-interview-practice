@@ -4,6 +4,9 @@ An example of a working implementation:
 
 ```python
 def pascals_triangle(num_rows):
+    if num_rows < 0:
+        raise ValueError("No input less than 0.")
+        
     triangle = []
 
     for row_num in range(num_rows):
