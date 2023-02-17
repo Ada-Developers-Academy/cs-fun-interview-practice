@@ -1,71 +1,47 @@
-# Implement Pascal's Triangle
+# Implement Linked List Intersection
 
 <!-- prettier-ignore-start -->
 ### !challenge
 * type: code-snippet
 * language: python3.6
-* id: c371a9d2-49b1-417b-abc4-3765e5cade18
+* id: 2aba725d-bef8-4175-b73b-286c91373494
 * title: IPQ
 * points: 3
 ### !question
 
-Create a function, `pascals_triangle`, that returns the first `num_rows` of Pascal's Triangle. 
+Given the heads of two singly linked-lists `head_a` and `head_b`, return the node at which the two lists intersect. If the two linked lists do not intersect, the function should return `None`.
 
-In Pascal's triangle, each number is the sum of the two numbers directly above it as shown:
+For example, the following two linked lists begin to intersect at the node 8:
 
-![pascals triangle visualization](../images/pascal-triangle-animated.gif)
+![intersecting linked lists example 1](../images/intersection_linked_list_example_1.png)
 
-The function will return a 2D array where the outer list stores the entire triangle and each index of the list stores the numbers in row `index + 1` of Pascal's triangle. For example, index 0 will store the first row, index 1 will store the second row, and so on. 
+The following two linked lists do _not_ intersect at all.
 
-The first row will always contain [1], the second row will always contain [1, 1]. Each row afterwards will have 1 as the first and last element and the middle elements will be calculated using the two numbers directly above it.
+![intersecting linked lists example 2](../images/intersection_linked_list_example_2.png)
 
-If the function receives a number that is less than 0, a `ValueError` is thrown.
+For this problem, we want to focus on the nodes themselves and not necessarily the *value* inside of the node.
 
-(This problem is sourced from [LeetCode](https://leetcode.com/problems/pascals-triangle/description/))
+For example, while the following linked lists have tails that share the same values, they are not considered to intersect because the nodes of the linked lists are not the same nodes in memory.
 
-**Example 1:**
+![intersecting linked lists example 3](../images/intersection_linked_list_example_3.png)
 
-```
-Input: num_rows = 3
-Output: [[1], [1, 1], [1, 2, 1]]
-Explanation: The 0th index (first row) in the outer list contains one number: [1]. 
-The 1st index (second row) contains two numbers: [1, 1]. 
-The 2nd index (third row) can be calculated by setting the first and last indexes to 1 
-and calculating the middle index using the two elements above it (1 + 1) 
-so the third row is [1, 2, 1].
-```
+There are no cycles anywhere in the linked list structures. Assume any intersection includes the tails of each list.
 
-**Example 2:**
-```
-Input: num_rows = 0
-Output: []
-Explanation: If there are 0 rows, the outer list will be empty.
-```
-
-**Example 3:**
-```
-Input: num_rows = 6
-Output: [
-    [1], 
-    [1, 1], 
-    [1, 2, 1], 
-    [1, 3, 3, 1], 
-    [1, 4, 6, 4, 1], 
-    [1, 5, 10, 10, 5, 1]
-]
-Explanation: The first index (first row) in the outer list contains one number: [1].
-The second index (second row) contains two numbers: [1, 1]. 
-Each row afterwards can be calculated by setting the first and last index to 1 
-and calculating the middle elements using the two elements above it.
-```
+The linked lists must retain their original structure after the function returns.
 
 ### !end-question
 ### !placeholder
 
 ```python
-def pascals_triangle(num_rows):
+class Node:
+    def __init__(self, value):
+        self.val = value
+        self.next = None
+
+def intersection_node(head_a, head_b):
     pass
 ```
+
 ### !end-placeholder
 ### !tests
 ```python
@@ -73,43 +49,128 @@ import unittest
 from main import *
 
 class TestChallenge(unittest.TestCase):
-    def test_pascals_nominal(self):
+    def test_will_return_intersection_for_lists_of_same_length():
         # Arrange
-        numRows = 3
+        node_d = Node("D")
+        node_e = Node("E")
+        node_f = Node("F")
+
+        node_x = Node("X")
+        node_y = Node("Y")
+        node_z = Node("Z")
+
+        node_one = Node("1")
+        node_two = Node("2")
+        node_three = Node("3")
+        node_one.next = node_two
+        node_two.next = node_three
+
+        # List A: ["D", "E", "F", "1", "2", "3"]
+        node_d.next = node_e
+        node_e.next = node_f
+        node_f.next = node_one
+
+        # List B: ["X", "Y", "Z", "1", "2", "3"]
+        node_x.next = node_y
+        node_y.next = node_z
+        node_z.next = node_one
+
+        head_a = node_d
+        head_b = node_x
 
         # Act
-        result = pascals_triangle(numRows)
+        answer = intersection_node(head_a, head_b)
 
         # Assert
-        self.assertEqual(result, [[1], [1, 1], [1, 2, 1]])
+        assert answer == node_one
 
-    def test_pascals_big_number(self):
+    def test_will_return_intersection_with_lists_of_differing_lengths():
         # Arrange
-        numRows = 10
+        node_d = Node("D")
+        node_e = Node("E")
+        node_f = Node("F")
+
+        node_x = Node("X")
+
+        node_one = Node("1")
+        node_two = Node("2")
+        node_three = Node("3")
+        node_one.next = node_two
+        node_two.next = node_three
+
+        # List A: ["D", "E", "F", "1", "2", "3"]
+        node_d.next = node_e
+        node_e.next = node_f
+        node_f.next = node_one
+
+        # List B: ["X", "1", "2", "3"]
+        node_x.next = node_one
+
+        head_a = node_d
+        head_b = node_x
 
         # Act
-        result = pascals_triangle(numRows)
-
-        # Act
-        self.assertEqual(result, [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1], [1, 5, 10, 10, 5, 1], [1, 6, 15, 20, 15, 6, 1], [1, 7, 21, 35, 35, 21, 7, 1], [1, 8, 28, 56, 70, 56, 28, 8, 1], [1, 9, 36, 84, 126, 126, 84, 36, 9, 1]])
-
-    def test_pascals_base_case(self):
-        # Arrange
-        numRows = 2
-
-        # Act
-        result = pascals_triangle(numRows)
+        answer = intersection_node(head_a, head_b)
 
         # Assert
-        self.assertEqual(result, [[1], [1, 1]])
+        assert answer == node_one
 
-    def test_pascals_out_of_range(self):
+    def test_will_return_none_with_one_empty_list():
         # Arrange
-        numRows = -1
+        node_d = Node("D")
+        node_e = Node("E")
+        node_f = Node("F")
+
+        # List A: ["D", "E", "F"]
+        node_d.next = node_e
+        node_e.next = node_f
+
+        # List B: [] <-- empty list
+
+        # Act
+        answer = intersection_node(node_d, None)
 
         # Assert
-        with self.assertRaises(ValueError):
-            pascals_triangle(numRows)
+        assert answer is None
+
+    def test_will_return_none_when_no_intersection():
+        # Arrange
+        node_d = Node("D")
+        node_e = Node("E")
+        node_f = Node("F")
+
+        node_x = Node("X")
+        node_y = Node("Y")
+        node_z = Node("Z")
+
+        # List A: ["D", "E", "F"]
+        node_d.next = node_e
+        node_e.next = node_f
+
+        # List B: ["X", "Y", "Z"]
+        node_x.next = node_y
+        node_y.next = node_z
+
+        head_a = node_d
+        head_b = node_x
+
+        # Act
+        answer = intersection_node(head_a, head_b)
+
+        # Assert
+        assert answer is None
+
+    def test_will_return_none_for_two_empty_lists():
+        # Arrange
+
+        # List A: [] <-- empty list
+        # List B: [] <-- empty list
+
+        # Act
+        answer = intersection_node(None, None)
+
+        # Assert
+        assert answer is None
 ```
 ### !end-tests
 ### !explanation
@@ -117,25 +178,12 @@ class TestChallenge(unittest.TestCase):
 An example of a working implementation:
 
 ```python
-def pascals_triangle(num_rows):
-    if num_rows < 0:
-        raise ValueError("No input less than 0.")
-        
-    triangle = []
-
-    for row_num in range(num_rows):
-        # The first and last row elements are always 1.
-        row = [None for _ in range(row_num + 1)]
-        row[0], row[-1] = 1, 1
-
-        # Each triangle element is equal to the sum of the elements
-        # above-and-to-the-left and above-and-to-the-right.
-        for j in range(1, len(row) - 1):
-            row[j] = triangle[row_num - 1][j - 1] + triangle[row_num - 1][j]
-
-        triangle.append(row)
-
-    return triangle
+def intersection_node(head_a, head_b):
+    l1, l2 = head_a, head_b
+    while l1 != l2:
+        l1 = l1.next if l1 else head_b
+        l2 = l2.next if l2 else head_a
+    return l1
 ```
 ### !end-explanation
 
