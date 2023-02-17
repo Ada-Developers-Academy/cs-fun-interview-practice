@@ -63,8 +63,8 @@ class TestChallenge(unittest.TestCase):
 
         # Assert
         self.assertEqual(result.val, 25)
-        self.assertTrue(is_bst(result))
-        self.assertTrue(is_balanced_tree(result))
+        self.assertTrue(self.is_bst(result))
+        self.assertTrue(self.is_balanced_tree(result))
 
     def test_will_return_balanced_bst_for_even_lengthed_list(self):
         # Arrange
@@ -74,8 +74,8 @@ class TestChallenge(unittest.TestCase):
         result = arr_to_bst(arr)
 
         # Assert
-        self.assertTrue(is_bst(result))
-        self.assertTrue(is_balanced_tree(result))
+        self.assertTrue(self.is_bst(result))
+        self.assertTrue(self.is_balanced_tree(result))
 
     def test_will_return_balanced_bst_for_long_list(self):
         # Arrange
@@ -89,8 +89,8 @@ class TestChallenge(unittest.TestCase):
         result = arr_to_bst(arr)
 
         # Assert
-        self.assertTrue(is_bst(result))
-        self.assertTrue(is_balanced_tree(result))
+        self.assertTrue(self.is_bst(result))
+        self.assertTrue(self.is_balanced_tree(result))
 
     def test_will_return_none_for_empty_list(self):
         # Arrange
@@ -106,7 +106,7 @@ class TestChallenge(unittest.TestCase):
     # Below are functions used to test if the given tree is a balanced Binary Search Tree.
 
     # Returns True if the BST provided is a valid BST.
-    def is_bst(root):
+    def is_bst(self, root):
         if root is None:
             return True
 
@@ -118,15 +118,15 @@ class TestChallenge(unittest.TestCase):
         if right is not None and root.val >= right.val:
             return False
 
-        return is_bst(left) and is_bst(right)
+        return self.is_bst(left) and self.is_bst(right)
 
     # Returns the height of a tree
-    def height(root):
+    def height(self, root):
         if root is None:
             return 0
         
-        left_height = height(root.left)
-        right_height = height(root.right)
+        left_height = self.height(root.left)
+        right_height = self.height(root.right)
 
         if left_height > right_height:
             return left_height + 1
@@ -135,18 +135,18 @@ class TestChallenge(unittest.TestCase):
 
 
     # Returns True if a tree is balanced
-    def is_balanced_tree(root):
+    def is_balanced_tree(self, root):
         if root is None:
             return True
 
-        left_height = height(root.left)
-        right_height = height(root.right)
+        left_height = self.height(root.left)
+        right_height = self.height(root.right)
 
         if abs(left_height - right_height) > 1:
             return False
 
-        left_check = is_balanced_tree(root.left)
-        right_check = is_balanced_tree(root.right)
+        left_check = self.is_balanced_tree(root.left)
+        right_check = self.is_balanced_tree(root.right)
 
         return left_check and right_check
 ```
