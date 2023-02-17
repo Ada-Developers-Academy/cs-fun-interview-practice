@@ -64,6 +64,17 @@ and calculating the middle elements using the two elements above it.
 
 ```python
 def pascals_triangle(num_rows):
+    """
+    A function that returns the first num_rows of Pascal's triangle.
+  
+    Parameters:
+    num_rows (int): The number of rows to return
+  
+    Returns:
+    list[list[int]]: 2D array where the outer list stores the entire triangle 
+    and each index of the list stores the numbers in row `index + 1` 
+    of Pascal's triangle.
+    """
     pass
 ```
 ### !end-placeholder
@@ -141,3 +152,51 @@ def pascals_triangle(num_rows):
 
 ### !end-challenge
 <!-- prettier-ignore-end -->
+
+<!-- >>>>>>>>>>>>>>>>>>>>>> BEGIN CHALLENGE >>>>>>>>>>>>>>>>>>>>>> -->
+<!-- Replace everything in square brackets [] and remove brackets  -->
+
+### !challenge
+
+* type: paragraph
+* id: 2cf7eca9-1f15-47a3-a217-08dfdebbb71f
+* title: Time Complexity of Solution
+* points: 1
+
+##### !question
+
+What is the time complexity of your solution? Remember to define your valuables.
+
+##### !end-question
+
+##### !placeholder
+
+##### !end-placeholder
+
+### !end-challenge
+
+<!-- ======================= END CHALLENGE ======================= -->
+
+<!-- >>>>>>>>>>>>>>>>>>>>>> BEGIN CHALLENGE >>>>>>>>>>>>>>>>>>>>>> -->
+<!-- Replace everything in square brackets [] and remove brackets  -->
+
+### !challenge
+
+* type: paragraph
+* id: c48781b8-caf9-460a-af73-bf6e0b54585c
+* title: Space Complexity of Solution
+* points: 1 
+
+##### !question
+
+What is the space complexity of your solution? Remember to define your valuables.
+
+##### !end-question
+
+##### !placeholder
+
+##### !end-placeholder
+
+### !end-challenge
+
+<!-- ======================= END CHALLENGE ======================= -->
