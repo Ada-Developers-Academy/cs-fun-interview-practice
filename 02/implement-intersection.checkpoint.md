@@ -39,6 +39,18 @@ class Node:
         self.next = None
 
 def intersection_node(head_a, head_b):
+    """
+    Given the heads of two singly linked-lists `head_a` and `head_b`, 
+    return the node at which the two lists intersect.
+  
+    Parameters:
+    head_a (Node): head node of list A
+    head_b (Node): head node of list B
+  
+    Returns:
+    Node: the node at which list A and list B intersect, 
+    or None if they do not intersect.
+    """
     pass
 ```
 
@@ -189,3 +201,51 @@ def intersection_node(head_a, head_b):
 
 ### !end-challenge
 <!-- prettier-ignore-end -->
+
+<!-- >>>>>>>>>>>>>>>>>>>>>> BEGIN CHALLENGE >>>>>>>>>>>>>>>>>>>>>> -->
+<!-- Replace everything in square brackets [] and remove brackets  -->
+
+### !challenge
+
+* type: paragraph
+* id: d0c65caa-97b1-4ffb-8038-33303a412a8f
+* title: Time Complexity of Solution
+* points: 1
+
+##### !question
+
+What is the time complexity of your solution? Remember to define your valuables.
+
+##### !end-question
+
+##### !placeholder
+
+##### !end-placeholder
+
+### !end-challenge
+
+<!-- ======================= END CHALLENGE ======================= -->
+
+<!-- >>>>>>>>>>>>>>>>>>>>>> BEGIN CHALLENGE >>>>>>>>>>>>>>>>>>>>>> -->
+<!-- Replace everything in square brackets [] and remove brackets  -->
+
+### !challenge
+
+* type: paragraph
+* id: efb51781-bbe5-4a86-9645-6ae1ce49f9f6
+* title: Space Complexity of Solution
+* points: 1 
+
+##### !question
+
+What is the space complexity of your solution? Remember to define your valuables.
+
+##### !end-question
+
+##### !placeholder
+
+##### !end-placeholder
+
+### !end-challenge
+
+<!-- ======================= END CHALLENGE ======================= -->
