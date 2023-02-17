@@ -48,12 +48,12 @@ Standards:
       -
         Type: Instructor
         UID: 6cb0dbae-118d-4315-a6af-a06730206683
-        Path: /02/implement-intersection.instructor.md
+        Path: /03/implement-arr-to-bst.instructor.md
       -
         Type: Lesson
         UID: 721dc0f6-a060-4173-bcf1-5039e3661127
-        Path: /02/intersection.md
+        Path: /03/arr-to-bst.md
       -
         Type: Checkpoint
         UID: 6691b510-034a-494d-b253-fb5be2fe6186
-        Path: /02/implement-intersection.checkpoint.md
+        Path: /03/implement-arr-to-bst.checkpoint.md
