@@ -36,7 +36,7 @@ class TreeNode:
 
 def arr_to_bst(arr):
     """
-    A function to create a balanced Binary Search Tree from the contents of the array.
+    A function to create a balanced Binary Search Tree from the contents of an array.
   
     Parameters:
     arr (list[int]): A list of sorted integers
