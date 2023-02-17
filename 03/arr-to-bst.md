@@ -22,7 +22,7 @@ It is recommended to break the problem down recursively by first setting the roo
 <!-- prettier-ignore-start -->
 ### !challenge
 * type: paragraph
-* id: c273469f-8ac2-4c98-a876-521b74d6e7e0
+* id: d0a2663c-8528-41b6-8e21-333812b18876
 * title: Ask Clarifying Questions
 * topics: pse
 ##### !question
@@ -49,7 +49,7 @@ Here are some example clarifying questions:
 ### !challenge
 * type: code-snippet
 * language: python3.6
-* id: c52a82cc-4062-405a-b475-0f269b8494c0
+* id: 275e4d6e-accf-4dd3-89c4-9f23729615e8
 * title: Write Unit Tests
 * topics: pse
 ##### !question
@@ -142,7 +142,7 @@ def test_will_return_none_for_empty_list(self):
 <!-- prettier-ignore-start -->
 ### !challenge
 * type: paragraph
-* id: 10510a7b-e915-42cc-8cea-26555f96c34d
+* id: eeadcbbb-7fda-4fac-8ef2-309bf97d7245
 * title: Create Logical Steps
 * topics: pse
 ##### !question
