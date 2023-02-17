@@ -5,7 +5,7 @@
 * type: code-snippet
 * language: python3.6
 * id: 2aba725d-bef8-4175-b73b-286c91373494
-* title: IPQ
+* title: Linked List Intersection
 * points: 3
 ### !question
 
@@ -61,7 +61,7 @@ import unittest
 from main import *
 
 class TestChallenge(unittest.TestCase):
-    def test_will_return_intersection_for_lists_of_same_length():
+    def test_will_return_intersection_for_lists_of_same_length(self):
         # Arrange
         node_d = Node("D")
         node_e = Node("E")
@@ -94,9 +94,9 @@ class TestChallenge(unittest.TestCase):
         answer = intersection_node(head_a, head_b)
 
         # Assert
-        assert answer == node_one
+        self.assertEqual(answer, node_one)
 
-    def test_will_return_intersection_with_lists_of_differing_lengths():
+    def test_will_return_intersection_with_lists_of_differing_lengths(self):
         # Arrange
         node_d = Node("D")
         node_e = Node("E")
@@ -125,9 +125,9 @@ class TestChallenge(unittest.TestCase):
         answer = intersection_node(head_a, head_b)
 
         # Assert
-        assert answer == node_one
+        self.assertEqual(answer, node_one)
 
-    def test_will_return_none_with_one_empty_list():
+    def test_will_return_none_with_one_empty_list(self):
         # Arrange
         node_d = Node("D")
         node_e = Node("E")
@@ -143,9 +143,9 @@ class TestChallenge(unittest.TestCase):
         answer = intersection_node(node_d, None)
 
         # Assert
-        assert answer is None
+        self.assertEqual(answer, None)
 
-    def test_will_return_none_when_no_intersection():
+    def test_will_return_none_when_no_intersection(self):
         # Arrange
         node_d = Node("D")
         node_e = Node("E")
@@ -170,9 +170,9 @@ class TestChallenge(unittest.TestCase):
         answer = intersection_node(head_a, head_b)
 
         # Assert
-        assert answer is None
+        self.assertEqual(answer, None)
 
-    def test_will_return_none_for_two_empty_lists():
+    def test_will_return_none_for_two_empty_lists(self):
         # Arrange
 
         # List A: [] <-- empty list
@@ -182,7 +182,7 @@ class TestChallenge(unittest.TestCase):
         answer = intersection_node(None, None)
 
         # Assert
-        assert answer is None
+        self.assertEqual(answer, None)
 ```
 ### !end-tests
 ### !explanation
