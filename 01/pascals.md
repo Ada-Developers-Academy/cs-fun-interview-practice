@@ -14,6 +14,8 @@ The first row will always contain [1], the second row will always contain [1, 1]
 
 If the function receives a number that is less than 0, a `ValueError` is thrown.
 
+Please solve this problem using a dynamic programming approach. A dynamic programming approach requires re-using previously calculated solutions to make further calculations.
+
 (This problem is sourced from [LeetCode](https://leetcode.com/problems/pascals-triangle/description/))
 
 **Example 1:**
@@ -63,7 +65,9 @@ and calculating the middle elements using the two elements above it.
 * topics: pse
 ##### !question
 
-List three or more questions whose answers would clarify the problem statement
+List three or more questions whose answers would clarify the problem statement.
+
+For each question, provide an explanation which includes the effect your decision would have on how you would approach the problem.
 
 ##### !end-question
 
