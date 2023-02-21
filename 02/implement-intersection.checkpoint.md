@@ -183,6 +183,30 @@ class TestChallenge(unittest.TestCase):
 
         # Assert
         self.assertEqual(answer, None)
+
+    def test_will_return_none_for_tails_with_same_values_but_different_memory_location(self):
+        # Arrange
+        node_d = Node("D")
+        node_e1 = Node("E")
+        node_f1 = Node("F")
+
+        node_x = Node("X")
+        node_e2 = Node("E")
+        node_f2 = Node("F")
+
+        # List A: ["D", "E", "F"]
+        node_d.next = node_e1
+        node_e1.next = node_f1
+        
+        # List B:
+        node_x.next = node_e2
+        node_e2.next = node_f2
+
+        # Act
+        answer = intersection_node(node_d, node_x)
+
+        # Assert
+        self.assertEqual(answer, None)
 ```
 ### !end-tests
 ### !explanation
@@ -214,7 +238,7 @@ def intersection_node(head_a, head_b):
 
 ##### !question
 
-What is the time complexity of your solution? Remember to define your valuables.
+What is the time complexity of your solution? Please define and explain your variables.
 
 ##### !end-question
 
@@ -238,7 +262,7 @@ What is the time complexity of your solution? Remember to define your valuables.
 
 ##### !question
 
-What is the space complexity of your solution? Remember to define your valuables.
+What is the space complexity of your solution? Please define and explain your variables.
 
 ##### !end-question
 
