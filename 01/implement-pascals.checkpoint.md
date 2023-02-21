@@ -19,7 +19,13 @@ The function will return a 2D array where the outer list stores the entire trian
 
 The first row will always contain [1], the second row will always contain [1, 1]. Each row afterwards will have 1 as the first and last element and the middle elements will be calculated using the two numbers directly above it.
 
+Below is a representation of what the triangle looks like when the input is 5 (the first 5 rows of Pascal's Triangle) with the indices in the resulting 2d array marked.
+
+![pascals triangle with indices marked](../images/pascals-triangle-full-with-indices.png)
+
 If the function receives a number that is less than 0, a `ValueError` is thrown.
+
+Please solve this problem using a dynamic programming approach. A dynamic programming approach requires re-using previously calculated rows to calculate additional rows.
 
 (This problem is sourced from [LeetCode](https://leetcode.com/problems/pascals-triangle/description/))
 
@@ -106,6 +112,15 @@ class TestChallenge(unittest.TestCase):
 
     def test_pascals_base_case(self):
         # Arrange
+        numRows = 1
+
+        # Act
+        result = pascals_triangle(numRows)
+
+        # Assert
+        self.assertEqual(result, [[1]])
+
+        # Arrange
         numRows = 2
 
         # Act
@@ -165,7 +180,7 @@ def pascals_triangle(num_rows):
 
 ##### !question
 
-What is the time complexity of your solution? Remember to define your valuables.
+What is the time complexity of your solution? Please define and explain your variables.
 
 ##### !end-question
 
@@ -189,7 +204,7 @@ What is the time complexity of your solution? Remember to define your valuables.
 
 ##### !question
 
-What is the space complexity of your solution? Remember to define your valuables.
+What is the space complexity of your solution? Please define and explain your variables.
 
 ##### !end-question
 
