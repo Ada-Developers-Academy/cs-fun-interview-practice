@@ -1,6 +1,6 @@
 # Array-to-BST
 
-## Problem Statment
+## Problem Statement
 
 Given a sorted array of integers, `arr`, write a function to create a balanced Binary Search Tree from the contents of the array. Return the root of the Binary Search Tree.
 
@@ -16,6 +16,62 @@ Please note one is not required to implement a self-balancing Binary Search Tree
 
 It is recommended to break the problem down recursively by first setting the root of the Binary Search Tree to the middle element of the array.
 
+<br>
+<details style="max-width: 700px; margin: auto;">
+<summary>Click here to see the tests that will be run against your code</summary>
+
+```py
+def test_will_return_balanced_bst_for_odd_lengthed_list(self):
+    # Arrange
+    arr = [5, 10, 15, 20, 25, 30, 35, 40, 45]
+
+    # Act
+    result = arr_to_bst(arr)
+
+    # Assert
+    self.assertEqual(result.val, 25)
+    self.assertTrue(self.is_bst(result))
+    self.assertTrue(self.is_balanced_tree(result))
+
+def test_will_return_balanced_bst_for_even_lengthed_list(self):
+    # Arrange
+    arr = [1, 3, 9, 27, 81, 243]
+
+    # Act
+    result = arr_to_bst(arr)
+
+    # Assert
+    self.assertTrue(self.is_bst(result))
+    self.assertTrue(self.is_balanced_tree(result))
+
+def test_will_return_balanced_bst_for_long_list(self):
+    # Arrange
+    arr = []
+    num = 0
+    while num < 100:
+        arr.append(num)
+        num += 1
+
+    # Act
+    result = arr_to_bst(arr)
+
+    # Assert
+    self.assertTrue(self.is_bst(result))
+    self.assertTrue(self.is_balanced_tree(result))
+
+def test_will_return_none_for_empty_list(self):
+    # Arrange
+    arr = []
+
+    # Act
+    result = arr_to_bst(arr)
+
+    # Assert
+    self.assertEqual(result, None)
+```
+
+</details>
+
 ## Prompts
 
 <!-- Question 1 -->
@@ -27,7 +83,9 @@ It is recommended to break the problem down recursively by first setting the roo
 * topics: pse
 ##### !question
 
-List three or more questions whose answers would clarify the problem statement
+List three or more questions whose answers would clarify the problem statement.
+
+For each question, provide an explanation which includes the effect your decision would have on how you would approach the problem.
 
 ##### !end-question
 

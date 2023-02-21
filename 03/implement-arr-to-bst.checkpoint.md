@@ -184,7 +184,7 @@ def arr_to_bst(arr):
 
 ##### !question
 
-What is the time complexity of your solution? Remember to define your valuables.
+What is the time complexity of your solution? Please define and explain your variables.
 
 ##### !end-question
 
@@ -208,7 +208,7 @@ What is the time complexity of your solution? Remember to define your valuables.
 
 ##### !question
 
-What is the space complexity of your solution? Remember to define your valuables.
+What is the space complexity of your solution? Please define and explain your variables.
 
 ##### !end-question
 
