@@ -106,6 +106,15 @@ class TestChallenge(unittest.TestCase):
 
     def test_pascals_base_case(self):
         # Arrange
+        numRows = 1
+
+        # Act
+        result = pascals_triangle(numRows)
+
+        # Assert
+        self.assertEqual(result, [[1]])
+
+        # Arrange
         numRows = 2
 
         # Act
