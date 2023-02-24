@@ -2,7 +2,7 @@
 
 ## Problem Statement
 
-For this exercise, create a function `possible_bipartition` which takes in an adjacency list of puppies, `dislikes`, to determine if the puppies can be divided into two groups where no two puppies that are known for fighting each other are in the same group.  
+For this exercise, create a function `possible_bipartition` which takes in an adjacency list representing a graph of puppies, `dislikes`, to determine if the puppies can be divided into two groups where no two puppies that are known for fighting each other are in the same group.   
 
 Given a set of N puppies, we would like to split them into two groups of any size to use two play areas.
 
