@@ -12,8 +12,6 @@ For this exercise, create a function `possible_bipartition` which takes in an ad
 
 Given a set of N puppies, we would like to split them into two groups of any size to use two play areas.
 
-Some puppies have a history of fighting with specific other puppies and shouldn't be put into the same play area.
-
 Formally, if `dislikes[i] = [a, b]`, it means puppies `i` is not allowed to put in the same group as puppies `a` or puppies `b`.
 
 Dislike is mutual. If puppy `a` dislikes puppy `b`, puppy `b` also dislikes puppy `a`.
