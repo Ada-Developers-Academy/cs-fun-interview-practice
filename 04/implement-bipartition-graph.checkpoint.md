@@ -1,40 +1,19 @@
-# Implement Array-to-BST
+# Implement Possible Graph Bipartition
 
 <!-- prettier-ignore-start -->
 ### !challenge
 * type: code-snippet
 * language: python3.6
 * id: b2640327-8294-4e0c-a982-a4edd3aa095f
-* title: Array-to-BST
+* title: Possible Graph Bipartition
 * points: 3
 ### !question
-
-Given a sorted array of integers, `arr`, write a function to create a balanced Binary Search Tree from the contents of the array. Return the root of the Binary Search Tree.
-
-Example:
-
-`arr = [5, 10, 15, 20, 25, 30, 35, 40, 45]`
-
-should result in a tree with the following root/height:
-
-![Balanced Binary Search Tree](../images/balanced_bst.png)
-
-Please note one is not required to implement a self-balancing Binary Search Tree in order to solve this exercise. 
-
-It is recommended to break the problem down recursively by first setting the root of the Binary Search Tree to the middle element of the array.
 
 ### !end-question
 ### !placeholder
 
 ```python
-class TreeNode:
-    def __init__(self, value, left = None, right = None):
-        self.val = value
-        self.left = left
-        self.right = right
-
-
-def arr_to_bst(arr):
+def possible_bipartition(dislikes):
     """
     A function to create a balanced Binary Search Tree from the contents of an array.
   
@@ -54,101 +33,173 @@ import unittest
 from main import *
 
 class TestChallenge(unittest.TestCase):
-    def test_will_return_balanced_bst_for_odd_lengthed_list(self):
+    def test_example_1():
         # Arrange
-        arr = [5, 10, 15, 20, 25, 30, 35, 40, 45]
+        dislikes = {
+            "Fido": [],
+            "Rufus": ["James", "Alfie"],
+            "James": ["Rufus", "T-Bone"],
+            "Alfie": ["Rufus"],
+            "T-Bone": ["James"]
+        }
 
         # Act
-        result = arr_to_bst(arr)
+        answer = possible_bipartition(dislikes)
 
         # Assert
-        self.assertEqual(result.val, 25)
-        self.assertTrue(self.is_bst(result))
-        self.assertTrue(self.is_balanced_tree(result))
+        self.assertTrue(answer)
 
-    def test_will_return_balanced_bst_for_even_lengthed_list(self):
-        # Arrange
-        arr = [1, 3, 9, 27, 81, 243]
+    def test_example_2():
+        dislikes = {
+            "Fido": [],
+            "Rufus": ["James", "Alfie"],
+            "James": ["Rufus", "Alfie"],
+            "Alfie": ["Rufus", "James"]
+        }
 
         # Act
-        result = arr_to_bst(arr)
+        answer = possible_bipartition(dislikes)
 
         # Assert
-        self.assertTrue(self.is_bst(result))
-        self.assertTrue(self.is_balanced_tree(result))
+        self.assertFalse(answer)
 
-    def test_will_return_balanced_bst_for_long_list(self):
+    def test_example_3():
         # Arrange
-        arr = []
-        num = 0
-        while num < 100:
-            arr.append(num)
-            num += 1
+        dislikes = {
+            "Fido": [],
+            "Rufus": ["James", "Scruffy"],
+            "James": ["Rufus", "Alfie"],
+            "Alfie": ["T-Bone", "James"],
+            "T-Bone": ["Alfie", "Scruffy"],
+            "Scruffy": ["Rufus", "T-Bone"]
+        }
 
         # Act
-        result = arr_to_bst(arr)
+        answer = possible_bipartition(dislikes)
 
         # Assert
-        self.assertTrue(self.is_bst(result))
-        self.assertTrue(self.is_balanced_tree(result))
+        self.assertFalse(answer)
 
-    def test_will_return_none_for_empty_list(self):
+    def test_will_return_true_for_a_graph_which_can_be_bipartitioned():
         # Arrange
-        arr = []
+        dislikes = {
+            "Fido": ["Alfie", "Bruno"],
+            "Rufus": ["James", "Scruffy"],
+            "James": ["Rufus", "Alfie"],
+            "Alfie": ["Fido", "James"],
+            "T-Bone": ["Scruffy"],
+            "Scruffy": ["Rufus", "T-Bone"],
+            "Bruno": ["Fido"]
+        }
 
         # Act
-        result = arr_to_bst(arr)
+        answer = possible_bipartition(dislikes)
 
         # Assert
-        self.assertEqual(result, None)
-        
+        self.assertTrue(answer)
 
-    # Below are functions used to test if the given tree is a balanced Binary Search Tree.
+    def test_will_return_false_for_graph_which_cannot_be_bipartitioned():
+        # Arrange
+        dislikes = {
+            "Fido": ["Alfie", "Bruno"],
+            "Rufus": ["James", "Scruffy"],
+            "James": ["Rufus", "Alfie"],
+            "Alfie": ["Fido", "James", "T-Bone"],
+            "T-Bone": ["Alfie", "Scruffy"],
+            "Scruffy": ["Rufus", "T-Bone"],
+            "Bruno": ["Fido"]
+        }
 
-    # Returns True if the BST provided is a valid BST.
-    def is_bst(self, root):
-        if root is None:
-            return True
+        # Act
+        answer = possible_bipartition(dislikes)
 
-        left = root.left
-        if left is not None and root.val <= left.val:
-            return False
-
-        right = root.right
-        if right is not None and root.val >= right.val:
-            return False
-
-        return self.is_bst(left) and self.is_bst(right)
-
-    # Returns the height of a tree
-    def height(self, root):
-        if root is None:
-            return 0
-        
-        left_height = self.height(root.left)
-        right_height = self.height(root.right)
-
-        if left_height > right_height:
-            return left_height + 1
-        else:
-            return right_height + 1
+        # Assert
+        self.assertFalse(answer)
 
 
-    # Returns True if a tree is balanced
-    def is_balanced_tree(self, root):
-        if root is None:
-            return True
+    def test_will_return_true_for_empty_graph():
+        self.assertTrue(possible_bipartition({}))
+    
+    def test_will_return_false_for_another_graph_which_cannot_be_bipartitioned():
+        # Arrange
+        dislikes = {
+            "Fido": ["Alfie", "Bruno"],
+            "Rufus": ["James", "Scruffy"],
+            "James": ["Rufus", "Alfie"],
+            "Alfie": ["Fido", "James", "T-Bone"],
+            "T-Bone": ["Alfie", "Scruffy"],
+            "Scruffy": ["Rufus", "T-Bone"],
+            "Bruno": ["Fido"],
+            "Spot": ["Nala"],
+            "Nala": ["Spot"]
+        }
 
-        left_height = self.height(root.left)
-        right_height = self.height(root.right)
+        # Act
+        answer = possible_bipartition(dislikes)
 
-        if abs(left_height - right_height) > 1:
-            return False
+        # Assert
+        self.assertFalse(answer)
 
-        left_check = self.is_balanced_tree(root.left)
-        right_check = self.is_balanced_tree(root.right)
+    def test_multiple_dogs_at_beginning_dont_dislike_any_others():
+    # Arrange
+        dislikes = {
+            "Fido": [],
+            "Rufus": [],
+            "James": [],
+            "Alfie": ["T-Bone"],
+            "T-Bone": ["Alfie", "Scruffy"],
+            "Scruffy": ["T-Bone"],
+            "Bruno": ["Nala"],
+            "Spot": ["Nala"],
+            "Nala": ["Bruno", "Spot"]
+        }
 
-        return left_check and right_check
+        # Act
+        answer = possible_bipartition(dislikes)
+
+        # Assert
+        self.assertTrue(answer)
+
+
+    def test_multiple_dogs_in_middle_dont_dislike_any_others():
+        # Arrange
+        dislikes = {
+            "Fido": ["Alfie"],
+            "Rufus": ["James", "Scruffy"],
+            "James": ["Rufus", "Alfie"],
+            "Alfie": ["Fido", "James"],
+            "T-Bone": [],
+            "Scruffy": ["Rufus"],
+            "Bruno": [],
+            "Spot": ["Nala"],
+            "Nala": ["Spot"]
+        }
+
+        # Act
+        answer = possible_bipartition(dislikes)
+
+        # Assert
+        self.assertTrue(answer)
+
+    def test_will_return_false_for_disconnected_graph_which_cannot_be_bipartitioned():
+        # Arrange
+        dislikes = {
+            "Ralph": ["Tony"],
+            "Tony": ["Ralph"],
+            "Fido": ["Alfie", "Bruno"],
+            "Rufus": ["James", "Scruffy"],
+            "James": ["Rufus", "Alfie"],
+            "Alfie": ["Fido", "James", "T-Bone"],
+            "T-Bone": ["Alfie", "Scruffy"],
+            "Scruffy": ["Rufus", "T-Bone"],
+            "Bruno": ["Fido"]
+        }
+
+        # Act
+        answer = possible_bipartition(dislikes)
+
+        # Assert
+        self.assertFalse(answer)
 ```
 ### !end-tests
 ### !explanation
@@ -156,16 +207,37 @@ class TestChallenge(unittest.TestCase):
 An example of a working implementation:
 
 ```python
-def arr_to_bst(arr):
-    if not arr:
-        return None
+COLORS = ["red", "green"]
 
-    mid = (len(arr)) // 2
+def dfs(dislikes, current_node, painted_graph, current_color):
+    neighbors = dislikes[current_node]
+    next_color = (current_color + 1) % len(COLORS)
 
-    root = TreeNode(arr[mid])
-    root.left = arr_to_bst(arr[:mid])
-    root.right = arr_to_bst(arr[mid + 1:])
-    return root
+    for neighbor in neighbors:
+        color = painted_graph.get(neighbor)
+
+        if not color:
+            painted_graph[neighbor] = COLORS[next_color]
+            if not dfs(dislikes=dislikes, current_node=neighbor, painted_graph=painted_graph, current_color=next_color):
+                return False
+        elif color != COLORS[next_color]:
+            return False
+    
+    return True
+    
+
+def possible_bipartition(dislikes):
+    painted_graph = {}
+    current_color = 0
+
+    for node in dislikes.keys():
+        neighbors = dislikes[node]
+        if not painted_graph.get(node):
+            painted_graph[node] = COLORS[current_color]
+
+            if not dfs(dislikes=dislikes, current_node=node, painted_graph=painted_graph, current_color=current_color):
+                return False
+    return True
 ```
 ### !end-explanation
 
