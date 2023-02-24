@@ -57,3 +57,22 @@ Standards:
         Type: Checkpoint
         UID: 6691b510-034a-494d-b253-fb5be2fe6186
         Path: /03/implement-arr-to-bst.checkpoint.md
+  -
+    Title: IPQ 04
+    Description: Graphs - DFS & BFS
+    UID: aea9e725-c820-41cb-9caa-108b1bf03fb3
+    SuccessCriteria:
+      - success criteria
+    ContentFiles:
+      -
+        Type: Instructor
+        UID: 76a543ae-4a97-4301-ba2c-d9865301c504
+        Path: /04/implement-bipartition-graph.instructor.md
+      -
+        Type: Lesson
+        UID: c6db5932-3f06-4d76-8932-13f61bfa7eb4
+        Path: /04/bipartition-graph.md
+      -
+        Type: Checkpoint
+        UID: edfec3f9-1247-444c-9ea5-759d6a4877da
+        Path: /04/implement-bipartition-graph.checkpoint.md
