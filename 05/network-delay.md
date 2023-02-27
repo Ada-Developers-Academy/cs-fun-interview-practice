@@ -10,7 +10,7 @@ Return the **minimum** time it takes for all of the nodes to receive the signal 
 <br>
 ![example graph 1](../images/network_delay_example-1.png)
 ```
-Input: times = [[2,1,1], [2,3,1], [3,4,1]], source = 2, n = 3
+Input: times = [[2,1,1], [2,3,1], [3,4,1]], source = 2, n = 4
 Output: 2
 Explanation:
 Starting from node 2: it takes 1 unit of time to reach node 1, 1 unit of 
@@ -54,7 +54,7 @@ def test_network_delay_returns_correct_result_for_small_connected_graph(self):
         [2,3,1],
         [3,4,1]
     ]
-    n = 3
+    n = 4
     source = 2
 
     # Act
@@ -220,7 +220,7 @@ def test_network_delay_returns_correct_result_for_small_connected_graph(self):
         [2,3,1],
         [3,4,1]
     ]
-    n = 3
+    n = 4
     source = 2
 
     # Act
