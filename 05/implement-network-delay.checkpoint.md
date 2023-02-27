@@ -4,79 +4,60 @@
 ### !challenge
 * type: code-snippet
 * language: python3.6
-* id: 5875e4c4-dab1-427e-935b-c5983b45bd92
+* id: 029a5285-6422-4acf-a71b-d4ee862a59ec
 * title: Possible Graph Bipartition
 * points: 3
 ### !question
-For this exercise, create a function `possible_bipartition` which takes in an adjacency list representing a graph of puppies, `dislikes`, to determine if the puppies can be divided into two groups where no two puppies that are known for fighting each other are in the same group.  
+For this exercise, create a function `network_delay_time` which takes in a list of travel times, `times`, as directed edges `times[i] = (uᵢ, vᵢ, wᵢ)` where `uᵢ` is the source node, `vᵢ` is the target node, and `wᵢ` is the time it takes for a signal to travel from the source node to the target node, and `n`, the total number of nodes in the graph. The nodes in the graph are labeled from `1` to `n`.
 
-Given a set of N puppies, we would like to split them into two groups of any size to use two play areas.
-
-Formally, if `dislikes[i] = [a, b]`, it means puppy `i` is not allowed to put in the same group as puppy `a` or puppy `b`.
-
-Dislike is mutual. If puppy `a` dislikes puppy `b`, puppy `b` also dislikes puppy `a`.
-
-Return `True` if and only if it is possible to split the puppies into two groups where no fighting will occur. Otherwise, return `False`.
+A signal is sent from a given node `source`. Return the **minimum** time it takes for all of the nodes to receive the signal from the `source` node. If it is not possible for all of the nodes to receive the signal, return `-1`.
 
 **Example 1**
+![example graph 1](../images/network_delay_example-1.png)
 ```
-Input:
-dislikes = { 
-    "Fido": [],
-    "Nala": ["Cooper", "Spot"],
-    "Cooper": ["Nala", "Bruno"],
-    "Spot": ["Nala"],
-    "Bruno": ["Cooper"]
-}
-
-Output: True
-
+Input: times = [[2,1,1], [2,3,1], [3,4,1]], source = 2, n = 3
+Output: 2
 Explanation:
-Fido can be placed in Group 1.
-Nala can be placed in Group 1.
-Cooper can be placed in Group 2.
-Spot can be placed in Group 2.
-Bruno can be placed in Group 1.
-
-None of the pups who would fight with each other are placed in the same group.
+Starting from node 2: it takes 1 unit of time to reach node 1, 1 unit of time to reach node 3, and 2 units of time to reach node 4 (1 unit of time from 2 -> 3 and 1 unit of time from 3 -> 4 so 2 units overall). 
+Therefore, to reach all of the nodes, it would take a minimum of 2 units of time. 
 ```
 
 **Example 2:**
+![example graph 2](../images/network_delay_example-2.png)
 ```
-Input:
-dislikes = {
-    "Fido": [],
-    "Nala": ["Cooper", "Spot"],
-    "Cooper": ["Nala", "Spot"],
-    "Spot": ["Nala", "Cooper"]
-}
+Input: times =[[2,1,1], [2, 3, 2], [3, 1, 1]], source = 1, n = 3
+Output: -1
+It is not possible to reach any other node from node 1, so the function would return -1 to indicate it is not possible to reach all of the nodes
+in the graph from the given source node.
+```
 
-Output: False
-
-There is no way to place all of the pups into two separate groups such that no pups would fight with each other. 
-
-If we were to place Fido and Nala in Group 1, we could place Cooper in Group 2. Then, when we tried to place Spot in either
-group, we would find that there's no where for him to be placed because he is disliked by a pup in both
-Group 1 and Group 2.
+**Example 3:**
+![example graph 3](../images/network_delay_example-3.png)
+```
+Input: times =[[2, 3, 2]], source = 2, n = 3
+Output: -1
+It is not possible to reach all of the nodes in the graph due to the graph being disconnected, so the function would return -1 to indicate it is not possible to reach all of the nodes in the graph from the given source node.
 ```
 ### !end-question
 ### !placeholder
 
 ```python
-def possible_bipartition(dislikes):
+def network_delay(times, n, source):
     """
-    A function which takes in an adjacency list which represents a graph of puppies who dislike each other and
-    returns True if the graph can be partitioned into two groups such that no two pups who dislike
-    each other are placed in the same group.
+    A function which takes in a list of edges representing a graph of network nodes
+    and the time to travel between the nodes, the number of nodes in the network
+    graph, and a source node. 
 
-    If the puppies cannot be partitioned into two groups, the function returns False.
+    The function returns the minimum amount of time to travel to all of the nodes in
+    the graph from the source node.
   
     Parameters:
-    dislikes (dict of string:string): An adjacency dictionary representing a graph of puppies
-    who dislike each other.
+    times (List[List[int]]): List of edges representing the time to travel between nodes in the graph.
+    n (int): The total number of nodes in the network graph
+    source (int): The source node from which to travel the network
   
     Returns:
-    Boolean: True if the puppies can be partitioned into two groups where none of the pups want to fight each other.
+    Int: The minimum amount of time to travel to all of the nodes in the graph.
     """
     pass
 ```
@@ -88,173 +69,72 @@ import unittest
 from main import *
 
 class TestChallenge(unittest.TestCase):
-    def test_example_1(self):
+    def test_network_delay_returns_correct_result_for_small_connected_graph(self):
         # Arrange
-        dislikes = {
-            "Fido": [],
-            "Rufus": ["James", "Alfie"],
-            "James": ["Rufus", "T-Bone"],
-            "Alfie": ["Rufus"],
-            "T-Bone": ["James"]
-        }
+        times = [
+            [2,1,1],
+            [2,3,1],
+            [3,4,1]
+        ]
+        n = 3
+        source = 2
 
         # Act
-        answer = possible_bipartition(dislikes)
+        answer = network_delay(times, n, source)
 
         # Assert
-        self.assertTrue(answer)
+        self.assertEqual(answer, 2)
 
-    def test_example_2(self):
-        dislikes = {
-            "Fido": [],
-            "Rufus": ["James", "Alfie"],
-            "James": ["Rufus", "Alfie"],
-            "Alfie": ["Rufus", "James"]
-        }
-
-        # Act
-        answer = possible_bipartition(dislikes)
-
-        # Assert
-        self.assertFalse(answer)
-
-    def test_example_3(self):
+    def test_network_delay_returns_minus_1_when_node_unreachable(self):
         # Arrange
-        dislikes = {
-            "Fido": [],
-            "Rufus": ["James", "Scruffy"],
-            "James": ["Rufus", "Alfie"],
-            "Alfie": ["T-Bone", "James"],
-            "T-Bone": ["Alfie", "Scruffy"],
-            "Scruffy": ["Rufus", "T-Bone"]
-        }
+        times = [
+            [2,1,1],
+            [2,3,2],
+            [3,1,1]
+        ]
+        n = 3
+        source = 1
 
         # Act
-        answer = possible_bipartition(dislikes)
+        answer = network_delay(times, n, source)
 
         # Assert
-        self.assertFalse(answer)
+        self.assertEqual(answer, -1)
 
-    def test_will_return_true_for_a_graph_which_can_be_bipartitioned(self):
+    def test_network_delay_returns_minus_1_for_disconnected_graph(self):
         # Arrange
-        dislikes = {
-            "Fido": ["Alfie", "Bruno"],
-            "Rufus": ["James", "Scruffy"],
-            "James": ["Rufus", "Alfie"],
-            "Alfie": ["Fido", "James"],
-            "T-Bone": ["Scruffy"],
-            "Scruffy": ["Rufus", "T-Bone"],
-            "Bruno": ["Fido"]
-        }
+        times = [
+            [2,3,2]
+        ]
+        n = 3
+        source = 2
 
         # Act
-        answer = possible_bipartition(dislikes)
+        answer = network_delay(times, n, source)
 
         # Assert
-        self.assertTrue(answer)
+        self.assertEqual(answer, -1)
 
-    def test_will_return_false_for_graph_which_cannot_be_bipartitioned(self):
+    def test_network_delay_returns_correct_result_for_larger_graph(self):
         # Arrange
-        dislikes = {
-            "Fido": ["Alfie", "Bruno"],
-            "Rufus": ["James", "Scruffy"],
-            "James": ["Rufus", "Alfie"],
-            "Alfie": ["Fido", "James", "T-Bone"],
-            "T-Bone": ["Alfie", "Scruffy"],
-            "Scruffy": ["Rufus", "T-Bone"],
-            "Bruno": ["Fido"]
-        }
+        times = [
+            [1, 2, 3],
+            [2, 4, 1],
+            [2, 5, 5],
+            [2, 3, 6],
+            [3, 5, 6],
+            [4, 5, 7]
+        ]
+        n = 5
+        source = 1
 
         # Act
-        answer = possible_bipartition(dislikes)
+        answer = network_delay(times, n, source)
 
         # Assert
-        self.assertFalse(answer)
+        self.assertEqual(answer, 9)
 
-
-    def test_will_return_true_for_empty_graph(self):
-        self.assertTrue(possible_bipartition({}))
     
-    def test_will_return_false_for_another_graph_which_cannot_be_bipartitioned(self):
-        # Arrange
-        dislikes = {
-            "Fido": ["Alfie", "Bruno"],
-            "Rufus": ["James", "Scruffy"],
-            "James": ["Rufus", "Alfie"],
-            "Alfie": ["Fido", "James", "T-Bone"],
-            "T-Bone": ["Alfie", "Scruffy"],
-            "Scruffy": ["Rufus", "T-Bone"],
-            "Bruno": ["Fido"],
-            "Spot": ["Nala"],
-            "Nala": ["Spot"]
-        }
-
-        # Act
-        answer = possible_bipartition(dislikes)
-
-        # Assert
-        self.assertFalse(answer)
-
-    def test_multiple_dogs_at_beginning_dont_dislike_any_others(self):
-    # Arrange
-        dislikes = {
-            "Fido": [],
-            "Rufus": [],
-            "James": [],
-            "Alfie": ["T-Bone"],
-            "T-Bone": ["Alfie", "Scruffy"],
-            "Scruffy": ["T-Bone"],
-            "Bruno": ["Nala"],
-            "Spot": ["Nala"],
-            "Nala": ["Bruno", "Spot"]
-        }
-
-        # Act
-        answer = possible_bipartition(dislikes)
-
-        # Assert
-        self.assertTrue(answer)
-
-
-    def test_multiple_dogs_in_middle_dont_dislike_any_others(self):
-        # Arrange
-        dislikes = {
-            "Fido": ["Alfie"],
-            "Rufus": ["James", "Scruffy"],
-            "James": ["Rufus", "Alfie"],
-            "Alfie": ["Fido", "James"],
-            "T-Bone": [],
-            "Scruffy": ["Rufus"],
-            "Bruno": [],
-            "Spot": ["Nala"],
-            "Nala": ["Spot"]
-        }
-
-        # Act
-        answer = possible_bipartition(dislikes)
-
-        # Assert
-        self.assertTrue(answer)
-
-    def test_will_return_false_for_disconnected_graph_which_cannot_be_bipartitioned(self):
-        # Arrange
-        dislikes = {
-            "Ralph": ["Tony"],
-            "Tony": ["Ralph"],
-            "Fido": ["Alfie", "Bruno"],
-            "Rufus": ["James", "Scruffy"],
-            "James": ["Rufus", "Alfie"],
-            "Alfie": ["Fido", "James", "T-Bone"],
-            "T-Bone": ["Alfie", "Scruffy"],
-            "Scruffy": ["Rufus", "T-Bone"],
-            "Bruno": ["Fido"]
-        }
-
-        # Act
-        answer = possible_bipartition(dislikes)
-
-        # Assert
-        self.assertFalse(answer)
 ```
 ### !end-tests
 ### !explanation
@@ -262,37 +142,45 @@ class TestChallenge(unittest.TestCase):
 An example of a working implementation:
 
 ```python
-COLORS = ["red", "green"]
+def networkDelayTime(times, n, source):
+    # Initialize dictionary with default value as a list
+    graph = collections.defaultdict(list)
+    # For each edge in the graph, add the neighbors for a node to the graph
+    # such that graph[node] = [(neighbor1, time1), (neighbor2, time2)...]
+    # The graph is directed, so we only need to append one direction
+    for u, v, time in times:
+        graph[u].append([v, time])
 
-def dfs(dislikes, current_node, painted_graph, current_color):
-    neighbors = dislikes[current_node]
-    next_color = (current_color + 1) % len(COLORS)
+    # initialize the time needed to reach each node in the graph, overestimating to infinity
+    time_needed = [float('inf')] * n
+    # set the time to reach the source node to 0
+    time_needed[source-1] = 0
+    # initialize min heap for traversal
+    # priority 0 to travel to the source node
+    heap = [[0, source]] 
 
-    for neighbor in neighbors:
-        color = painted_graph.get(neighbor)
+    visited = set() # used to record all visited nodes
+    visited.add(source)
 
-        if not color:
-            painted_graph[neighbor] = COLORS[next_color]
-            if not dfs(dislikes=dislikes, current_node=neighbor, painted_graph=painted_graph, current_color=next_color):
-                return False
-        elif color != COLORS[next_color]:
-            return False
-    
-    return True
-    
+    # while there are nodes in the heap
+    while heap:
+        # pop off the closest node
+        time, curr_node = heappop(heap)
+        # traverse through the current node's neighbors
+        for neighbor, neighbor_time in graph[curr_node]:
+            # calculate the total time to travel to the neighbor
+            total_time = time + neighbor_time
+            # if the total time is less than the previous time stored to travel to the neighbor
+            if total_time < time_needed[neighbor - 1]:
+                # store the total time as the time needed to travel to the neighbor
+                time_needed[neighbor - 1] = total_time
+                # add the node to the list of visited nodes
+                visited.add(neighbor)
+                # push onto heap to be visited later
+                heappush(heap, [total_time, neighbor])
 
-def possible_bipartition(dislikes):
-    painted_graph = {}
-    current_color = 0
-
-    for node in dislikes.keys():
-        neighbors = dislikes[node]
-        if not painted_graph.get(node):
-            painted_graph[node] = COLORS[current_color]
-
-            if not dfs(dislikes=dislikes, current_node=node, painted_graph=painted_graph, current_color=current_color):
-                return False
-    return True
+    # return the max time in time_needed list if all of the nodes have been visited, otherwise return -1
+    return max(time_needed) if len(visited) == n else -1
 ```
 ### !end-explanation
 
@@ -305,7 +193,7 @@ def possible_bipartition(dislikes):
 ### !challenge
 
 * type: paragraph
-* id: b70d559e-2a87-4010-8e02-9ee658de9402
+* id: 5d1ff7ab-da11-4d64-95a9-3b07c55a9b2c
 * title: Time Complexity of Solution
 * points: 1
 
@@ -329,7 +217,7 @@ What is the time complexity of your solution? Please define and explain your var
 ### !challenge
 
 * type: paragraph
-* id: 06376c61-2207-4bdb-94a3-39aa38705c57
+* id: ae994d0b-c54a-45e0-8793-9c0ceee33718
 * title: Space Complexity of Solution
 * points: 1 
 
