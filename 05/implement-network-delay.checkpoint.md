@@ -13,30 +13,38 @@ For this exercise, create a function `network_delay_time` which takes in a list 
 Return the **minimum** time it takes for all of the nodes to receive the signal from the `source` node. If it is not possible for all of the nodes to receive the signal, return `-1`.
 
 **Example 1**
+<br>
 ![example graph 1](../images/network_delay_example-1.png)
 ```
 Input: times = [[2,1,1], [2,3,1], [3,4,1]], source = 2, n = 3
 Output: 2
 Explanation:
-Starting from node 2: it takes 1 unit of time to reach node 1, 1 unit of time to reach node 3, and 2 units of time to reach node 4 (1 unit of time from 2 -> 3 and 1 unit of time from 3 -> 4 so 2 units overall). 
+Starting from node 2: it takes 1 unit of time to reach node 1, 1 unit of time to
+reach node 3, and 2 units of time to reach node 4 (1 unit of time from 2 -> 3 and 
+1 unit of time from 3 -> 4 so 2 units overall). 
 Therefore, to reach all of the nodes, it would take a minimum of 2 units of time. 
 ```
 
 **Example 2:**
+<br>
 ![example graph 2](../images/network_delay_example-2.png)
 ```
 Input: times =[[2,1,1], [2, 3, 2], [3, 1, 1]], source = 1, n = 3
 Output: -1
-It is not possible to reach any other node from node 1, so the function would return -1 to indicate it is not possible to reach all of the nodes
-in the graph from the given source node.
+It is not possible to reach any other node from node 1, so the function would return 
+-1 to indicate it is not possible to reach all of the nodes in the graph from the given 
+source node.
 ```
 
 **Example 3:**
+<br>
 ![example graph 3](../images/network_delay_example-3.png)
 ```
 Input: times =[[2, 3, 2]], source = 2, n = 3
 Output: -1
-It is not possible to reach all of the nodes in the graph due to the graph being disconnected, so the function would return -1 to indicate it is not possible to reach all of the nodes in the graph from the given source node.
+It is not possible to reach all of the nodes in the graph due to the graph being 
+disconnected, so the function would return -1 to indicate it is not possible to 
+reach all of the nodes in the graph from the given source node.
 ```
 ### !end-question
 ### !placeholder
