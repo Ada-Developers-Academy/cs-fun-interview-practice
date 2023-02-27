@@ -38,7 +38,70 @@ It is not possible to reach all of the nodes in the graph due to the graph being
 <summary>Click here to see the tests that will be run against your code</summary>
 
 ```py
+def test_network_delay_returns_correct_result_for_small_connected_graph(self):
+    # Arrange
+    times = [
+        [2,1,1],
+        [2,3,1],
+        [3,4,1]
+    ]
+    n = 3
+    source = 2
 
+    # Act
+    answer = network_delay(times, n, source)
+
+    # Assert
+    self.assertEqual(answer, 2)
+
+def test_network_delay_returns_minus_1_when_node_unreachable(self):
+    # Arrange
+    times = [
+        [2,1,1],
+        [2,3,2],
+        [3,1,1]
+    ]
+    n = 3
+    source = 1
+
+    # Act
+    answer = network_delay(times, n, source)
+
+    # Assert
+    self.assertEqual(answer, -1)
+
+def test_network_delay_returns_minus_1_for_disconnected_graph(self):
+    # Arrange
+    times = [
+        [2,3,2]
+    ]
+    n = 3
+    source = 2
+
+    # Act
+    answer = network_delay(times, n, source)
+
+    # Assert
+    self.assertEqual(answer, -1)
+
+def test_network_delay_returns_correct_result_for_larger_graph(self):
+    # Arrange
+    times = [
+        [1, 2, 3],
+        [2, 4, 1],
+        [2, 5, 5],
+        [2, 3, 6],
+        [3, 5, 6],
+        [4, 5, 7]
+    ]
+    n = 5
+    source = 1
+
+    # Act
+    answer = network_delay(times, n, source)
+
+    # Assert
+    self.assertEqual(answer, 9)
 ```
 
 </details>
@@ -141,6 +204,37 @@ class TestPython1(unittest.TestCase):
 Example tests:
 
 ```python
+def test_network_delay_returns_correct_result_for_small_connected_graph(self):
+    # Arrange
+    times = [
+        [2,1,1],
+        [2,3,1],
+        [3,4,1]
+    ]
+    n = 3
+    source = 2
+
+    # Act
+    answer = network_delay(times, n, source)
+
+    # Assert
+    self.assertEqual(answer, 2)
+
+def test_network_delay_returns_minus_1_when_node_unreachable(self):
+    # Arrange
+    times = [
+        [2,1,1],
+        [2,3,2],
+        [3,1,1]
+    ]
+    n = 3
+    source = 1
+
+    # Act
+    answer = network_delay(times, n, source)
+
+    # Assert
+    self.assertEqual(answer, -1)
 ```
 
 ##### !end-explanation
