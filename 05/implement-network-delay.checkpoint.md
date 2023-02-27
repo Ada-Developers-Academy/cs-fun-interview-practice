@@ -8,9 +8,9 @@
 * title: Network Delay Time
 * points: 3
 ### !question
-For this exercise, create a function `network_delay_time` which takes in a list of travel times, `times`, as directed edges `times[i] = (uᵢ, vᵢ, wᵢ)` where `uᵢ` is the source node, `vᵢ` is the target node, and `wᵢ` is the time it takes for a signal to travel from the source node to the target node, and `n`, the total number of nodes in the graph. The nodes in the graph are labeled from `1` to `n`.
+For this exercise, create a function `network_delay_time` which takes in a list of travel times, `times`, as directed edges `times[i] = (uᵢ, vᵢ, wᵢ)` where `uᵢ` is the source node, `vᵢ` is the target node, and `wᵢ` is the time it takes for a signal to travel from the source node to the target node, `n`, the total number of nodes in the graph, and `source`, the node from which a signal is being sent. The nodes in the graph are labeled from `1` to `n`.
 
-A signal is sent from a given node `source`. Return the **minimum** time it takes for all of the nodes to receive the signal from the `source` node. If it is not possible for all of the nodes to receive the signal, return `-1`.
+Return the **minimum** time it takes for all of the nodes to receive the signal from the `source` node. If it is not possible for all of the nodes to receive the signal, return `-1`.
 
 **Example 1**
 ![example graph 1](../images/network_delay_example-1.png)
