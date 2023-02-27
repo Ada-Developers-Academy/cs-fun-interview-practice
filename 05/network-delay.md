@@ -1,4 +1,4 @@
-# Bipartition Graph
+# Network Delay
 
 ## Problem Statement  
 
