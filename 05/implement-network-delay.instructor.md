@@ -3,7 +3,7 @@
 An example of a working implementation:
 
 ```python
-def network_delay(times, n, source):
+def network_delay_time(times, n, source):
     # Initialize dictionary with default value as a list
     graph = collections.defaultdict(list)
     # For each edge in the graph, add the neighbors for a node to the graph

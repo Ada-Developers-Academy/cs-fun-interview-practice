@@ -42,7 +42,7 @@ It is not possible to reach all of the nodes in the graph due to the graph being
 ### !placeholder
 
 ```python
-def network_delay(times, n, source):
+def network_delay_time(times, n, source):
     """
     A function which takes in a list of edges representing a graph of network nodes
     and the time to travel between the nodes, the number of nodes in the network
@@ -80,7 +80,7 @@ class TestChallenge(unittest.TestCase):
         source = 2
 
         # Act
-        answer = network_delay(times, n, source)
+        answer = network_delay_time(times, n, source)
 
         # Assert
         self.assertEqual(answer, 2)
@@ -96,7 +96,7 @@ class TestChallenge(unittest.TestCase):
         source = 1
 
         # Act
-        answer = network_delay(times, n, source)
+        answer = network_delay_time(times, n, source)
 
         # Assert
         self.assertEqual(answer, -1)
@@ -110,7 +110,7 @@ class TestChallenge(unittest.TestCase):
         source = 2
 
         # Act
-        answer = network_delay(times, n, source)
+        answer = network_delay_time(times, n, source)
 
         # Assert
         self.assertEqual(answer, -1)
@@ -129,7 +129,7 @@ class TestChallenge(unittest.TestCase):
         source = 1
 
         # Act
-        answer = network_delay(times, n, source)
+        answer = network_delay_time(times, n, source)
 
         # Assert
         self.assertEqual(answer, 9)
@@ -140,7 +140,7 @@ class TestChallenge(unittest.TestCase):
 An example of a working implementation:
 
 ```python
-def network_delay(times, n, source):
+def network_delay_time(times, n, source):
     # Initialize dictionary with default value as a list
     graph = collections.defaultdict(list)
     # For each edge in the graph, add the neighbors for a node to the graph
