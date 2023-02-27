@@ -34,7 +34,6 @@ def network_delay_time(times, n, source):
             # calculate the total time to travel to the neighbor
             total_time = time + neighbor_time
             # if the total time is less than the previous time stored to travel to the neighbor
-            print('visiting neighbor ' + neighbor)
             if total_time < time_needed[neighbor - 1]:
                 # store the total time as the time needed to travel to the neighbor
                 time_needed[neighbor - 1] = total_time
