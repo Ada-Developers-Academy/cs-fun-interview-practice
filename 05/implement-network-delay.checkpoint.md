@@ -1,11 +1,11 @@
-# Implement Possible Graph Bipartition
+# Implement Network Delay Time
 
 <!-- prettier-ignore-start -->
 ### !challenge
 * type: code-snippet
 * language: python3.6
 * id: 029a5285-6422-4acf-a71b-d4ee862a59ec
-* title: Possible Graph Bipartition
+* title: Network Delay Time
 * points: 3
 ### !question
 For this exercise, create a function `network_delay_time` which takes in a list of travel times, `times`, as directed edges `times[i] = (uᵢ, vᵢ, wᵢ)` where `uᵢ` is the source node, `vᵢ` is the target node, and `wᵢ` is the time it takes for a signal to travel from the source node to the target node, and `n`, the total number of nodes in the graph. The nodes in the graph are labeled from `1` to `n`.
