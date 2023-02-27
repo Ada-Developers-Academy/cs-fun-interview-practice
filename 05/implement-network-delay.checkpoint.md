@@ -133,8 +133,6 @@ class TestChallenge(unittest.TestCase):
 
         # Assert
         self.assertEqual(answer, 9)
-
-    
 ```
 ### !end-tests
 ### !explanation
