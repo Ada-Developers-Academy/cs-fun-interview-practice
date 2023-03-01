@@ -190,5 +190,16 @@ Write the logical steps here.
 
 ##### !end-placeholder
 
+##### !hint
+1. Create pointer for headA called l1 
+2. while l1 is not None
+    1. Set l2 to be headB
+    1. while l2 is not None
+        1. if l1 == l2 -> return l1
+        2. set l2 to point to the next node in list B
+    1. Set l1 to point to the next node in list A
+3. return None as no intersection occurred in the nested loops
+##### !end-hint
+
 ### !end-challenge
 <!-- prettier-ignore-end -->

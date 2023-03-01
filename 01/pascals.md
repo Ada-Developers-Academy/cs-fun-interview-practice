@@ -199,5 +199,17 @@ Write the logical steps here.
 
 ##### !end-placeholder
 
+##### !hint
+1. Handle edge cases
+2. Initialize list to hold triangle
+3. Loop from 0 to num_rows
+    1. Initialize list for current row by setting the size to i + 1
+    2. Set the first and last values of the row to 1
+    3. Loop through the rest of the row
+        1. Calculate the current element in the row by adding the elements in the row above and to the left and above and to the right
+    4. Append the row list to the triangle list
+4. Return the triangle list
+##### !end-hint
+
 ### !end-challenge
 <!-- prettier-ignore-end -->
