@@ -19,3 +19,22 @@ Standards:
         Type: Checkpoint
         UID: c05ba773-44dc-4891-8e96-35db8e3d8e86
         Path: /01/implement-pascals.checkpoint.md
+  -
+    Title: IPQ 02
+    Description: Linked Lists
+    UID: 1d85b30b-724d-4807-900c-1356a5421258
+    SuccessCriteria:
+      - success criteria
+    ContentFiles:
+      -
+        Type: Instructor
+        UID: 2e82534d-e926-43f6-8cc3-7cf98caa8e08
+        Path: /02/implement-intersection.instructor.md
+      -
+        Type: Lesson
+        UID: c41648cf-3e08-4d9e-97d4-7dda6e60feee
+        Path: /02/intersection.md
+      -
+        Type: Checkpoint
+        UID: 69d635dc-9cc2-4a56-a2e7-1a8d788b6a13
+        Path: /02/implement-intersection.checkpoint.md
