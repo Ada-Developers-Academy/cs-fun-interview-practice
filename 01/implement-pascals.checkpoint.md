@@ -143,10 +143,15 @@ class TestChallenge(unittest.TestCase):
 An example of a working implementation:
 
 ```python
+# Time complexity: O(N^2) where N is the number of rows. The outer loop will run N times, and the inner loop will run at most num_rows times.
+# Space complexity: O(N^2) where N is the number of rows. The size of the array will be N + N - 1 + N - 2 + .... + 1, which calculates
+# to N * (N + 1) / 2, which reduces down to O(N^2).
 def pascals_triangle(num_rows):
+    # handle edge case
     if num_rows < 0:
         raise ValueError("No input less than 0.")
         
+    # initialize 2d array to hold triangle
     triangle = []
 
     for row_num in range(num_rows):
@@ -167,6 +172,60 @@ def pascals_triangle(num_rows):
 
 ### !end-challenge
 <!-- prettier-ignore-end -->
+
+<br>
+<details style="max-width: 700px; margin: auto;">
+<summary>Click here to see the tests that will be run against your code</summary>
+
+```py
+def test_pascals_nominal(self):
+    # Arrange
+    numRows = 3
+
+    # Act
+    result = pascals_triangle(numRows)
+
+    # Assert
+    self.assertEqual(result, [[1], [1, 1], [1, 2, 1]])
+
+def test_pascals_big_number(self):
+    # Arrange
+    numRows = 10
+
+    # Act
+    result = pascals_triangle(numRows)
+
+    # Act
+    self.assertEqual(result, [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1], [1, 5, 10, 10, 5, 1], [1, 6, 15, 20, 15, 6, 1], [1, 7, 21, 35, 35, 21, 7, 1], [1, 8, 28, 56, 70, 56, 28, 8, 1], [1, 9, 36, 84, 126, 126, 84, 36, 9, 1]])
+
+def test_pascals_base_case(self):
+    # Arrange
+    numRows = 1
+
+    # Act
+    result = pascals_triangle(numRows)
+
+    # Assert
+    self.assertEqual(result, [[1]])
+
+    # Arrange
+    numRows = 2
+
+    # Act
+    result = pascals_triangle(numRows)
+
+    # Assert
+    self.assertEqual(result, [[1], [1, 1]])
+
+def test_pascals_out_of_range(self):
+    # Arrange
+    numRows = -1
+
+    # Assert
+    with self.assertRaises(ValueError):
+        pascals_triangle(numRows)
+```
+</details>
 
 <!-- >>>>>>>>>>>>>>>>>>>>>> BEGIN CHALLENGE >>>>>>>>>>>>>>>>>>>>>> -->
 <!-- Replace everything in square brackets [] and remove brackets  -->
