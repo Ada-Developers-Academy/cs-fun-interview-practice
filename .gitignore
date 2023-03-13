@@ -130,3 +130,5 @@ dmypy.json
 
 # macOS setting
 .DS_Store
+
+*.code-workspace
