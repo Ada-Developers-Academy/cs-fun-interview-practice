@@ -38,3 +38,22 @@ Standards:
         Type: Checkpoint
         UID: 69d635dc-9cc2-4a56-a2e7-1a8d788b6a13
         Path: /02/implement-intersection.checkpoint.md
+  -
+    Title: IPQ 03
+    Description: Binary Search Trees
+    UID: bec82abd-14a6-444a-802b-8b5b591a1e4d
+    SuccessCriteria:
+      - success criteria
+    ContentFiles:
+      -
+        Type: Instructor
+        UID: 6cb0dbae-118d-4315-a6af-a06730206683
+        Path: /03/implement-arr-to-bst.instructor.md
+      -
+        Type: Lesson
+        UID: 721dc0f6-a060-4173-bcf1-5039e3661127
+        Path: /03/arr-to-bst.md
+      -
+        Type: Checkpoint
+        UID: 6691b510-034a-494d-b253-fb5be2fe6186
+        Path: /03/implement-arr-to-bst.checkpoint.md
