@@ -75,8 +75,8 @@ Here are some example clarifying questions:
 # expected output 2:
 
 # To assist with testing, you also have access to the following functions:
-#   self.is_bst(root) - returns whether the tree with the given root is a valid BST
-#   self.is_balanced(root) - returns whether the tree with the given root is height balanced
+#   is_bst(root) - returns whether the tree with the given root is a valid BST
+#   is_balanced(root) - returns whether the tree with the given root is height balanced
 
 def test_nominal_case():
     # ^rename with meaningful test name
@@ -164,7 +164,7 @@ class TestPython1(unittest.TestCase):
 Example tests:
 
 ```python
-def test_will_return_balanced_bst_for_odd_lengthed_list(self):
+def test_will_return_balanced_bst_for_odd_lengthed_list():
         # Arrange
         arr = [5, 10, 15, 20, 25, 30, 35, 40, 45]
 
@@ -173,10 +173,10 @@ def test_will_return_balanced_bst_for_odd_lengthed_list(self):
 
         # Assert
         assert result.val == 25
-        assert self.is_bst(result)
-        assert self.is_balanced_tree(result)
+        assert is_bst(result)
+        assert is_balanced_tree(result)
 
-def test_will_return_none_for_empty_list(self):
+def test_will_return_none_for_empty_list():
         # Arrange
         arr = []
 
@@ -189,7 +189,7 @@ def test_will_return_none_for_empty_list(self):
 # Below are functions used to test if the given tree is a balanced Binary Search Tree.
 
 # Returns True if the BST provided is a valid BST.
-def is_bst(self, root):
+def is_bst(root):
     if root is None:
         return True
 
@@ -201,15 +201,15 @@ def is_bst(self, root):
     if right is not None and root.val >= right.val:
         return False
 
-    return self.is_bst(left) and self.is_bst(right)
+    return is_bst(left) and is_bst(right)
 
 # Returns the height of a tree
-def height(self, root):
+def height(root):
     if root is None:
         return 0
     
-    left_height = self.height(root.left)
-    right_height = self.height(root.right)
+    left_height = height(root.left)
+    right_height = height(root.right)
 
     if left_height > right_height:
         return left_height + 1
@@ -218,18 +218,18 @@ def height(self, root):
 
 
 # Returns True if a tree is balanced
-def is_balanced_tree(self, root):
+def is_balanced_tree(root):
     if root is None:
         return True
 
-    left_height = self.height(root.left)
-    right_height = self.height(root.right)
+    left_height = height(root.left)
+    right_height = height(root.right)
 
     if abs(left_height - right_height) > 1:
         return False
 
-    left_check = self.is_balanced_tree(root.left)
-    right_check = self.is_balanced_tree(root.right)
+    left_check = is_balanced_tree(root.left)
+    right_check = is_balanced_tree(root.right)
 
     return left_check and right_check
 ```
