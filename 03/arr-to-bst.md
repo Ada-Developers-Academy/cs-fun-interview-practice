@@ -12,65 +12,9 @@ should result in a tree with the following root/height:
 
 ![Balanced Binary Search Tree](../images/balanced_bst.png)
 
-Please note one is not required to implement a self-balancing Binary Search Tree in order to solve this exercise. 
-
-It is recommended to break the problem down recursively by first setting the root of the Binary Search Tree to the middle element of the array.
-
-<br>
-<details style="max-width: 700px; margin: auto;">
-<summary>Click here to see the tests that will be run against your code</summary>
-
-```py
-def test_will_return_balanced_bst_for_odd_lengthed_list(self):
-    # Arrange
-    arr = [5, 10, 15, 20, 25, 30, 35, 40, 45]
-
-    # Act
-    result = arr_to_bst(arr)
-
-    # Assert
-    self.assertEqual(result.val, 25)
-    self.assertTrue(self.is_bst(result))
-    self.assertTrue(self.is_balanced_tree(result))
-
-def test_will_return_balanced_bst_for_even_lengthed_list(self):
-    # Arrange
-    arr = [1, 3, 9, 27, 81, 243]
-
-    # Act
-    result = arr_to_bst(arr)
-
-    # Assert
-    self.assertTrue(self.is_bst(result))
-    self.assertTrue(self.is_balanced_tree(result))
-
-def test_will_return_balanced_bst_for_long_list(self):
-    # Arrange
-    arr = []
-    num = 0
-    while num < 100:
-        arr.append(num)
-        num += 1
-
-    # Act
-    result = arr_to_bst(arr)
-
-    # Assert
-    self.assertTrue(self.is_bst(result))
-    self.assertTrue(self.is_balanced_tree(result))
-
-def test_will_return_none_for_empty_list(self):
-    # Arrange
-    arr = []
-
-    # Act
-    result = arr_to_bst(arr)
-
-    # Assert
-    self.assertEqual(result, None)
-```
-
-</details>
+Please note the following:
+* There will not be any duplicate elements in the array
+* One is not required to implement a self-balancing Binary Search Tree in order to solve this exercise. For an extra challenge, consider why it is unnecessary!
 
 ## Prompts
 
@@ -130,6 +74,10 @@ Here are some example clarifying questions:
 # example input 2:
 # expected output 2:
 
+# To assist with testing, you also have access to the following functions:
+#   is_bst(root) - returns whether the tree with the given root is a valid BST
+#   is_balanced(root) - returns whether the tree with the given root is height balanced
+
 def test_nominal_case():
     # ^rename with meaningful test name
     # and complete test implementation below
@@ -159,8 +107,55 @@ def test_edge_case():
 import unittest
 
 class TestPython1(unittest.TestCase):
-  def test_always_pass(self):
-    self.assertEqual(1,1)
+    # Below are functions used to test if the given tree is a balanced Binary Search Tree.
+
+    # Returns True if the BST provided is a valid BST.
+    def is_bst(self, root):
+        if root is None:
+            return True
+
+        left = root.left
+        if left is not None and root.val <= left.val:
+            return False
+
+        right = root.right
+        if right is not None and root.val >= right.val:
+            return False
+
+        return self.is_bst(left) and self.is_bst(right)
+
+    # Returns the height of a tree
+    def height(self, root):
+        if root is None:
+            return 0
+        
+        left_height = self.height(root.left)
+        right_height = self.height(root.right)
+
+        if left_height > right_height:
+            return left_height + 1
+        else:
+            return right_height + 1
+
+
+    # Returns True if a tree is balanced
+    def is_balanced_tree(self, root):
+        if root is None:
+            return True
+
+        left_height = self.height(root.left)
+        right_height = self.height(root.right)
+
+        if abs(left_height - right_height) > 1:
+            return False
+
+        left_check = self.is_balanced_tree(root.left)
+        right_check = self.is_balanced_tree(root.right)
+
+        return left_check and right_check
+        
+    def test_always_pass(self):
+        self.assertEqual(1,1)
 ```
 
 ##### !end-tests
@@ -169,7 +164,7 @@ class TestPython1(unittest.TestCase):
 Example tests:
 
 ```python
-def test_will_return_balanced_bst_for_odd_lengthed_list(self):
+def test_will_return_balanced_bst_for_odd_lengthed_list():
         # Arrange
         arr = [5, 10, 15, 20, 25, 30, 35, 40, 45]
 
@@ -177,11 +172,11 @@ def test_will_return_balanced_bst_for_odd_lengthed_list(self):
         result = arr_to_bst(arr)
 
         # Assert
-        self.assertEqual(result.val, 25)
-        self.assertTrue(is_bst(result))
-        self.assertTrue(is_balanced_tree(result))
+        assert result.val == 25
+        assert is_bst(result)
+        assert is_balanced_tree(result)
 
-def test_will_return_none_for_empty_list(self):
+def test_will_return_none_for_empty_list():
         # Arrange
         arr = []
 
@@ -189,7 +184,54 @@ def test_will_return_none_for_empty_list(self):
         result = arr_to_bst(arr)
 
         # Assert
-        self.assertEqual(result, None)
+        assert result is None
+
+# Below are functions used to test if the given tree is a balanced Binary Search Tree.
+
+# Returns True if the BST provided is a valid BST.
+def is_bst(root):
+    if root is None:
+        return True
+
+    left = root.left
+    if left is not None and root.val <= left.val:
+        return False
+
+    right = root.right
+    if right is not None and root.val >= right.val:
+        return False
+
+    return is_bst(left) and is_bst(right)
+
+# Returns the height of a tree
+def height(root):
+    if root is None:
+        return 0
+    
+    left_height = height(root.left)
+    right_height = height(root.right)
+
+    if left_height > right_height:
+        return left_height + 1
+    else:
+        return right_height + 1
+
+
+# Returns True if a tree is balanced
+def is_balanced_tree(root):
+    if root is None:
+        return True
+
+    left_height = height(root.left)
+    right_height = height(root.right)
+
+    if abs(left_height - right_height) > 1:
+        return False
+
+    left_check = is_balanced_tree(root.left)
+    right_check = is_balanced_tree(root.right)
+
+    return left_check and right_check
 ```
 
 ##### !end-explanation
