@@ -219,7 +219,7 @@ Write the logical steps here.
 ##### !hint
 Try drawing out a graph and work on finding patterns for when a graph is bipartite and when it is not.
 
-For more information on bipartite graphs, check out this (resource)[https://www.baeldung.com/cs/graphs-bipartite]
+For more information on bipartite graphs, check out this [resource](https://www.baeldung.com/cs/graphs-bipartite).
 ##### !end-hint
 
 ### !end-challenge
