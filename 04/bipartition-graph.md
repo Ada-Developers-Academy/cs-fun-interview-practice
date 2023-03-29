@@ -2,13 +2,13 @@
 
 ## Problem Statement
 
-For this exercise, create a function `possible_bipartition` which takes in an adjacency list representing a graph of puppies, `dislikes`, to determine if the puppies can be divided into two groups where no two puppies that are known for fighting each other are in the same group.   
+Create a function `possible_bipartition` which takes in an adjacency list representing a graph of puppies, `dislikes`. The function should determine whether the puppies can be divided into two groups where no two puppies that dislike each other are in the same group.   
 
 Given a set of N puppies, we would like to split them into two groups of any size to use two play areas.
 
-Formally, if `dislikes[i] = [a, b]`, it means puppy `i` is not allowed to put in the same group as puppy `a` or puppy `b`.
+Formally, `dislikes[i] = [a, b]` means puppy `i` cannot be in the same group as puppy `a` or puppy `b`.
 
-Dislike is mutual. If puppy `a` dislikes puppy `b`, puppy `b` also dislikes puppy `a`.
+Dislike is mutual. If puppy `a` dislikes puppy `b`, puppy `b` also dislikes puppy `a`. Two puppies that dislike each other will fight. 
 
 Return `True` if and only if it is possible to split the puppies into two groups where no fighting will occur. Otherwise, return `False`.
 
@@ -26,7 +26,7 @@ dislikes = {
 Output: True
 
 Explanation:
-Fido can be placed in Group 1.
+Fido can be placed in either group.
 Nala can be placed in Group 1.
 Cooper can be placed in Group 2.
 Spot can be placed in Group 2.
@@ -49,8 +49,8 @@ Output: False
 
 There is no way to place all of the pups into two separate groups such that no pups would fight with each other. 
 
-If we were to place Fido and Nala in Group 1, we could place Cooper in Group 2. Then, when we tried to place Spot in either
-group, we would find that there's no where for him to be placed because he is disliked by a pup in both
+Fido can be placed in either group. If Nala is placed in Group 1, Cooper must be placed in Group 2. Then, Cooper cannot be placed in either
+group because he is disliked by a pup in both
 Group 1 and Group 2.
 ```
 
