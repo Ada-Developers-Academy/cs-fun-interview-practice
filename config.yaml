@@ -76,3 +76,22 @@ Standards:
         Type: Checkpoint
         UID: edfec3f9-1247-444c-9ea5-759d6a4877da
         Path: /04/implement-bipartition-graph.checkpoint.md
+  -
+    Title: IPQ 05
+    Description: Dijkstra's Algorithm
+    UID: bb35fb6e-c6bc-48cc-aeab-6f5f5cb91afc
+    SuccessCriteria:
+      - success criteria
+    ContentFiles:
+      -
+        Type: Instructor
+        UID: 40c9f6b2-000b-41a0-ab83-62b2dd92bdab
+        Path: /05/implement-network-delay.instructor.md
+      -
+        Type: Lesson
+        UID: a14c29d5-e807-4ba7-b842-427538f99f45
+        Path: /05/network-delay.md
+      -
+        Type: Checkpoint
+        UID: 073e27b2-f57d-436f-9560-6afdcbcb6407
+        Path: /05/implement-network-delay.checkpoint.md
