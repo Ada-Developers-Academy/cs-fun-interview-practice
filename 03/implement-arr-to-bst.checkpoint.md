@@ -9,7 +9,7 @@
 * points: 3
 ### !question
 
-Given a sorted array of integers, `arr`, write a function to create a balanced Binary Search Tree from the contents of the array. Return the root of the Binary Search Tree.
+Given a sorted array of unique integers, `arr`, write a function to create a balanced Binary Search Tree from the contents of the array. Return the root of the Binary Search Tree.
 
 Example:
 
@@ -19,9 +19,9 @@ should result in a tree with the following root/height:
 
 ![Balanced Binary Search Tree](../images/balanced_bst.png)
 
-Please note one is not required to implement a self-balancing Binary Search Tree in order to solve this exercise. 
-
-It is recommended to break the problem down recursively by first setting the root of the Binary Search Tree to the middle element of the array.
+Please note the following:
+* There will not be any duplicate elements in the array
+* One is not required to implement a self-balancing Binary Search Tree in order to solve this exercise. For an extra challenge, consider why it is unnecessary!
 
 ### !end-question
 ### !placeholder
@@ -169,8 +169,68 @@ def arr_to_bst(arr):
 ```
 ### !end-explanation
 
+### !hint
+It is recommended to break the problem down recursively by first setting the root of the Binary Search Tree to the middle element of the array.
+### !end-hint
+
 ### !end-challenge
 <!-- prettier-ignore-end -->
+
+<br>
+<details style="max-width: 700px; margin: auto;">
+<summary>Click here to see the tests that will be run against your code</summary>
+
+```py
+def test_will_return_balanced_bst_for_odd_lengthed_list(self):
+    # Arrange
+    arr = [5, 10, 15, 20, 25, 30, 35, 40, 45]
+
+    # Act
+    result = arr_to_bst(arr)
+
+    # Assert
+    self.assertEqual(result.val, 25)
+    self.assertTrue(self.is_bst(result))
+    self.assertTrue(self.is_balanced_tree(result))
+
+def test_will_return_balanced_bst_for_even_lengthed_list(self):
+    # Arrange
+    arr = [1, 3, 9, 27, 81, 243]
+
+    # Act
+    result = arr_to_bst(arr)
+
+    # Assert
+    self.assertTrue(self.is_bst(result))
+    self.assertTrue(self.is_balanced_tree(result))
+
+def test_will_return_balanced_bst_for_long_list(self):
+    # Arrange
+    arr = []
+    num = 0
+    while num < 100:
+        arr.append(num)
+        num += 1
+
+    # Act
+    result = arr_to_bst(arr)
+
+    # Assert
+    self.assertTrue(self.is_bst(result))
+    self.assertTrue(self.is_balanced_tree(result))
+
+def test_will_return_none_for_empty_list(self):
+    # Arrange
+    arr = []
+
+    # Act
+    result = arr_to_bst(arr)
+
+    # Assert
+    self.assertEqual(result, None)
+```
+
+</details>
 
 <!-- >>>>>>>>>>>>>>>>>>>>>> BEGIN CHALLENGE >>>>>>>>>>>>>>>>>>>>>> -->
 <!-- Replace everything in square brackets [] and remove brackets  -->

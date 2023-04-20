@@ -58,60 +58,6 @@ Each row afterwards can be calculated by setting the first and last index to 1
 and calculating the middle elements using the two elements above it.
 ```
 
-<br>
-<details style="max-width: 700px; margin: auto;">
-<summary>Click here to see the tests that will be run against your code</summary>
-
-```py
-def test_pascals_nominal(self):
-    # Arrange
-    numRows = 3
-
-    # Act
-    result = pascals_triangle(numRows)
-
-    # Assert
-    self.assertEqual(result, [[1], [1, 1], [1, 2, 1]])
-
-def test_pascals_big_number(self):
-    # Arrange
-    numRows = 10
-
-    # Act
-    result = pascals_triangle(numRows)
-
-    # Act
-    self.assertEqual(result, [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1], [1, 5, 10, 10, 5, 1], [1, 6, 15, 20, 15, 6, 1], [1, 7, 21, 35, 35, 21, 7, 1], [1, 8, 28, 56, 70, 56, 28, 8, 1], [1, 9, 36, 84, 126, 126, 84, 36, 9, 1]])
-
-def test_pascals_base_case(self):
-    # Arrange
-    numRows = 1
-
-    # Act
-    result = pascals_triangle(numRows)
-
-    # Assert
-    self.assertEqual(result, [[1]])
-
-    # Arrange
-    numRows = 2
-
-    # Act
-    result = pascals_triangle(numRows)
-
-    # Assert
-    self.assertEqual(result, [[1], [1, 1]])
-
-def test_pascals_out_of_range(self):
-    # Arrange
-    numRows = -1
-
-    # Assert
-    with self.assertRaises(ValueError):
-        pascals_triangle(numRows)
-```
-</details>
-
 ## Prompts
 
 <!-- Question 1 -->
@@ -252,6 +198,18 @@ Without writing code, describe how you would implement `pascals_triangle` using 
 Write the logical steps here.
 
 ##### !end-placeholder
+
+##### !hint
+1. Handle edge cases
+2. Initialize list to hold triangle
+3. Loop from 0 to num_rows
+    1. Initialize list for current row by setting the size to i + 1
+    2. Set the first and last values of the row to 1
+    3. Loop through the rest of the row
+        1. Calculate the current element in the row by adding the elements in the row above and to the left and above and to the right
+    4. Append the row list to the triangle list
+4. Return the triangle list
+##### !end-hint
 
 ### !end-challenge
 <!-- prettier-ignore-end -->

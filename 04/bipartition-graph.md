@@ -2,13 +2,13 @@
 
 ## Problem Statement
 
-For this exercise, create a function `possible_bipartition` which takes in an adjacency list representing a graph of puppies, `dislikes`, to determine if the puppies can be divided into two groups where no two puppies that are known for fighting each other are in the same group.   
+Create a function `possible_bipartition` which takes in an adjacency list representing a graph of puppies, `dislikes`. The function should determine whether the puppies can be divided into two groups where no two puppies that dislike each other are in the same group.   
 
 Given a set of N puppies, we would like to split them into two groups of any size to use two play areas.
 
-Formally, if `dislikes[i] = [a, b]`, it means puppy `i` is not allowed to put in the same group as puppy `a` or puppy `b`.
+Formally, `dislikes[i] = [a, b]` means puppy `i` cannot be in the same group as puppy `a` or puppy `b`.
 
-Dislike is mutual. If puppy `a` dislikes puppy `b`, puppy `b` also dislikes puppy `a`.
+Dislike is mutual. If puppy `a` dislikes puppy `b`, puppy `b` also dislikes puppy `a`. Two puppies that dislike each other will fight. 
 
 Return `True` if and only if it is possible to split the puppies into two groups where no fighting will occur. Otherwise, return `False`.
 
@@ -26,7 +26,7 @@ dislikes = {
 Output: True
 
 Explanation:
-Fido can be placed in Group 1.
+Fido can be placed in either group.
 Nala can be placed in Group 1.
 Cooper can be placed in Group 2.
 Spot can be placed in Group 2.
@@ -49,186 +49,10 @@ Output: False
 
 There is no way to place all of the pups into two separate groups such that no pups would fight with each other. 
 
-If we were to place Fido and Nala in Group 1, we could place Cooper in Group 2. Then, when we tried to place Spot in either
-group, we would find that there's no where for him to be placed because he is disliked by a pup in both
+Fido can be placed in either group. If Nala is placed in Group 1, Cooper must be placed in Group 2. Then, Cooper cannot be placed in either
+group because he is disliked by a pup in both
 Group 1 and Group 2.
 ```
-
-<br>
-<details style="max-width: 700px; margin: auto;">
-<summary>Click here to see the tests that will be run against your code</summary>
-
-```py
-def test_example_1():
-    # Arrange
-    dislikes = {
-      "Fido": [],
-      "Rufus": ["James", "Alfie"],
-      "James": ["Rufus", "T-Bone"],
-      "Alfie": ["Rufus"],
-      "T-Bone": ["James"]
-    }
-
-    # Act
-    answer = possible_bipartition(dislikes)
-
-    # Assert
-    assert answer
-
-def test_example_2():
-    dislikes = {
-      "Fido": [],
-      "Rufus": ["James", "Alfie"],
-      "James": ["Rufus", "Alfie"],
-      "Alfie": ["Rufus", "James"]
-    }
-
-    # Act
-    answer = possible_bipartition(dislikes)
-
-    # Assert
-    assert not answer
-
-def test_example_3():
-    # Arrange
-    dislikes = {
-      "Fido": [],
-      "Rufus": ["James", "Scruffy"],
-      "James": ["Rufus", "Alfie"],
-      "Alfie": ["T-Bone", "James"],
-      "T-Bone": ["Alfie", "Scruffy"],
-      "Scruffy": ["Rufus", "T-Bone"]
-    }
-
-    # Act
-    answer = possible_bipartition(dislikes)
-
-    # Assert
-    assert not answer
-
-def test_will_return_true_for_a_graph_which_can_be_bipartitioned():
-    # Arrange
-    dislikes = {
-      "Fido": ["Alfie", "Bruno"],
-      "Rufus": ["James", "Scruffy"],
-      "James": ["Rufus", "Alfie"],
-      "Alfie": ["Fido", "James"],
-      "T-Bone": ["Scruffy"],
-      "Scruffy": ["Rufus", "T-Bone"],
-      "Bruno": ["Fido"]
-    }
-
-    # Act
-    answer = possible_bipartition(dislikes)
-
-    # Assert
-    assert answer
-
-def test_will_return_false_for_graph_which_cannot_be_bipartitioned():
-    # Arrange
-    dislikes = {
-      "Fido": ["Alfie", "Bruno"],
-      "Rufus": ["James", "Scruffy"],
-      "James": ["Rufus", "Alfie"],
-      "Alfie": ["Fido", "James", "T-Bone"],
-      "T-Bone": ["Alfie", "Scruffy"],
-      "Scruffy": ["Rufus", "T-Bone"],
-      "Bruno": ["Fido"]
-    }
-
-    # Act
-    answer = possible_bipartition(dislikes)
-
-    # Assert
-    assert not answer
-
-
-def test_will_return_true_for_empty_graph():
-    assert possible_bipartition({})
-  
-def test_will_return_false_for_another_graph_which_cannot_be_bipartitioned():
-    # Arrange
-    dislikes = {
-      "Fido": ["Alfie", "Bruno"],
-      "Rufus": ["James", "Scruffy"],
-      "James": ["Rufus", "Alfie"],
-      "Alfie": ["Fido", "James", "T-Bone"],
-      "T-Bone": ["Alfie", "Scruffy"],
-      "Scruffy": ["Rufus", "T-Bone"],
-      "Bruno": ["Fido"],
-      "Spot": ["Nala"],
-      "Nala": ["Spot"]
-    }
-
-    # Act
-    answer = possible_bipartition(dislikes)
-
-    # Assert
-    assert not answer
-
-def test_multiple_dogs_at_beginning_dont_dislike_any_others():
-  # Arrange
-    dislikes = {
-      "Fido": [],
-      "Rufus": [],
-      "James": [],
-      "Alfie": ["T-Bone"],
-      "T-Bone": ["Alfie", "Scruffy"],
-      "Scruffy": ["T-Bone"],
-      "Bruno": ["Nala"],
-      "Spot": ["Nala"],
-      "Nala": ["Bruno", "Spot"]
-    }
-
-    # Act
-    answer = possible_bipartition(dislikes)
-
-    # Assert
-    assert answer
-
-
-def test_multiple_dogs_in_middle_dont_dislike_any_others():
-    # Arrange
-    dislikes = {
-      "Fido": ["Alfie"],
-      "Rufus": ["James", "Scruffy"],
-      "James": ["Rufus", "Alfie"],
-      "Alfie": ["Fido", "James"],
-      "T-Bone": [],
-      "Scruffy": ["Rufus"],
-      "Bruno": [],
-      "Spot": ["Nala"],
-      "Nala": ["Spot"]
-    }
-
-    # Act
-    answer = possible_bipartition(dislikes)
-
-    # Assert
-    assert answer
-
-def test_will_return_false_for_disconnected_graph_which_cannot_be_bipartitioned():
-    # Arrange
-    dislikes = {
-      "Ralph": ["Tony"],
-      "Tony": ["Ralph"],
-      "Fido": ["Alfie", "Bruno"],
-      "Rufus": ["James", "Scruffy"],
-      "James": ["Rufus", "Alfie"],
-      "Alfie": ["Fido", "James", "T-Bone"],
-      "T-Bone": ["Alfie", "Scruffy"],
-      "Scruffy": ["Rufus", "T-Bone"],
-      "Bruno": ["Fido"]
-    }
-
-    # Act
-    answer = possible_bipartition(dislikes)
-
-    # Assert
-    assert not answer
-```
-
-</details>
 
 ## Prompts
 
@@ -365,6 +189,9 @@ def test_will_return_false_for_graph_which_cannot_be_bipartitioned():
 ```
 
 ##### !end-explanation
+##### !hint
+Try drawing out some sample graphs and translating them into an adjacency list if coming up with an adjacency list representing a graph is challenging.
+##### !end-hint
 ### !end-challenge
 <!-- prettier-ignore-end -->
 
@@ -388,6 +215,12 @@ Without writing code, describe how you would implement `possible_bipartition` in
 Write the logical steps here.
 
 ##### !end-placeholder
+
+##### !hint
+Try drawing out a graph and work on finding patterns for when a graph is bipartite and when it is not.
+
+For more information on bipartite graphs, check out this [resource](https://www.baeldung.com/cs/graphs-bipartite).
+##### !end-hint
 
 ### !end-challenge
 <!-- prettier-ignore-end -->
