@@ -157,6 +157,7 @@ import collections
 from heapq import heappush, heappop
 def network_delay_time(times, n, source):
     # Initialize dictionary with default value as a list
+    # More information about defaultdict can be found in the documentation for Python: https://docs.python.org/3/library/collections.html#collections.defaultdict
     graph = collections.defaultdict(list)
     # For each edge in the graph, add the neighbors for a node to the graph
     # such that graph[node] = [(neighbor1, time1), (neighbor2, time2)...]
