@@ -8,9 +8,14 @@
 * title: Network Delay Time
 * points: 3
 ### !question
-For this exercise, create a function `network_delay_time` which takes in a list of travel times, `times`, as directed edges `times[i] = (uᵢ, vᵢ, wᵢ)` where `uᵢ` is the source node, `vᵢ` is the target node, and `wᵢ` is the time it takes for a signal to travel from the source node to the target node, `n`, the total number of nodes in the graph, and `source`, the node from which a signal is being sent. The nodes in the graph are labeled from `1` to `n`.
+For this exercise, create a function `network_delay_time` which accepts the following parameters:
+- A list of travel times, `times`. Each element of `times` represents a directed edge `times[i] = (uᵢ, vᵢ, wᵢ)` where `uᵢ` is the source node, `vᵢ` is the target node, and `wᵢ` is the time it takes for a signal to travel from the source node to the target node
+- The total number of nodes in the graph, `n`
+- The node from which a signal is being sent, `source`
 
-Return the **minimum** time it takes for all of the nodes to receive the signal from the `source` node. If it is not possible for all of the nodes to receive the signal, return `-1`.
+The nodes in the graph are labeled from `1` to `n`.
+
+Return the **minimum** time it takes for **all** of the nodes in the graph to receive the signal from the `source` node. If it is not possible for all of the nodes to receive the signal, return `-1`.
 
 **Example 1**
 <br>
@@ -19,7 +24,7 @@ Return the **minimum** time it takes for all of the nodes to receive the signal 
 Input: times = [[2,1,1], [2,3,1], [3,4,1]], source = 2, n = 4
 Output: 2
 Explanation:
-Starting from node 2: it takes 1 unit of time to reach node 1, 1 unit of time to
+Starting from node 2 (our source node): it takes 1 unit of time to reach node 1, 1 unit of time to
 reach node 3, and 2 units of time to reach node 4 (1 unit of time from 2 -> 3 and 
 1 unit of time from 3 -> 4 so 2 units overall). 
 Therefore, to reach all of the nodes, it would take a minimum of 2 units of time. 

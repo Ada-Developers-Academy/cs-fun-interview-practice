@@ -2,9 +2,14 @@
 
 ## Problem Statement  
 
-For this exercise, create a function `network_delay_time` which takes in a list of travel times, `times`, as directed edges `times[i] = (uᵢ, vᵢ, wᵢ)` where `uᵢ` is the source node, `vᵢ` is the target node, and `wᵢ` is the time it takes for a signal to travel from the source node to the target node, `n`, the total number of nodes in the graph, and `source`, the node from which a signal is being sent. The nodes in the graph are labeled from `1` to `n`.
+For this exercise, create a function `network_delay_time` which accepts the following parameters:
+- A list of travel times, `times`. Each element of `times` represents a directed edge `times[i] = (uᵢ, vᵢ, wᵢ)` where `uᵢ` is the source node, `vᵢ` is the target node, and `wᵢ` is the time it takes for a signal to travel from the source node to the target node
+- The total number of nodes in the graph, `n`
+- The node from which a signal is being sent, `source`
 
-Return the **minimum** time it takes for all of the nodes to receive the signal from the `source` node. If it is not possible for all of the nodes to receive the signal, return `-1`.
+The nodes in the graph are labeled from `1` to `n`.
+
+Return the **minimum** time it takes for **all** of the nodes in the graph to receive the signal from the `source` node. If it is not possible for all of the nodes to receive the signal, return `-1`.
 
 **Example 1**
 <br>
@@ -43,77 +48,6 @@ reach all of the nodes in the graph from the given source node.
 ```
 
 <br>
-<details style="max-width: 700px; margin: auto;">
-<summary>Click here to see the tests that will be run against your code</summary>
-
-```py
-def test_network_delay_returns_correct_result_for_small_connected_graph(self):
-    # Arrange
-    times = [
-        [2,1,1],
-        [2,3,1],
-        [3,4,1]
-    ]
-    n = 4
-    source = 2
-
-    # Act
-    answer = network_delay_time(times, n, source)
-
-    # Assert
-    self.assertEqual(answer, 2)
-
-def test_network_delay_returns_minus_1_when_node_unreachable(self):
-    # Arrange
-    times = [
-        [2,1,1],
-        [2,3,2],
-        [3,1,1]
-    ]
-    n = 3
-    source = 1
-
-    # Act
-    answer = network_delay_time(times, n, source)
-
-    # Assert
-    self.assertEqual(answer, -1)
-
-def test_network_delay_returns_minus_1_for_disconnected_graph(self):
-    # Arrange
-    times = [
-        [2,3,2]
-    ]
-    n = 3
-    source = 2
-
-    # Act
-    answer = network_delay_time(times, n, source)
-
-    # Assert
-    self.assertEqual(answer, -1)
-
-def test_network_delay_returns_correct_result_for_larger_graph(self):
-    # Arrange
-    times = [
-        [1, 2, 3],
-        [2, 4, 1],
-        [2, 5, 5],
-        [2, 3, 6],
-        [3, 5, 6],
-        [4, 5, 7]
-    ]
-    n = 5
-    source = 1
-
-    # Act
-    answer = network_delay_time(times, n, source)
-
-    # Assert
-    self.assertEqual(answer, 9)
-```
-
-</details>
 
 ## Prompts
 
