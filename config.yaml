@@ -1,7 +1,7 @@
 ---
 Standards:
   -
-    Title: IPQ 01
+    Title: PSE 01
     Description: Dynamic Programming
     UID: 6308bf63-d177-4da8-91d3-d4bfa72be1e2
     SuccessCriteria:
@@ -20,7 +20,7 @@ Standards:
         UID: c05ba773-44dc-4891-8e96-35db8e3d8e86
         Path: /01/implement-pascals.checkpoint.md
   -
-    Title: IPQ 02
+    Title: PSE 02
     Description: Linked Lists
     UID: 1d85b30b-724d-4807-900c-1356a5421258
     SuccessCriteria:
@@ -39,7 +39,7 @@ Standards:
         UID: 69d635dc-9cc2-4a56-a2e7-1a8d788b6a13
         Path: /02/implement-intersection.checkpoint.md
   -
-    Title: IPQ 03
+    Title: PSE 03
     Description: Binary Search Trees
     UID: bec82abd-14a6-444a-802b-8b5b591a1e4d
     SuccessCriteria:
@@ -58,7 +58,7 @@ Standards:
         UID: 6691b510-034a-494d-b253-fb5be2fe6186
         Path: /03/implement-arr-to-bst.checkpoint.md
   -
-    Title: IPQ 04
+    Title: PSE 04
     Description: Graphs - DFS & BFS
     UID: aea9e725-c820-41cb-9caa-108b1bf03fb3
     SuccessCriteria:
@@ -77,7 +77,7 @@ Standards:
         UID: edfec3f9-1247-444c-9ea5-759d6a4877da
         Path: /04/implement-bipartition-graph.checkpoint.md
   -
-    Title: IPQ 05
+    Title: PSE 05
     Description: Dijkstra's Algorithm
     UID: bb35fb6e-c6bc-48cc-aeab-6f5f5cb91afc
     SuccessCriteria:
