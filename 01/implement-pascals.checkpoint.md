@@ -5,7 +5,7 @@
 * type: code-snippet
 * language: python3.6
 * id: c371a9d2-49b1-417b-abc4-3765e5cade18
-* title: IPQ
+* title: Pascal's Triangle
 * points: 3
 ### !question
 
