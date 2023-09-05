@@ -1,61 +1,20 @@
-# Pascal's Triangle
+# Most Frequent K elements
 
 ## Problem Statement
 
-Create a function, `pascals_triangle`, that returns the first `num_rows` of Pascal's Triangle. 
-
-In Pascal's triangle, each number is the sum of the two numbers directly above it as shown:
-
-![pascals triangle visualization](../images/pascal-triangle-animated.gif)
-
-The function will return a 2D array where the outer list stores the entire triangle and each index of the list stores the numbers in row `index + 1` of Pascal's triangle. For example, index 0 will store the first row, index 1 will store the second row, and so on. 
-
-The first row will always contain [1], the second row will always contain [1, 1]. Each row afterwards will have 1 as the first and last element and the middle elements will be calculated using the two numbers directly above it.
-
-Below is a representation of what the triangle looks like when the input is 5 (the first 5 rows of Pascal's Triangle) with the indices in the resulting 2d array marked.
-
-![pascals triangle with indices marked](../images/pascals-triangle-full-with-indices.png)
-
-If the function receives a number that is less than 0, a `ValueError` is thrown.
-
-Please solve this problem using a dynamic programming approach. A dynamic programming approach requires re-using previously calculated rows to calculate additional rows.
-
-(This problem is sourced from [LeetCode](https://leetcode.com/problems/pascals-triangle/description/))
+Create a function, `most_frequent_k_elements`, that takes a non-empty array of integers and return the k most frequent elements. (Note: You may assume k is always valid, 1 ≤ k ≤ number of unique elements.)
 
 **Example 1:**
 
 ```
-Input: num_rows = 3
-Output: [[1], [1, 1], [1, 2, 1]]
-Explanation: The 0th index (first row) in the outer list contains one number: [1]. 
-The 1st index (second row) contains two numbers: [1, 1]. 
-The 2nd index (third row) can be calculated by setting the first and last indexes to 1 
-and calculating the middle index using the two elements above it (1 + 1) 
-so the third row is [1, 2, 1].
+Input: nums = [1,1,1,2,2,3], k = 2
+Output: [1,2]
 ```
 
 **Example 2:**
 ```
-Input: num_rows = 0
-Output: []
-Explanation: If there are 0 rows, the outer list will be empty.
-```
-
-**Example 3:**
-```
-Input: num_rows = 6
-Output: [
-    [1], 
-    [1, 1], 
-    [1, 2, 1], 
-    [1, 3, 3, 1], 
-    [1, 4, 6, 4, 1], 
-    [1, 5, 10, 10, 5, 1]
-]
-Explanation: The first index (first row) in the outer list contains one number: [1].
-The second index (second row) contains two numbers: [1, 1]. 
-Each row afterwards can be calculated by setting the first and last index to 1 
-and calculating the middle elements using the two elements above it.
+Input: nums = [1], k = 1
+Output: [1]
 ```
 
 ## Prompts
@@ -155,15 +114,15 @@ class TestPython1(unittest.TestCase):
 Example tests:
 
 ```python
-def test_pascals_two_rows(self):
+def test_negative_numbers(arr,k):
     # Arrange
-    numRows = 2
-
+    arr = [-1,-1,2,3,3,3]
+    k = 2 
     # Act
-    result = pascals_triangle(numRows)
+    result = most_frequent_k_elements(arr, k)
 
     # Assert
-    self.assertEqual(result, [[1], [1, 1]])
+    self.assertEqual(result, [3,-1])
 
 def test_pascals_out_of_range(self):
     # Arrange
@@ -187,7 +146,7 @@ def test_pascals_out_of_range(self):
 * topics: pse
 ##### !question
 
-Without writing code, describe how you would implement `pascals_triangle` using a dynamic programming approach in enough detail that someone else could write the code. 
+Without writing code, describe how you would implement `most k frequent elements` using hash tables in enough detail that someone else could write the code. 
 * It may be helpful to break up the problem/algorithm into smaller subproblems/algorithms. For example, 1. Handle invalid input, 2. Given valid input, perform the computation/solve the problem/etc.
 * Your logical steps could take the form of a numbered list, pseudo code, or anywhere in between. What's important at this stage is to think through and outline the implementation before writing code.
 
@@ -201,14 +160,10 @@ Write the logical steps here.
 
 ##### !hint
 1. Handle edge cases
-2. Initialize list to hold triangle
-3. Loop from 0 to num_rows
-    1. Initialize list for current row by setting the size to i + 1
-    2. Set the first and last values of the row to 1
-    3. Loop through the rest of the row
-        1. Calculate the current element in the row by adding the elements in the row above and to the left and above and to the right
-    4. Append the row list to the triangle list
-4. Return the triangle list
+2. Initialize hash that holds integer occurences
+3. Loop through unique integers
+    1. Sort them in descending order
+4. Return list
 ##### !end-hint
 
 ### !end-challenge
