@@ -164,11 +164,8 @@ Write the logical steps here.
 ##### !end-placeholder
 
 ##### !hint
-1. Handle edge cases
-2. Initialize hash that holds integer occurences
-3. Loop through unique integers
-    1. Sort them in descending order
-4. Return list
+1. How could we use a hash/frequency map to keep track of how many times an integer shows up? 
+2. Is there a way we could use the frequency map to sort the integers based on their number of occurences? 
 ##### !end-hint
 
 ### !end-challenge
