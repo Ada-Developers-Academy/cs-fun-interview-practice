@@ -3,26 +3,23 @@
 An example of a working implementation:
 
 ```python
+#Time Complexity: O(N log(N)) where N is the size of the array
+# Space Complexity: O(K) where K is the number of unique integers in a given array
 def top_k_frequent_elements(arr, k):
     if len(arr) == 1: return [arr[0]]
     
-    hash_table = {}
-    result = []
+    frequency_map = {}
+    uniques = []
 
     for num in arr:
-        if hash_table.get(num, False):
-            hash_table[num] += 1
+        if num in frequency_map:
+            frequency_map[num] += 1
             
         else:
-            hash_table[num] = 1
-            result.append(num)
+            frequency_map[num] = 1
+            uniques.append(num)
             
-    i = 0
-    while i < len(result) - 1:
-        for j in range(len(result) - 1):
-            if hash_table[result[j]] < hash_table[result[j+1]]:
-                result[j], result[j+1] = result[j+1], result[j]
-        i += 1
+   result = sorted(uniques, key=lambda num: frequency_map[num], reverse=True)
 
     return result[:k]
 ```

@@ -38,8 +38,11 @@ For each question, provide an explanation which includes the effect your decisio
 
 Here are some example clarifying questions:
 
-1. What happens if the input is a number less than 1?
-2. How large can the input size be?
+1. Can the input array contain negative numbers?
+2. What if there is a tie for the most frequent elements? E.g., what if k is 3, but there are two values tied for the 3rd most frequent element?
+3. Will the input array always be in sorted order?
+4. Must the output list be in a particular order?
+
 
 ##### !end-explanation
 
@@ -61,7 +64,7 @@ Here are some example clarifying questions:
     * Consider at least one nominal and one edge case.
     * What is the expected output for the given input?
     * You can use the examples provided in the prompt, or other examples.
-2. Write unit tests for `pascals_triangle` for the nominal and edge cases you identified in the first step.
+2. Write unit tests for `most_frequent_k_elements` for the nominal and edge cases you identified in the first step.
 
 *Note: Click the **Run Tests** button to save your tests for instructor feedback. No real tests are actually run again your unit tests.*
 
@@ -122,15 +125,17 @@ def test_negative_numbers(arr,k):
     result = most_frequent_k_elements(arr, k)
 
     # Assert
-    self.assertEqual(result, [3,-1])
+    assert result == [3,-1]
 
-def test_pascals_out_of_range(self):
+def test_unordered_numbers():
     # Arrange
-    numRows = -1
+    arr = [3, 1, 2, 3, 1, 3]
+    k = 2 
+    # Act
+    result = most_frequent_k_elements(arr, k)
 
     # Assert
-    with self.assertRaises(ValueError):
-        pascals_triangle(numRows)
+    assert result == [3, 1]
 ```
 
 ##### !end-explanation

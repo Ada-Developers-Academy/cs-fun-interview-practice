@@ -28,9 +28,9 @@ Output: [1]
 ### !placeholder
 
 ```python
-def most_frequent_k_elements(num_rows):
+def most_frequent_k_elements(arr,k):
     """
-    A function that returns the first num_rows of Pascal's triangle.
+    A function that returns the k most frequent elements in a given array.
   
     Parameters:
     arr (array): a non-empty array of integers
@@ -50,7 +50,7 @@ from main import *
 class TestChallenge(unittest.TestCase):
     def test_most_k_frequent_elements_nominal(self):
         # Arrange
-        arr = [1,1,1,2,2,3]
+        arr = [1,2,3,1,1,2,3]
         k = 2
 
         # Act
@@ -59,7 +59,7 @@ class TestChallenge(unittest.TestCase):
         # Assert
         self.assertEqual(result, [1,2])
 
-    def test_pascals_big_number(self):
+    def test_most_k_frequent_elements_single_arr(self):
         # Arrange
         arr = [1]
         k = 1 
@@ -71,7 +71,7 @@ class TestChallenge(unittest.TestCase):
         # Act
         self.assertEqual(result, [1])
 
-    def test_pascals_negative_number_case(self):
+    def test_most_k_frequent_elements_negative_number_case(self):
         # Arrange
         arr = [-1,-1,-1,-2,-5,-5,3,3,3,3,4]
         k = 3
@@ -82,17 +82,6 @@ class TestChallenge(unittest.TestCase):
         # Assert
         self.assertEqual(result, [3,-1,-5])
 
-    def test_pascals_unordered_numbers_case(self):
-        # Arrange
-        arr = [1,2,1,5,1,5,]
-        k = 2
-
-        # Act
-        result = most_frequent_k_elements(arr, k)
-
-        # Assert
-        self.assertEqual(result, [1,5])
-
 
 
 ```
@@ -102,32 +91,24 @@ class TestChallenge(unittest.TestCase):
 An example of a working implementation:
 
 ```python
-# Time complexity: O(N + (K - 1)^2) where N is length of the array and K is the number of unique integers.
-# Space complexity: O(N + K) where N is length of the array and K is the number of unique integers.
+# Time Complexity: O(N log(N)) where N is the size of the array
+# Space Complexity: O(K) where K is the number of unique integers in a given array
 def top_k_frequent_elements(arr, k):
-    # returns arr if the length of the given array 1
-    if len(arr) == 1: return arr
+    if len(arr) == 1: return [arr[0]]
     
-    hash_table = {}
-    result = []
-
-    #looping through array and creating hash where key value pairs are unique integers and number of occurences
+    frequency_map = {}
+    uniques = []
+   # looping through array and creating hash where key value pairs are unique integers and number of occurences
     for num in arr:
-        if hash_table.get(num, False):
-            hash_table[num] += 1
+        if num in frequency_map:
+            frequency_map[num] += 1
             
         else:
-            hash_table[num] = 1
-            # building a list of unique integers seen
-            result.append(num)
+            frequency_map[num] = 1
+            uniques.append(num)
             
-    i = 0
-    # loops through unique integers ordering them by descedent based on their paired values from the hash table
-    while i < len(result) - 1:
-        for j in range(len(result) - 1):
-            if hash_table[result[j]] < hash_table[result[j+1]]:
-                result[j], result[j+1] = result[j+1], result[j]
-        i += 1
+    # Sorted has time complexity of Nlog(N) and takes an interable, function to decide the order, and reverse to decide descending/ascending
+   result = sorted(uniques, key=lambda num: frequency_map[num], reverse=True)
 
     # use k to return the k most frequent integers
     return result[:k]
@@ -142,7 +123,7 @@ def top_k_frequent_elements(arr, k):
 <summary>Click here to see the tests that will be run against your code</summary>
 
 ```py
-    def test_most_k_frequent_elements_nominal(self):
+    def test_most_k_frequent_elements_nominal():
         # Arrange
         arr = [1,1,1,2,2,3]
         k = 2
@@ -151,9 +132,9 @@ def top_k_frequent_elements(arr, k):
         result = most_frequents_k_elements(arr, k)
 
         # Assert
-        self.assertEqual(result, [1,2])
+        assert result == [1,2]
 
-    def test_pascals_big_number(self):
+    def test_most_k_frequent_elements_single_arr():
         # Arrange
         arr = [1]
         k = 1 
@@ -163,9 +144,9 @@ def top_k_frequent_elements(arr, k):
         result = most_frequent_k_elements(arr, k)
 
         # Act
-        self.assertEqual(result, [1])
+        assert result == [1]
 
-    def test_pascals_negative_number_case(self):
+    def test_most_k_frequent_elements_negative_number_case():
         # Arrange
         arr = [-1,-1,-1,-2,-5,-5,3,3,3,3,4]
         k = 3
@@ -174,18 +155,7 @@ def top_k_frequent_elements(arr, k):
         result = most_frequent_k_elements(arr, k)
 
         # Assert
-        self.assertEqual(result, [3,-1,-5])
-
-    def test_pascals_unordered_numbers_case(self):
-        # Arrange
-        arr = [1,2,1,5,1,5,]
-        k = 2
-
-        # Act
-        result = most_frequent_k_elements(arr, k)
-
-        # Assert
-        self.assertEqual(result, [1,5])
+        assert result == [3,-1,-5]
 ```
 </details>
 
