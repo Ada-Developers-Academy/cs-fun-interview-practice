@@ -50,7 +50,7 @@ from main import *
 class TestChallenge(unittest.TestCase):
     def test_most_frequent_k_elements_nominal(self):
         # Arrange
-        arr = [1,2,3,1,1,2,3]
+        arr = [1,1,1,2,2,3]
         k = 2
 
         # Act
