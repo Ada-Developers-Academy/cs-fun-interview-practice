@@ -48,18 +48,18 @@ import unittest
 from main import *
 
 class TestChallenge(unittest.TestCase):
-    def test_most_k_frequent_elements_nominal(self):
+    def test_most_frequent_k_elements_nominal(self):
         # Arrange
         arr = [1,2,3,1,1,2,3]
         k = 2
 
         # Act
-        result = most_frequents_k_elements(arr, k)
+        result = most_frequent_k_elements(arr, k)
 
         # Assert
-        self.assertEqual(result, [1,2])
+        self.assertEqual(set(result), set([1,2]))
 
-    def test_most_k_frequent_elements_single_arr(self):
+    def test_most_frequent_k_elements_single_arr(self):
         # Arrange
         arr = [1]
         k = 1 
@@ -69,9 +69,9 @@ class TestChallenge(unittest.TestCase):
         result = most_frequent_k_elements(arr, k)
 
         # Act
-        self.assertEqual(result, [1])
+        self.assertEqual(set(result), set([1]))
 
-    def test_most_k_frequent_elements_negative_number_case(self):
+    def test_most_frequent_k_elements_negative_number_case(self):
         # Arrange
         arr = [-1,-1,-1,-2,-5,-5,3,3,3,3,4]
         k = 3
@@ -80,7 +80,7 @@ class TestChallenge(unittest.TestCase):
         result = most_frequent_k_elements(arr, k)
 
         # Assert
-        self.assertEqual(result, [3,-1,-5])
+        self.assertEqual(set(result), set([3,-1,-5]))
 
 
 
@@ -91,14 +91,12 @@ class TestChallenge(unittest.TestCase):
 An example of a working implementation:
 
 ```python
-# Time Complexity: O(N log(N)) where N is the size of the array
-# Space Complexity: O(K) where K is the number of unique integers in a given array
-def top_k_frequent_elements(arr, k):
+def most_frequent_k_elements(arr, k):
     if len(arr) == 1: return [arr[0]]
     
     frequency_map = {}
     uniques = []
-   # looping through array and creating hash where key value pairs are unique integers and number of occurences
+    # looping through array and creating hash where key value pairs are unique integers and number of occurrences
     for num in arr:
         if num in frequency_map:
             frequency_map[num] += 1
@@ -107,7 +105,7 @@ def top_k_frequent_elements(arr, k):
             frequency_map[num] = 1
             uniques.append(num)
             
-    # Sorted has time complexity of Nlog(N) and takes an interable, function to decide the order, and reverse to decide descending/ascending
+    # Sorted takes an iterable, function to decide the order, and reverse to decide descending/ascending
    result = sorted(uniques, key=lambda num: frequency_map[num], reverse=True)
 
     # use k to return the k most frequent integers
@@ -123,18 +121,18 @@ def top_k_frequent_elements(arr, k):
 <summary>Click here to see the tests that will be run against your code</summary>
 
 ```py
-    def test_most_k_frequent_elements_nominal():
+    def test_most_frequent_k_elements_nominal():
         # Arrange
         arr = [1,1,1,2,2,3]
         k = 2
 
         # Act
-        result = most_frequents_k_elements(arr, k)
+        result = most_frequent_k_elements(arr, k)
 
         # Assert
-        assert result == [1,2]
+        assert set(result) == set([1,2])
 
-    def test_most_k_frequent_elements_single_arr():
+    def test_most_frequent_k_elements_single_arr():
         # Arrange
         arr = [1]
         k = 1 
@@ -146,7 +144,7 @@ def top_k_frequent_elements(arr, k):
         # Act
         assert result == [1]
 
-    def test_most_k_frequent_elements_negative_number_case():
+    def test_most_frequent_k_elements_negative_number_case():
         # Arrange
         arr = [-1,-1,-1,-2,-5,-5,3,3,3,3,4]
         k = 3
@@ -155,7 +153,7 @@ def top_k_frequent_elements(arr, k):
         result = most_frequent_k_elements(arr, k)
 
         # Assert
-        assert result == [3,-1,-5]
+        assert set(result) == set([3,-1,-5])
 ```
 </details>
 

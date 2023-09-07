@@ -117,7 +117,7 @@ class TestPython1(unittest.TestCase):
 Example tests:
 
 ```python
-def test_negative_numbers(arr,k):
+def test_negative_numbers():
     # Arrange
     arr = [-1,-1,2,3,3,3]
     k = 2 
@@ -165,8 +165,16 @@ Write the logical steps here.
 
 ##### !hint
 1. How could we use a hash/frequency map to keep track of how many times an integer shows up? 
-2. Is there a way we could use the frequency map to sort the integers based on their number of occurences? 
+2. Is there a way we could use the frequency map to sort the integers based on their number of occurrences? 
 ##### !end-hint
+
+#### !explanation
+1. Handle edge cases
+2. Initialize hash that holds integer occurences
+3. Loop through unique integers
+    1. Sort them in descending order
+4. Return list
+#### !end-explanation
 
 ### !end-challenge
 <!-- prettier-ignore-end -->
