@@ -1,4 +1,4 @@
-# Most Frequent K elements
+# Most Frequent K Elements
 
 ## Problem Statement
 
