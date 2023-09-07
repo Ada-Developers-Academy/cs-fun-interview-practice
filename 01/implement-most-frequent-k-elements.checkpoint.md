@@ -106,7 +106,7 @@ def most_frequent_k_elements(arr, k):
             uniques.append(num)
             
     # Sorted takes an iterable, function to decide the order, and reverse to decide descending/ascending
-   result = sorted(uniques, key=lambda num: frequency_map[num], reverse=True)
+    result = sorted(uniques, key=lambda num: frequency_map[num], reverse=True)
 
     # use k to return the k most frequent integers
     return result[:k]
