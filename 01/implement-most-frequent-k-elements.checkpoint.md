@@ -91,6 +91,8 @@ class TestChallenge(unittest.TestCase):
 An example of a working implementation:
 
 ```python
+# Time Complexity: O(N log(N)) where N is the size of the array
+# Space Complexity: O(N) where N is the size of the array
 def most_frequent_k_elements(arr, k):
     if len(arr) == 1: return [arr[0]]
     
@@ -105,7 +107,7 @@ def most_frequent_k_elements(arr, k):
             frequency_map[num] = 1
             uniques.append(num)
             
-    # Sorted takes an iterable, function to decide the order, and reverse to decide descending/ascending
+    # Sorted has a time complexity of O(N log(N)) takes an iterable, function to decide the order, and reverse to decide descending/ascending
     result = sorted(uniques, key=lambda num: frequency_map[num], reverse=True)
 
     # use k to return the k most frequent integers
