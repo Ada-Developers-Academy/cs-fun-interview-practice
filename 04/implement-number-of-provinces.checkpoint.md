@@ -207,23 +207,32 @@ def num_provinces(is_connected):
     num_nodes = len(is_connected)
     provinces = 0
 
+    # allocate a list of zeros to keep track of which nodes we have visited
     visited = [0] * num_nodes
     pending = []
 
+    # we need an outer iteration to handle disconnected graphs
     for start_node in range(num_nodes):
+        # only start tracing a new province if this node hasn't been visited
         if not visited[start_node]:
-            provinces += 1
+            provinces += 1  # this is a new province
 
+            # add the start node to the pending list to kick off our dfs
             pending.append(start_node)
             while pending:
-                node = pending.pop()
+                node = pending.pop()  # get the most recently added node
                 if not visited[node]:
+                    # mark the current node as visited
+                    visited[node] = 1
+
+                    # we must iterate over all nodes to check for edges
                     for next_node in range(num_nodes):
+                        # if there is an edge to an unvisited node, add it
                         if (is_connected[node][next_node]
                                 and not visited[next_node]):
                             pending.append(next_node)
-                    visited[node] = 1
 
+    # after checking each node in the graph, we have counted all provinces
     return provinces
 ```
 ### !end-explanation
