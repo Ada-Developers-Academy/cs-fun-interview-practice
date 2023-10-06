@@ -425,11 +425,17 @@ What is the space complexity of your solution? Please define and explain your va
 ##### !end-placeholder
 
 ##### !hint
-Check the next hint for a discussion of space complexity for the sample implementation.
+Check the next hint for some points to keep in mind that might impact the space complexity of the sample implementation.
 ##### !end-hint
 
 ##### !hint
-The sample implementation is based on depth first search, but the space complexity is O(N^2), where N is the number of nodes. There are two data structures we create that depend on the number of input nodes: the visited list, and the pending list.
+The sample implementation is based on depth first search, an ideal implementation of which has a space complexity as discussed in the graph reading. We are using an iterative approach rather than recursive. Iterative implementations usually have space complexity at least as good as recursive implementations, if not better, due to not needing to add stack frames for each call. However, there are some additional data structures we create that depend on the number of input nodes: the visited list, and the pending list. How are nodes tracked in these lists? How does our usage of them differ? Does this impact the space complexity of the solution?
+
+The next hint presents a discussion of the space complexity of the sample solution.
+##### !end-hint
+
+##### !hint
+Even though the sample implementation is based on depth first search, the space complexity is O(N^2), where N is the number of nodes. There are two data structures we create that depend on the number of input nodes: the visited list, and the pending list.
 
 The visited list is used to keep track of which nodes we have already visited. We initialize it to a list of zeros, and then set the value at each index to 1 when we visit that node. This means that the visited list will be the same size as the number of nodes in the graph, which is O(N).
 
