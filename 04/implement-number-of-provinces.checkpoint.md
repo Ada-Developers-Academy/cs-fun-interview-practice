@@ -387,11 +387,17 @@ What is the time complexity of your solution? Please define and explain your var
 ##### !end-placeholder
 
 ##### !hint
-Check the next hint for a discussion of time complexity for the sample implementation.
+Check the next hint for some points to keep in mind that might impact the time complexity of the sample implementation.
 ##### !end-hint
 
 ##### !hint
-The sample implementation is based on depth first search, but the time complexity is O(N^2), where N is the number of nodes. This is because we are using an adjacency matrix, which means that we have to check every node for every other node to see whether there is an edge between them. If the prompt used an adjacency list, we would only have to check each node's neighbors, resulting in the more typical O(N+E) (N being the number of nodes and E being the number of edges) for depth first search.
+The sample implementation is based on depth first search, an ideal implementation of which has a time complexity as discussed in the graph reading. But keep in mind that we are using an adjacency matrix rather than an adjacency list to represent the graph. Think about how this might impact the time complexity of the solution. 
+
+The next hint presents a discussion of the time complexity of the sample solution.
+##### !end-hint
+
+##### !hint
+Even though the sample implementation is based on depth first search, the time complexity is O(N^2), where N is the number of nodes. Since we are using an adjacency matrix, we have to check every node for every other node to see whether there is an edge between them. If the prompt used an adjacency list, we would only have to check each node's neighbors, resulting in the more typical O(N+E) (N being the number of nodes and E being the number of edges) for depth first search.
 ##### !end-hint
 
 ### !end-challenge
