@@ -207,7 +207,14 @@ def num_provinces(is_connected):
     num_nodes = len(is_connected)
     provinces = 0
 
-    # allocate a list of zeros to keep track of which nodes we have visited
+    # Allocate a list of zeros to keep track of which nodes we have visited.
+    # We could use a set, which also has constant reads and writes, but since
+    # we know the number of nodes from the start, and can use consecutive
+    # integers as the "keys", a list will work and ends up being more efficient
+    # (sets do have some overhead above and beyond a list). If we didn't have
+    # numeric keys, or they weren't consecutive, a set would be able to serve
+    # in this role.
+
     visited = [0] * num_nodes
     pending = []
 
