@@ -60,22 +60,22 @@ Standards:
   -
     Title: PSE 04
     Description: Graphs - DFS & BFS
-    UID: aea9e725-c820-41cb-9caa-108b1bf03fb3
+    UID: 9c6a5989-10ee-46fb-be13-962744bb3a3c
     SuccessCriteria:
       - success criteria
     ContentFiles:
       -
         Type: Instructor
-        UID: 76a543ae-4a97-4301-ba2c-d9865301c504
-        Path: /04/implement-bipartition-graph.instructor.md
+        UID: c92c2d93-174f-482c-9e29-087e5ceec2c2
+        Path: /04/implement-number-of-provinces.instructor.md
       -
         Type: Lesson
-        UID: c6db5932-3f06-4d76-8932-13f61bfa7eb4
-        Path: /04/bipartition-graph.md
+        UID: ad037fc1-35fe-4785-8284-ce51bcb93044
+        Path: /04/number-of-provinces.md
       -
         Type: Checkpoint
-        UID: edfec3f9-1247-444c-9ea5-759d6a4877da
-        Path: /04/implement-bipartition-graph.checkpoint.md
+        UID: f682adfa-47b7-4493-8d28-679aab8f7509
+        Path: /04/implement-number-of-provinces.checkpoint.md
   -
     Title: PSE 05
     Description: Dijkstra's Algorithm
