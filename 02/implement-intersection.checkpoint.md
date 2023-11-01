@@ -211,27 +211,187 @@ class TestChallenge(unittest.TestCase):
 ### !end-tests
 ### !explanation
 
-An example of a working implementation:
+Examples of Working Implementations:<br><br>
+
+An initial approach to this problem is to keep track of visited nodes. The solution would traverse the first linked list and store the addresses of the visited nodes in a set and then traverse the second linked list. While traversing the second list, if you encounter an address that already exists in the set then you've identified the intersecting node and can return it.<br><br>
 
 ```python
-# Time complexity: O(A + B) where A is the size of list A and B is the size of list B. The loop will traverse through the lists at most twice.
-# Space complexity: O(1) as the added space needed does not scale with the input data (two additional pointers)
 def intersection_node(head_a, head_b):
-    # assign l1 and l2 to point to the heads of list A and list B
-    l1, l2 = head_a, head_b
-    # while l1 and l2 do not reference the same node or None
-    while l1 != l2:
-        # once we've traversed through an entire list, we will set the pointer for the smaller list to the beginning of the other list
+    # create a set for storing the addresses of the nodes of the first linked list
+    nodes = set()
+
+    # traverse the first linked list with a loop and put each node's address in the set
+    while head_a:
+        nodes.add(id(head_a)) 
+        head_a = head_a.next
+    # then loop through second linked list and check if each node's address is in the set
+    while head_b:
+        if id(head_b) in nodes: 
+            # if node is in the set, then return that node 
+            return head_b
+        head_b = head_b.next
+    
+    # if there is no intersection, return None
+    return None
+```
+
+***
+
+**Note About id():**<br>
+In the solution above, we used the Python id function to get the address of each node object. However, in Python, user classes (or developer-created classes) are implicitly hashable which means Python takes their id automatically. It is not necessary or encouraged to use the id function in general code, but is done so here for clarity. Therefore, instead of `nodes.add(id(head_a))` we can just write `nodes.add(head_a)` and instead of `if id(head_b) in nodes` and we can just write `if head_b in nodes` and get the same result.<br><br>
+
+The time complexity of the above solution is O(A+B) where A and B are the lengths of the singly linked lists that we access with head_a and head_b. In the worst case scenario, we would need to traverse the first list all the way through to add all the nodes' addresses to the set, and then traverse the second list all the way through to see if an intersection exists.<br><br>
+
+The space complexity of the above solution is O(A), which represents the number of node addresses in the set.
+
+***
+
+Here's another approach to this problem that is more optimal because it does not require an additional data structure to store node addresses, which would bring the space complexity down to O(1). We can traverse the two linked lists with two pointers at the same speed, moving one node forward at a time.<br><br>
+
+When a pointer reaches the end of a linked list, it will be reassigned the value of the head of the other list and continue to traverse the other list. Since the two pointers are moving at the same speed, they will eventually point to the same node (the intersecting node) or `None` at the same time.<br><br>
+
+Example When There is an Intersection:<br>
+```text
+Two pointers, a and b, will traverse the lists at the same speed moving  
+one node at a time.
+
+            a 
+list a      1 -> 2 -> 3 ->
+                           \
+                            > 5 -> 6 -> None
+list b                4 -> / 
+                      b
+
+                  a
+list a      1 -> 2 -> 3 ->
+                           \
+                            > 5 -> 6 -> None
+list b                4 -> /  b
+
+                      a
+list a      1 -> 2 -> 3 ->
+                           \
+                            > 5 -> 6 -> None
+list b                4 -> /       b 
+Now that pointer b has reached the end of the list, it needs to move to  
+the head of list a.
+
+Pointer b is now pointing to the head of list a.    
+            b    
+list a      1 -> 2 -> 3 ->
+                           \  a
+                            > 5 -> 6 -> None
+list b                4 -> /       
+
+                 b      
+list a      1 -> 2 -> 3 ->
+                           \       a 
+                            > 5 -> 6 -> None
+list b                4 -> /     
+Now that pointer a has reached the end of the list, it needs to move to  
+the head of list b.
+
+                      b      
+list a      1 -> 2 -> 3 ->
+                           \       
+                            > 5 -> 6 -> None
+list b                4 -> /   
+                      a
+
+                            
+list a      1 -> 2 -> 3 ->
+                           \  b      
+                            > 5 -> 6 -> None
+list b                4 -> /  a 
+Pointer a and pointer b are now pointing at the same node so we have  
+found the intersection and can return the intersecting node.    
+```
+
+Example When There is Not an Intersection:<br>
+```text
+The pointers will cycle through the linked lists until they  
+both point to None.
+
+            a
+list a      1 -> 2 -> 3 -> 4 -> None
+                          
+list b      5 -> 6  -> 7 -> None
+            b
+
+                 a
+list a      1 -> 2 -> 3 -> 4 -> None
+                          
+list b      5 -> 6  -> 7 -> None
+                 b
+
+                      a
+list a      1 -> 2 -> 3 -> 4 -> None
+                          
+list b      5 -> 6  -> 7 -> None
+                       b
+Now that pointer b has reached the end of the list, it needs to move to  
+the head of list a.
+
+Pointer b is now pointing to the head of list a. Pointer a now needs to  
+be moved to the head of list b.
+            b              a
+list a      1 -> 2 -> 3 -> 4 -> None
+                          
+list b      5 -> 6  -> 7 -> None
+
+Pointer a is now pointing to the head of list b.             
+                 b              
+list a      1 -> 2 -> 3 -> 4 -> None
+                          
+list b      5 -> 6  -> 7 -> None
+            a
+
+                      b              
+list a      1 -> 2 -> 3 -> 4 -> None
+                          
+list b      5 -> 6  -> 7 -> None
+                 a
+
+                           b              
+list a      1 -> 2 -> 3 -> 4 -> None
+                          
+list b      5 -> 6  -> 7 -> None
+                       a
+
+                                 b              
+list a      1 -> 2 -> 3 -> 4 -> None
+                          
+list b      5 -> 6  -> 7 -> None
+                             a
+Pointer a and pointer b are now both pointing at None which means that  
+the two linked lists do not have an intersection.
+```
+
+***
+
+```python
+def intersection_node(head_a, head_b):
+    # assign a and b to point to the heads of list A and list B
+    a, b = head_a, head_b
+
+    # while a and b do not reference the same node or None
+    while a != b:
+        # once we've traversed through an entire list, we will set the pointer for the smaller list to the head of the other list
         # on the next iteration of the lists:
         #   if there is NO intersection, both pointers will reach None at the same time.
-        #   if there is an intersection, both pointers will reach the intersecting Node at the same time.
+        #   if there is an intersection, both pointers will reach the intersecting node at the same time.
 
-        # set l1 to be l1.next if l1 is not None, otherwise set l1 to be the head of list B 
-        l1 = l1.next if l1 else head_b
-        # likewise, set l2 to be l2.next if l2 is not None, otherwise set l2 to be the head of list A
-        l2 = l2.next if l2 else head_a
-    return l1
+        # set a to be a.next if a is not None, otherwise set a to be the head of list B 
+        a = a.next if a else head_b
+        # likewise, set b to be b.next if b is not None, otherwise set b to be the head of list A
+        b = b.next if b else head_a
+    # since a and b are equal, you could return either value, but we'll choose to return a here
+    return a
 ```
+
+The time complexity is O(A + B) where A is the size of list A and B is the size of list B. The loop will traverse through the lists at most twice.<br><br>
+
+The space complexity is O(1) since the space needed for the two additional pointers, a and b, does not scale with the input data.
 ### !end-explanation
 
 ### !end-challenge
