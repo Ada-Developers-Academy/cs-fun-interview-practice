@@ -224,6 +224,7 @@ def intersection_node(head_a, head_b):
     while head_a:
         nodes.add(id(head_a)) 
         head_a = head_a.next
+
     # then loop through second linked list and check if each node's address is in the set
     while head_b:
         if id(head_b) in nodes: 
@@ -238,7 +239,7 @@ def intersection_node(head_a, head_b):
 ***
 
 **Note About id():**<br>
-In the solution above, we used the Python id function to get the address of each node object. However, in Python, user classes (or developer-created classes) are implicitly hashable which means Python takes their id automatically. It is not necessary or encouraged to use the id function in general code, but is done so here for clarity. Therefore, instead of `nodes.add(id(head_a))` we can just write `nodes.add(head_a)` and instead of `if id(head_b) in nodes` and we can just write `if head_b in nodes` and get the same result.<br><br>
+In the solution above, we used the Python `id` function to get the address of each node object. However, in Python, user classes (or developer-created classes) are implicitly hashable which means Python takes their id automatically. It is not necessary or encouraged to use the `id` function in general code, but is done so here for clarity. Therefore, instead of `nodes.add(id(head_a))` we can just write `nodes.add(head_a)` and instead of `if id(head_b) in nodes` and we can just write `if head_b in nodes` and get the same result.<br><br>
 
 The time complexity of the above solution is O(A+B) where A and B are the lengths of the singly linked lists that we access with head_a and head_b. In the worst case scenario, we would need to traverse the first list all the way through to add all the nodes' addresses to the set, and then traverse the second list all the way through to see if an intersection exists.<br><br>
 
@@ -385,6 +386,7 @@ def intersection_node(head_a, head_b):
         a = a.next if a else head_b
         # likewise, set b to be b.next if b is not None, otherwise set b to be the head of list A
         b = b.next if b else head_a
+        
     # since a and b are equal, you could return either value, but we'll choose to return a here
     return a
 ```
