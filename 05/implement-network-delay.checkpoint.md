@@ -349,6 +349,29 @@ What is the space complexity of your solution? Please define and explain your va
 
 ##### !end-placeholder
 
+##### !hint
+Check the next hint for some points to keep in mind that might impact the space complexity of the sample implementation.
+##### !end-hint
+
+##### !hint
+The sample implementation is based on Dijkstra's algorithm, so that will be a major driver of the space complexity. Additionally, we first translate from the edge list representation to an adjacency dict representation, so we'll need to account for that as well.
+
+The next hint presents a discussion of the space complexity of the sample solution.
+##### !end-hint
+
+##### !hint
+We incur no complexity cost for any of the data passed in (the edge list or the other scalar values). The first thing we do that _does_ incur cost is convert the list of edges into an adjacency dict. This requires that we create a new dictionary, and then iterate over each of the edges in the list, adding each to the dictionary. This is O(E) space, where E is the number of edges in the graph. We may not know how many nodes we will represent in the dictionary, but under the ones we do know about, we will have at most E entries in total.
+
+Note that due to our use of a `defaultdict`, even if not all the nodes have outgoing edges, it's possible that while our logic runs, that it still attempts to lookup and iterate over the edges for such nodes. This would cause keys for those nodes to be added to the dictionary, even though they had no edge data. Thus, we _could_ say that as written, the size of the graph could eventually grow to O(E + N). We'll ignore this for the moment, as we could add an explicit `in` check to our logic to prevent this from happening, and regardless, we'll see this doesn't affect the space complexity in the end.
+
+In preparing to run Dijkstra's algorithm, we set up a list to hold the delay times. This is O(N) space, where N is the number of nodes in the graph. The remaining setup is all constant space, though we will need to think about how the sizes of `heap` and `visited` grow over the course of the main logic.
+
+While the main logic of Dijkstra's algorithm runs, we only add nodes to the visited list if they are not there already. This means that the size of `visited` will never grow larger than the number of nodes in the graph, N. `heap`, on the other hand, could grow to encompass essentially all the edges in the graph. This is because we may add a node to the heap multiple times, if we find a shorter path to it as we traverse the graph. This means that the heap could grow to O(E) space, where E is the number of edges in the graph. We can't say for sure that it will grow to this size, but we can say that it will never grow larger than this size. Thus, we can say that the heap will be O(E) space. As discussed in the reading, if the Python heap methods supported a `decrease_key` operation (which they do not), we could reduce the space complexity of the heap to O(N), since we would never have to add a node to the heap more than once.
+
+This accounts for all of the space utilization, since finding the maximum at the end incurs no additional space costs. Summing up all the parts, we have changing the representation O(E) + initializing data for Dijkstra O(N) + the growth of `visited` O(N) + the growth of `heap` O(E) for a total time complexity of O(2E + 2N). Dropping coefficients leaves us with a final complexity of O(N + E), which agrees with our general space analysis for using Dijkstra's algorithm in the absence of `decrease_key`. Even without that caveat, our space complexity would still be O(N + E) since we do create a new dictionary to hold the adjacency list representation of the graph. Also notice that even had we considered the complexity of the graph to be O(N + E), the final complexity would still be O(N + E), since this would only have affected the coefficient on N, which we drop anyway!
+
+##### !end-hint
+
 ### !end-challenge
 
 <!-- ======================= END CHALLENGE ======================= -->
