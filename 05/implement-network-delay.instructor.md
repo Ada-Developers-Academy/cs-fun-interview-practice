@@ -2,6 +2,8 @@
 
 Sample clarifying questions:
 
+Note that for strictly defined challenges, there may not be many points that feel unclear from a specification perspective. However, we can still take the opportunity for clarification to consider what the impact of certain requirements we have been given will have on our implementation. Don't hesitate to observe something that has been specified, restate it in your own words to show your understanding, then go on to postulate why that information was given and how it might impact your approach.
+
 1. In which way is the graph being represented?
 
    From the parameter descriptions, `times` is described as a list whose elements represented directed edges of the format `(from, to, cost)`. This means the supplied graph representation is expected to take the form of a list of edges, which we are also able to verify from the examples.
