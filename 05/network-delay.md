@@ -71,8 +71,11 @@ For each question, provide an explanation which includes the effect your decisio
 Here are some example clarifying questions:
 
 1. In which way is the graph being represented?
-2. Will the graph ever be empty?
-3. Is there a limit to how many nodes are in the graph?
+2. Do the nodes start at 0 or 1?
+3. Will the graph ever be empty? What should the result be?
+4. Will the graph edges always be directed?
+5. What if there are duplicate edges in the list?
+6. What should we do in case of malformed graph data?
 
 ##### !end-explanation
 
