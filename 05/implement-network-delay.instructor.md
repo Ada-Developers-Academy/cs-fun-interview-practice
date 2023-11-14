@@ -56,7 +56,7 @@ def network_delay_time(times, n, source):
     # such that graph[node] = [(neighbor1, time1), (neighbor2, time2)...]
     # The graph is directed, so we only need to append one direction
     for u, v, time in times:
-        graph[u].append([v, time])
+        graph[u].append((v, time))
 
     # initialize the time needed to reach each node in the graph, overestimating to infinity
     time_needed = [float('inf')] * n
@@ -64,7 +64,7 @@ def network_delay_time(times, n, source):
     time_needed[source-1] = 0
     # initialize min heap for traversal
     # priority 0 to travel to the source node
-    heap = [[0, source]] 
+    heap = [(0, source)] 
 
     visited = set() # used to record all visited nodes
     visited.add(source)
@@ -84,7 +84,7 @@ def network_delay_time(times, n, source):
                 # add the node to the list of visited nodes
                 visited.add(neighbor)
                 # push onto heap to be visited later
-                heappush(heap, [total_time, neighbor])
+                heappush(heap, (total_time, neighbor))
 
     # return the max time in time_needed list if all of the nodes have been visited, otherwise return -1
     return max(time_needed) if len(visited) == n else -1
