@@ -150,7 +150,7 @@ class TestPython1(unittest.TestCase):
 Example tests:
 
 ```python
-def test_network_delay_returns_correct_result_for_small_connected_graph(self):
+def test_network_delay_returns_correct_result_for_small_connected_graph():
     # Arrange
     times = [
         [2,1,1],
@@ -164,9 +164,9 @@ def test_network_delay_returns_correct_result_for_small_connected_graph(self):
     answer = network_delay_time(times, n, source)
 
     # Assert
-    self.assertEqual(answer, 2)
+    assert answer == 2
 
-def test_network_delay_returns_minus_1_when_node_unreachable(self):
+def test_network_delay_returns_minus_1_when_node_unreachable():
     # Arrange
     times = [
         [2,1,1],
@@ -180,7 +180,7 @@ def test_network_delay_returns_minus_1_when_node_unreachable(self):
     answer = network_delay_time(times, n, source)
 
     # Assert
-    self.assertEqual(answer, -1)
+    assert answer == -1
 ```
 
 ##### !end-explanation
