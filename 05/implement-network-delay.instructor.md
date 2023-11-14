@@ -22,7 +22,7 @@ Note that for strictly defined challenges, there may not be many points that fee
    
    However, we are also given the count of nodes in the graph as a separate input, which does allow us to differentiate. A truly empty graph will have an empty list of edges and a count of zero nodes. A graph with no edges will have an empty list of edges and a count of some non-zero number of nodes.
 
-   The problem statement does not specify what should be returned in the case of an empty graph, though it does stipulate the behavior if there are unreachable nodes (and edgeless graph trivially would have unreachable nodes). So we can infer that for an edgeless graph, we should return -1 (the same result for a graph with unreachable nodes). For a truly empty graph, we consider what should the reported maximum delay across nodes be when there are no nodes? A fair argument could be made for several values, including 0, -1, or even `float('inf')`.
+   The problem statement does not specify what should be returned in the case of an empty graph, though it does stipulate the behavior if there are unreachable nodes (an edgeless graph trivially would have unreachable nodes). So we can infer that for an edgeless graph, we should return -1 (the same result for a graph with unreachable nodes). For a truly empty graph, we consider what should the reported maximum delay across nodes be when there are no nodes? A fair argument could be made for several values, including 0, -1, or even `float('inf')`.
    
    However, since the problem statement does not specify a behavior (there are no examples), unless we encounter a test that expressly tests for this case, we can assume that we will not be asked to handle it. In practice, we would want to clarify this with the interviewer, and account for it in our implementation.
 
@@ -99,7 +99,7 @@ As written, this approach includes a few checks to help tamp down the growth of 
 
 However, without the `decrease_key` operation, we cannot update the priority of a node that is already in the heap. This means that we will have to add duplicate nodes to the heap, in the worst case approaching O(E). Considering a fully connected graph, the first node would itself add N-1 nodes to the heap, the second node would add N-2 nodes to the heap, and so on. It would be possible to construct edge weights such that as we visit each node, all but one of its edge connections would remain unprocessed (that is, on the heap) until after the entire rest of the graph has been visited. The total size of the heap, while never quite fully reaching E, would grow with respect to E, making it O(E). Only `decrease_key` or abandoning the use of a heap (with obvious time complexity repercussions) can guarantee to keep the heap size at O(N).
 
-As a result, we could dispense with the additional checks with no loss of correctness of complexity, and the code would be simplified to (explanatory comments removed):
+As a result, we could dispense with the additional checks with no loss of correctness or complexity, and the code would be simplified to (explanatory comments removed):
 
 ```python
 import collections

@@ -219,7 +219,7 @@ What would it mean if we completed Dijkstra's algorithm and there were still nod
 ##### !end-hint
 
 ##### !hint
-We can't run Dijkstra's algorithm directly on an edge list, so we should also consider what we need to do to convert the input into a form that Dijkstra's algorithm can work with.
+We can't efficiently run Dijkstra's algorithm directly on an edge list, so we should also consider what we need to do to convert the input into a form that Dijkstra's algorithm can work with.
 ##### !end-hint
 
 ##### !hint
