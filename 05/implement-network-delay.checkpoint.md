@@ -210,7 +210,9 @@ def network_delay_time(times, n, source):
 <summary>Click here to see the tests that will be run against your code</summary>
 
 ```py
-def test_network_delay_returns_correct_result_for_small_connected_graph(self):
+from pse.pse import network_delay_time
+
+def test_network_delay_returns_correct_result_for_small_connected_graph():
     # Arrange
     times = [
         [2,1,1],
@@ -224,9 +226,9 @@ def test_network_delay_returns_correct_result_for_small_connected_graph(self):
     answer = network_delay_time(times, n, source)
 
     # Assert
-    self.assertEqual(answer, 2)
+    assert answer == 2
 
-def test_network_delay_returns_minus_1_when_node_unreachable(self):
+def test_network_delay_returns_minus_1_when_node_unreachable():
     # Arrange
     times = [
         [2,1,1],
@@ -240,9 +242,9 @@ def test_network_delay_returns_minus_1_when_node_unreachable(self):
     answer = network_delay_time(times, n, source)
 
     # Assert
-    self.assertEqual(answer, -1)
+    assert answer == -1
 
-def test_network_delay_returns_minus_1_for_disconnected_graph(self):
+def test_network_delay_returns_minus_1_for_disconnected_graph():
     # Arrange
     times = [
         [2,3,2]
@@ -254,9 +256,9 @@ def test_network_delay_returns_minus_1_for_disconnected_graph(self):
     answer = network_delay_time(times, n, source)
 
     # Assert
-    self.assertEqual(answer, -1)
+    assert answer == -1
 
-def test_network_delay_returns_correct_result_for_larger_graph(self):
+def test_network_delay_returns_correct_result_for_larger_graph():
     # Arrange
     times = [
         [1, 2, 3],
@@ -273,7 +275,7 @@ def test_network_delay_returns_correct_result_for_larger_graph(self):
     answer = network_delay_time(times, n, source)
 
     # Assert
-    self.assertEqual(answer, 9)
+    assert answer == 9
 ```
 
 </details>
