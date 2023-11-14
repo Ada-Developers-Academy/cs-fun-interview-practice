@@ -16,7 +16,7 @@ Sample clarifying questions:
 
 4. What should we do in case of a malformed graph structure?
 
-   No specific error handling was requested, so we can assume that the graph will be well-formed. In practice, we could encounter a jagged matrix, which could result in an `IndexError` when checking neighbors. We could also have values in the matrix that are neither 0 nor 1. Even if we w=are expecting undirected edges, we could have a matrix that is asymmetric. All of these could cause our implementation to give incorrect results or raise an error. But for now we can focus on the happy path.
+   No specific error handling was requested, so we can assume that the graph will be well-formed. In practice, we could encounter a jagged matrix, which could result in an `IndexError` when checking neighbors. We could also have values in the matrix that are neither 0 nor 1. Even if we are expecting undirected edges, we could have a matrix that is asymmetric. All of these could cause our implementation to give incorrect results or raise an error. But for now we can focus on the happy path.
 
 An example of a working implementation:
 
