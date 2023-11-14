@@ -94,3 +94,39 @@ def network_delay_time(times, n, source):
     # return the max time in time_needed list if all of the nodes have been visited, otherwise return -1
     return max(time_needed) if len(visited) == n else -1
 ```
+
+As written, this approach includes a few checks to help tamp down the growth of the heap. For example, if a node has already been visited, we can skip it. If the total time to reach a node is greater than the time we already have stored, we can skip it. These checks are not strictly necessary, but they do help to reduce the size of the heap and the number of operations we need to perform.
+
+However, without the `decrease_key` operation, we cannot update the priority of a node that is already in the heap. This means that we will have to add duplicate nodes to the heap, in the worst case approaching O(E). Considering a fully connected graph, the first node would itself add N-1 nodes to the heap, the second node would add N-2 nodes to the heap, and so on. It would be possible to construct edge weights such that all other nodes are processed before the N-2 not processed from the outset would remain on the heap until all other nodes have been processed. This would be possible for each of the other N-1 nodes as well. The total size of the heap, while never fully reaching E, would grow with respect to E, making it O(E). Only `decrease_key` or abandoning the use of a heap (with obvious time complexity repercussions) can guarantee to keep the heap size at O(N).
+
+As a result, we could dispense with the additional checks with no loss of correctness of complexity, and the code would be simplified to (explanatory comments removed):
+
+```python
+import collections
+from heapq import heappush, heappop
+def network_delay_time(times, n, source):
+    graph = collections.defaultdict(list)
+    for u, v, time in times:
+        graph[u].append((v, time))
+
+    time_needed = [float('inf')] * n
+    time_needed[source-1] = 0
+    heap = [(0, source)] 
+
+    visited = set()
+
+    while heap:
+        time, curr_node = heappop(heap)
+        if curr_node in visited:
+            continue
+        
+        visited.add(curr_node)
+        time_needed[curr_node - 1] = time  # moved from inside the loop below
+
+        for neighbor, neighbor_time in graph[curr_node]:
+            # no early rejection checks (the heap priority will implicitly do this)
+            total_time = time + neighbor_time
+            heappush(heap, (total_time, neighbor))
+
+    return max(time_needed) if len(visited) == n else -1
+```
