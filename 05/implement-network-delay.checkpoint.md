@@ -300,6 +300,31 @@ What is the time complexity of your solution? Please define and explain your var
 
 ##### !end-placeholder
 
+##### !hint
+Check the next hint for some points to keep in mind that might impact the time complexity of the sample implementation.
+##### !end-hint
+
+##### !hint
+The sample implementation is based on Dijkstra's algorithm, so that will be a major driver of the time complexity. Additionally, we first translate from the edge list representation to an adjacency dict representation. And finally, we need to find the maximum delay time in the list of times for each node.
+
+The next hint presents a discussion of the time complexity of the sample solution.
+##### !end-hint
+
+##### !hint
+Converting the edge list to an adjacency dict requires that we iterate over each of the edges in the list. Adding each entry is constant time (both to make the initial node entry with an empty list, and for adding each edge to the list of edges for the node). This is O(E) time, where E is the number of edges in the graph.
+
+In preparing to run Dijkstra's algorithm, we set up a list to hold the delay times. This is O(N) time, where N is the number of nodes in the graph, since it take O(N) time to initialize a list of length N. The remaining setup is all constant time.
+
+To actually run Dijkstra's algorithm, we can draw on the discussion from our readings. The loop over the priority queue (`heap`) may need to iterate as many as O(E) times, since a node may be in the queue multiple times if we find less expensive paths as we visit nodes. We don't know how many times the inner loop iterating over a node's neighbors will run for any particular node, but over all the iterations, it will have run O(E) times in total. We _do not_ multiply these two loops together, even though they are nested. For any single iteration of the outer loop, the inner loop runs an unknown number of times, and it will be inconsistent from node to node. We only multiply the inner and outer loop complexities together when the inner loop is guaranteed to run the same number of times for each iteration of the outer loop. Instead, we need to analyze this from the perspective of how many times the inner loop runs overall, across all iterations of the outer loop. (Note, this is technically what we do even when multiplying complexities, but the multiplication technique is a shortcut to help us count total iterations when we know the inner iterations will be the same for every outer iteration). This means that we can say that all of the code within the whole outer loop is going to run O(E) times, whether it's a part of the inner or outer loop.
+
+All of the operations performed during the main loop of Dijkstra's algorithm are constant, expect for the heap operations themselves. From the reading, these we know to be O(log E) both for pushing and popping values. This means that our main loop will be O(E) (the total number of iterations) times O(log E) the cost per iteration (we can preemptively drop the coefficient of 2 that accounts for both pushing and popping), for a total time complexity of O(E log E) for the main loop.
+
+Finally, after calculating all the delays, we must located the maximum value in the list. This is O(N) time, since we must iterate over the entire list to find the maximum.
+
+Summing up all the parts, we have changing the representation O(E) + initializing data for Dijkstra O(N) + the main loop O(E log E) + finding the maximum O(N) for a total time complexity of O(E + 2N + E log E). While we can't drop the N term (since we don't know the relationship between N and E), we _can_ drop the solitary E term, since O(E log E) will dominate, as well as the coefficient on N, for a final complexity of O(N + E log E), which agrees with our general analysis of using Dijkstra's algorithm on an adjacency list or dictionary.
+
+##### !end-hint
+
 ### !end-challenge
 
 <!-- ======================= END CHALLENGE ======================= -->
