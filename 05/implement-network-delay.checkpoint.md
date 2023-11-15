@@ -210,8 +210,6 @@ def network_delay_time(times, n, source):
 <summary>Click here to see the tests that will be run against your code</summary>
 
 ```py
-from pse.pse import network_delay_time
-
 def test_network_delay_returns_correct_result_for_small_connected_graph():
     # Arrange
     times = [
