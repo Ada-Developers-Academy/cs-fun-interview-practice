@@ -233,7 +233,7 @@ The next hint presents the steps for one possible approach.
    1. Iterate over the edges.
    2. For each edge, add the target node (with weight) to the list of edges in the adjacency dict for the source node.
 2. Set up the data structures we'll need to track the minimum cost to each node.
-   1. Initialize a dict to track the minimum cost to each node.
+   1. Initialize a list to track the minimum cost to each node, with the value for each node starting at infinity.
    2. Initialize a set to track the nodes we have visited.
    3. Initialize a priority queue to track the nodes we have yet to visit.
 3. Run Dijkstra's algorithm over the converted graph data, tracking the minimum cost to each node.
