@@ -110,7 +110,6 @@ def network_delay_time(times, n, source):
         graph[u].append((v, time))
 
     time_needed = [float('inf')] * n
-    time_needed[source-1] = 0
     heap = [(0, source)] 
 
     visited = set()
