@@ -98,7 +98,8 @@ def most_frequent_k_elements(numbers, k):
     # Edge case: 
     # If there is only 1 element in `numbers, there is no need to iterate
     # we can return the single element in a new list as the result
-    if len(numbers) == 1: return [numbers[0]]
+    if len(numbers) == 1: 
+        return [numbers[0]]
     
     frequency_map = {}
     # loop through input array and create a hashmap 
