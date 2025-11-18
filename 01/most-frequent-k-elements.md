@@ -6,7 +6,6 @@ Create a function, `most_frequent_k_elements`, that takes a non-empty array of i
 - You may assume `k` is always valid, where `1 ≤ k ≤ number of unique elements`.
 
 **Example 1:**
-
 ```
 Input: numbers = [1, 1, 1, 2, 2, 3], k = 2
 Output: [1, 2]
