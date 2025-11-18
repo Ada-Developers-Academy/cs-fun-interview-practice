@@ -162,10 +162,15 @@ Chat link: `<url to your conversation>`
 
 <br>
 
-- Reviewing the feedback confirmed that most of my observations about the problem were accurate or useful, especially getting clarification around ties, and the ordering of the result list. 
-- I received feedback that including implementation-specific details in my observations may be less useful here and distract from clarifying the problem itself. I also learned more about the idea of “stability” when tie breaking for coding problems and how it can be important for some problems to ensure that we always get the same output for a given input. 
-- Some additional questions presented were less useful, like whether negative integers are allowed. If they are allowed in the input, it would not change the approach or requirements for this problem space. 
+Reviewing the feedback confirmed that most of my observations about the problem were accurate or useful, especially getting clarification around ties, and the ordering of the result list. 
 
+<br>
+
+I received feedback that including implementation-specific details in my observations may be less useful here and distract from clarifying the problem itself. I also learned more about the idea of “stability” when tie breaking for coding problems and how it can be important for some problems to ensure that we always get the same output for a given input. 
+
+<br>
+
+Some additional questions presented were less useful, like whether negative integers are allowed. If they are allowed in the input, it would not change the approach or requirements for this problem space. 
 
 ##### !end-explanation
 ### !end-challenge
@@ -314,9 +319,62 @@ Write the logical steps here.
 
 1. Loop over the input list
     - As we loop over the elements, create a hashmap that contains keys for the unique integers in the list mapped to their counts.
-2. Create a list of the unique integers from the input and sort the list in descending count order.
+2. Create a list of the unique integers from the input and sort the list by their frequency in descending order.
 3. Return a list containing the first `k` elements of the new sorted list.
 
 #### !end-explanation
+### !end-challenge
+<!-- prettier-ignore-end -->
+
+<!-- prettier-ignore-start -->
+### !challenge
+* type: paragraph
+* id: a4f3a0b5-7a98-42bf-acdb-991eb8121ddc
+* title: Review Logical Steps
+* topics: pse
+##### !question
+
+We want to know if we are laying out an approach to the coding problem that makes sense for our context and if that approach is clearly conveying our thoughts on technical topics to others. Let’s once more use an AI tool like ChatGPT, this time to review the Logical Steps we wrote above. Our goals are to check if:
+- the steps make sense for the problem being solved
+- the steps are not missing important steps or scenarios
+- the steps are agnostic of any particular language – steps should not include code syntax.
+- the steps are written with enough detail for another developer to understand how to create a solution
+
+<br>
+
+For this question we will:
+1. Build a prompt using [the template linked here](https://gist.githubusercontent.com/ada-instructors/670252696f1625cf0ed77c0997cd165d/raw/pse_logical_steps_review_template.md)
+2. Share the completed prompt with an AI tool like ChatGPT
+3. After the initial review, ask *at least one* follow up question using the AI tool. We want to ask questions that help us understand: 
+    - areas where we could add clarity
+    - edge cases we might have missed
+    - places where our steps do not meet the expectations of the problem statement
+4. Reflect on the information shared by the AI tool and summarize its findings and your learnings
+
+<br>
+
+In the box below, please submit:
+1. A shareable link to your conversation in ChatGPT
+    - [Documentation for creating a shareable link in ChatGPT](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq)
+2. Your reflections and summary of the discussion with ChatGPT
+
+##### !end-question
+##### !explanation
+
+As an example, let’s say we used logical steps similar to the explanation for the question above in our prompt. Depending on how the supplied steps differ and exactly what ChatGPT shares, a reflection and summary might look like:
+
+<br>
+
+Chat Link: `<url to your conversation>`
+
+<br>
+
+The ChatGPT review surfaced some things that would have been helpful to bring forward like clarifying how we're handling ties and generally adding more of the reasoning behind each step for clarity. 
+
+<br>
+
+Some suggestions weren't relevant or were already covered, like a suggestion to "explain what criteria should be used when sorting". The language of that step could be clarified further, but the sorting step states that we are sorting the list of unique integers in descending order using their count.   
+
+##### !end-explanation
 ### !end-challenge
 <!-- prettier-ignore-end -->
