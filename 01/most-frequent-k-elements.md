@@ -84,10 +84,88 @@ One of many possible responses could look like:
         1) As we reach an element that is a new value, we could do a binary search on the remainder of the list to find the last index holding that value (the index where the next element is a new number). 
         2) Then we can take the difference of the current index and the last index to get a count for that value update our frequency map, and move to the next number. 
 
-      The notes around the list being large and having repeats is important, if we had a list of only unique elements, this searching approach would not be very useful. 
+      The notes around the list being large and having repeats is important, if we had a list of only unique elements, this searching approach would not be very efficient. 
 
 5. Must the output list be in a particular order?
     - In the examples, it is unclear if the output is sorted by ordering the most frequent values first or by the order that the values were encountered in the input. Since this problem is concerned with the most frequent values, I will assume that the output should be sorted in desending frequency so that the most freqent item is at the start of the result list. 
+
+##### !end-explanation
+### !end-challenge
+<!-- prettier-ignore-end -->
+
+<!-- prettier-ignore-start -->
+### !challenge
+* type: paragraph
+* id: 3b9de43e-7ecf-4f2e-a6f6-5bcc6d70f76d
+* title: Review Observations & Questions
+* topics: pse
+##### !question
+
+While we build our skills in breaking down a problem and choosing clarifying questions, let’s use an external tool like ChatGPT to review the observations and questions we wrote while describing our understanding. 
+
+<br>
+
+Our goals are to: 
+- confirm if our observations and assumptions make sense in the context of the code problem
+- ensure we are asking questions that will tell us new information about the problem space
+- check our understanding of the information we expect to get from those questions
+- uncover other observations that would help shape our approach and understand how they would affect our approach
+- uncover further questions that could be useful to ask and understand why those other questions could be helpful
+
+<br>
+
+For this question we will:
+1. Build a prompt using [the template linked here](https://gist.githubusercontent.com/ada-instructors/16c97dc4b16ab2bf449d9d7a81caeb16/raw/pse_observations_questions_review_template.md)
+2. Share the completed prompt with an AI tool like ChatGPT
+3. After the initial review, ask the AI tool *at least one* follow up question that furthers your understanding of the problem and why certain observations or questions are useful. Some examples could be asking questions to: 
+    - ensure your understanding of the analysis of the observations
+    - get more details on the information we could get from asking particular questions
+    - learn more about new information shared by the tool
+4. Reflect on the information shared by the AI tool and summarize its findings and your learnings
+
+<br>
+
+In the box below, please submit:
+1. A shareable link to your conversation in ChatGPT
+    - [Documentation for creating a shareable link in ChatGPT](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq)
+2. Your reflections and summary of the discussion with ChatGPT
+
+##### !end-question
+##### !hint
+
+**Troubleshooting**
+- If you are having issues with the tool understanding the prompt, try formatting the problem statement or examples differently.
+- If you’ve reformatted the information and are still not getting useful results, reach out in #study-hall and share what you are experiencing and the link to your chat so folks can take a look and help you troubleshoot!
+
+<br>
+
+**Summarizing the Review**
+- Did the AI tool uncover anything about the observations you made that you hadn’t considered?
+- Did the AI tool uncover anything about the questions you asked that you hadn’t considered?
+- Did the AI tool suggest updates to the observations you made or questions you asked? 
+    - If so, what updates and why?
+- Did the AI tool suggest any new observations or questions?
+    - If so, what? Why would they be useful?
+
+##### !end-hint
+##### !explanation 
+
+For an example of what a review response might look like, let’s say that we provided observations similar to the example response from the "Explanation" section of the previous question to complete the review prompt. 
+
+<br>
+
+Depending on exactly what ChatGPT shares, a reflection and summary might look like:
+
+<br>
+
+Chat link: `<url to your conversation>`
+
+<br>
+
+- Reviewing the feedback confirmed that most of my observations about the problem were accurate or useful, especially getting clarification around ties, and the ordering of the result list. 
+- I received feedback that including implementation-specific details in my observations may be less useful here and distract from clarifying the problem itself. I also learned more about the idea of “stability” when tie breaking for coding problems and how it can be important for some problems to ensure that we always get the same output for a given input. 
+- Some additional questions presented were less useful, like whether negative integers are allowed. If they are allowed in the input, it would not change the approach or requirements for this problem space. 
+
 
 ##### !end-explanation
 ### !end-challenge
@@ -159,22 +237,37 @@ class TestPython1(unittest.TestCase):
 Example tests:
 
 ```python
-def test_negative_numbers():
+def test_most_frequent_k_elements_negative_inputs_succeeds():
     # Arrange
-    arr = [-1,-1,2,3,3,3]
+    numbers = [-1, -1, 2, 3, 3, 3]
     k = 2 
+
     # Act
-    result = most_frequent_k_elements(arr, k)
+    result = most_frequent_k_elements(numbers, k)
 
     # Assert
-    assert result == [3,-1]
+    assert result == [3, -1]
 
-def test_unordered_numbers():
+
+def test_most_frequent_k_elements_single_element_input_succeeds():
     # Arrange
-    arr = [3, 1, 2, 3, 1, 3]
-    k = 2 
+    numbers = [3]
+    k = 1 
+
     # Act
-    result = most_frequent_k_elements(arr, k)
+    result = most_frequent_k_elements(numbers, k)
+
+    # Assert
+    assert result == [3]
+
+
+def test_most_frequent_k_elements_unordered_numbers_succeeds():
+    # Arrange
+    numbers = [3, 1, 2, 3, 1, 3]
+    k = 2 
+
+    # Act
+    result = most_frequent_k_elements(numbers, k)
 
     # Assert
     assert result == [3, 1]
@@ -184,7 +277,6 @@ def test_unordered_numbers():
 ### !end-challenge
 <!-- prettier-ignore-end -->
 
-<!-- Question 3 -->
 <!-- prettier-ignore-start -->
 ### !challenge
 * type: paragraph
@@ -193,30 +285,38 @@ def test_unordered_numbers():
 * topics: pse
 ##### !question
 
-Without writing code, describe how you would implement `most k frequent elements` using hash tables in enough detail that someone else could write the code. 
-* It may be helpful to break up the problem/algorithm into smaller subproblems/algorithms. For example, 1. Handle invalid input, 2. Given valid input, perform the computation/solve the problem/etc.
-* Your logical steps could take the form of a numbered list, pseudo code, or anywhere in between. What's important at this stage is to think through and outline the implementation before writing code.
+Without writing code, describe how you would implement `most k frequent elements` using hash tables in enough detail that another developer could reasonably implement a solution. We should capture the main use cases, but the steps do not need to be a detailed plan for every contingency. 
+- The objective is to create a roadmap that we can use to keep ourselves oriented towards our goal
+- It is okay to leave some of the finer details to be worked out in the implementation itself!
+
+As you write your steps, keep the following guidelines in mind:
+* We want to think about a general approach rather than what the code would look like line-by-line. 
+* It may be helpful to break up the problem/algorithm into smaller subproblems/algorithms. 
+    * For example: 1. Handle edge cases, 2. Perform the computation/solve the problem/etc.
+* The steps should be a description as if you were talking out the problem with another person and should be agnostic of any particular language. 
+    * As such, they should not include code syntax in the description.
+
+What's important at this stage is to think through and outline the implementation before writing code.
 
 ##### !end-question
-
 ##### !placeholder
 
 Write the logical steps here.
 
 ##### !end-placeholder
-
 ##### !hint
+
 1. How could we use a hash/frequency map to keep track of how many times an integer shows up? 
 2. Is there a way we could use the frequency map to sort the integers based on their number of occurrences? 
+
 ##### !end-hint
-
 #### !explanation
-1. Handle edge cases
-2. Initialize hash that holds integer occurences
-3. Loop through unique integers
-    1. Sort them in descending order
-4. Return list
-#### !end-explanation
 
+1. Loop over the input list
+    - As we loop over the elements, create a hashmap that contains keys for the unique integers in the list mapped to their counts.
+2. Create a list of the unique integers from the input and sort the list in descending count order.
+3. Return a list containing the first `k` elements of the new sorted list.
+
+#### !end-explanation
 ### !end-challenge
 <!-- prettier-ignore-end -->
