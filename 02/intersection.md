@@ -265,7 +265,7 @@ def test_find_intersecting_node_returns_intersection_for_lists_of_same_length():
     node_one = Node("1")
     node_two = Node("2")
     node_three = Node("3")
-    
+
     node_one.next = node_two
     node_two.next = node_three
 
@@ -307,7 +307,6 @@ def test_find_intersecting_node_returns_none_with_one_empty_list():
 ### !end-challenge
 <!-- prettier-ignore-end -->
 
-<!-- Question 3 -->
 <!-- prettier-ignore-start -->
 ### !challenge
 * type: paragraph
@@ -316,28 +315,47 @@ def test_find_intersecting_node_returns_none_with_one_empty_list():
 * topics: pse
 ##### !question
 
-Without writing code, describe how you would implement `find_intersecting_node` in enough detail that someone else could write the code. 
-* It may be helpful to break up the problem/algorithm into smaller subproblems/algorithms. For example, 1. Handle invalid input, 2. Given valid input, perform the computation/solve the problem/etc.
-* Your logical steps could take the form of a numbered list, pseudo code, or anywhere in between. What's important at this stage is to think through and outline the implementation before writing code.
+Without writing code, describe how you would implement `find_intersecting_node` in enough detail that another developer could reasonably implement a solution. We should capture the main use cases, but the steps do not need to be a detailed plan for every contingency. 
+- The objective is to create a roadmap that we can use to keep ourselves oriented towards our goal
+- It is okay to leave some of the finer details to be worked out in the implementation itself!
+
+As you write your steps, keep the following guidelines in mind:
+* We want to think about a general approach rather than what the code would look like line-by-line. 
+* It may be helpful to break up the problem/algorithm into smaller subproblems/algorithms. 
+    * For example: 1. Handle edge cases, 2. Perform the computation/solve the problem/etc.
+* The steps should be a description as if you were talking out the problem with another person and should be agnostic of any particular language. 
+    * As such, they should not include code syntax in the description.
+
+What's important at this stage is to think through and outline the implementation before writing code.
 
 ##### !end-question
-
 ##### !placeholder
 
 Write the logical steps here.
 
 ##### !end-placeholder
-
 ##### !hint
-1. Create pointer for headA called l1 
-2. while l1 is not None
-    1. Set l2 to be headB
-    1. while l2 is not None
-        1. if l1 == l2 -> return l1
-        2. set l2 to point to the next node in list B
-    1. Set l1 to point to the next node in list A
-3. return None as no intersection occurred in the nested loops
-##### !end-hint
 
+How do we iterate through a singly linked list?
+
+An intersection isn't guaranteed to be at matching indices in each list, so how can we compare each element in one list to each element in another?
+
+How do we know if two nodes are the same in memory?
+
+##### !end-hint
+##### !explanation 
+
+1. Initialize a pointer to the head node of list 1
+2. Iterate through the nodes of list 1. For each node in list 1:
+    1. Initialize a pointer to the head of list 2
+    2. Iterate through the nodes of list 2. For each node in list 2:
+        1. Check if the current node of list 1 from the outer loop is the same node in memory as the current node of list 2
+           1. If they are the same nodes, return the current node
+           2. If they are not the same node, update the list 2 pointer to the next node of list 2 to continue iterating through list 2
+    3. Update the list 1 pointer to the next node of list 1 to continue iterating
+3. If we reach the end of either list 1 or list 2 and have not returned, then return `None` since there was no intersection 
+
+##### !end-explanation
 ### !end-challenge
 <!-- prettier-ignore-end -->
+
