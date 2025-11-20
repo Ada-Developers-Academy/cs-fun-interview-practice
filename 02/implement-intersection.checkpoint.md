@@ -11,7 +11,7 @@
 
 Given the heads of two singly linked-lists `head_a` and `head_b`, return the node at which the two lists intersect. If the two linked lists do not intersect, the function should return `None`.
 
-For example, the following two linked lists begin to intersect at the node 8:
+For example, the following two linked lists begin to intersect at the node containing 8:
 
 ![intersecting linked lists example 1](../images/intersection_linked_list_example_1.png)
 
@@ -61,7 +61,7 @@ import unittest
 from main import *
 
 class TestChallenge(unittest.TestCase):
-    def test_will_return_intersection_for_lists_of_same_length(self):
+    def test_find_intersecting_node_returns_intersection_for_same_length_inputs(self):
         # Arrange
         node_d = Node("D")
         node_e = Node("E")
@@ -96,7 +96,7 @@ class TestChallenge(unittest.TestCase):
         # Assert
         self.assertEqual(answer, node_one)
 
-    def test_will_return_intersection_with_lists_of_differing_lengths(self):
+    def test_find_intersecting_node_returns_intersection_with_different_len_inputs(self):
         # Arrange
         node_d = Node("D")
         node_e = Node("E")
@@ -127,7 +127,7 @@ class TestChallenge(unittest.TestCase):
         # Assert
         self.assertEqual(answer, node_one)
 
-    def test_will_return_none_with_one_empty_list(self):
+    def test_find_intersecting_node_returns_none_with_one_empty_list(self):
         # Arrange
         node_d = Node("D")
         node_e = Node("E")
@@ -145,7 +145,7 @@ class TestChallenge(unittest.TestCase):
         # Assert
         self.assertEqual(answer, None)
 
-    def test_will_return_none_when_no_intersection(self):
+    def test_find_intersecting_node_returns_none_for_no_intersection(self):
         # Arrange
         node_d = Node("D")
         node_e = Node("E")
@@ -172,7 +172,7 @@ class TestChallenge(unittest.TestCase):
         # Assert
         self.assertEqual(answer, None)
 
-    def test_will_return_none_for_two_empty_lists(self):
+    def test_find_intersecting_node_returns_none_for_two_empty_lists(self):
         # Arrange
 
         # List A: [] <-- empty list
@@ -184,7 +184,7 @@ class TestChallenge(unittest.TestCase):
         # Assert
         self.assertEqual(answer, None)
 
-    def test_will_return_none_for_tails_with_same_values_but_different_memory_location(self):
+    def test_find_intersecting_node_returns_none_if_no_intersection_but_matching_tail_values(self):
         # Arrange
         node_d = Node("D")
         node_e1 = Node("E")
@@ -395,7 +395,6 @@ The time complexity is O(A + B) where A is the size of list A and B is the size 
 
 The space complexity is O(1) since the space needed for the two additional pointers, a and b, does not scale with the input data.
 ### !end-explanation
-
 ### !end-challenge
 <!-- prettier-ignore-end -->
 
@@ -404,7 +403,7 @@ The space complexity is O(1) since the space needed for the two additional point
 <summary>Click here to see the tests that will be run against your code</summary>
 
 ```py
-def test_will_return_intersection_for_lists_of_same_length(self):
+def test_find_intersecting_node_returns_intersection_for_same_length_inputs(self):
     # Arrange
     node_d = Node("D")
     node_e = Node("E")
@@ -439,7 +438,8 @@ def test_will_return_intersection_for_lists_of_same_length(self):
     # Assert
     self.assertEqual(answer, node_one)
 
-def test_will_return_intersection_with_lists_of_differing_lengths(self):
+
+def test_find_intersecting_node_returns_intersection_with_different_len_inputs(self):
     # Arrange
     node_d = Node("D")
     node_e = Node("E")
@@ -470,7 +470,8 @@ def test_will_return_intersection_with_lists_of_differing_lengths(self):
     # Assert
     self.assertEqual(answer, node_one)
 
-def test_will_return_none_with_one_empty_list(self):
+
+def test_find_intersecting_node_returns_none_with_one_empty_list(self):
     # Arrange
     node_d = Node("D")
     node_e = Node("E")
@@ -488,7 +489,8 @@ def test_will_return_none_with_one_empty_list(self):
     # Assert
     self.assertEqual(answer, None)
 
-def test_will_return_none_when_no_intersection(self):
+
+def test_find_intersecting_node_returns_none_for_no_intersection(self):
     # Arrange
     node_d = Node("D")
     node_e = Node("E")
@@ -515,7 +517,8 @@ def test_will_return_none_when_no_intersection(self):
     # Assert
     self.assertEqual(answer, None)
 
-def test_will_return_none_for_two_empty_lists(self):
+
+def test_find_intersecting_node_returns_none_for_two_empty_lists(self):
     # Arrange
 
     # List A: [] <-- empty list
@@ -527,7 +530,8 @@ def test_will_return_none_for_two_empty_lists(self):
     # Assert
     self.assertEqual(answer, None)
 
-def test_will_return_none_for_tails_with_same_values_but_different_memory_location(self):
+
+def test_find_intersecting_node_returns_none_if_no_intersection_but_matching_tail_values(self):
     # Arrange
     node_d = Node("D")
     node_e1 = Node("E")
@@ -553,50 +557,37 @@ def test_will_return_none_for_tails_with_same_values_but_different_memory_locati
 ```
 </details>
 
-<!-- >>>>>>>>>>>>>>>>>>>>>> BEGIN CHALLENGE >>>>>>>>>>>>>>>>>>>>>> -->
-<!-- Replace everything in square brackets [] and remove brackets  -->
 
+<!-- prettier-ignore-start -->
 ### !challenge
-
 * type: paragraph
 * id: d0c65caa-97b1-4ffb-8038-33303a412a8f
 * title: Time Complexity of Solution
 * points: 1
-
 ##### !question
 
 What is the time complexity of your solution? Please define and explain your variables.
 
 ##### !end-question
-
 ##### !placeholder
 
 ##### !end-placeholder
-
 ### !end-challenge
+<!-- prettier-ignore-end -->
 
-<!-- ======================= END CHALLENGE ======================= -->
-
-<!-- >>>>>>>>>>>>>>>>>>>>>> BEGIN CHALLENGE >>>>>>>>>>>>>>>>>>>>>> -->
-<!-- Replace everything in square brackets [] and remove brackets  -->
-
+<!-- prettier-ignore-start -->
 ### !challenge
-
 * type: paragraph
 * id: efb51781-bbe5-4a86-9645-6ae1ce49f9f6
 * title: Space Complexity of Solution
 * points: 1 
-
 ##### !question
 
 What is the space complexity of your solution? Please define and explain your variables.
 
 ##### !end-question
-
 ##### !placeholder
 
 ##### !end-placeholder
-
 ### !end-challenge
-
-<!-- ======================= END CHALLENGE ======================= -->
+<!-- prettier-ignore-end -->
