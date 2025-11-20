@@ -261,12 +261,11 @@ Example tests:
 def test_find_intersecting_node_returns_intersection_for_lists_of_same_length():
     # Arrange
     node_d = Node("D")
-
     node_x = Node("X")
-
     node_one = Node("1")
     node_two = Node("2")
     node_three = Node("3")
+    
     node_one.next = node_two
     node_two.next = node_three
 
