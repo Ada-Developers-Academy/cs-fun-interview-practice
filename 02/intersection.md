@@ -181,8 +181,6 @@ Chat link: `<url to your conversation>`
 
 <br>
 
-Here’s a concise, learner-style summary in 10 sentences or fewer:
-
 The feedback confirmed that empty lists, single intersections, and the importance of node identity were all correctly understood. It also reinforced that cycles are not part of this problem, so normal traversal is safe. 
 
 <br>
@@ -284,6 +282,7 @@ def test_find_intersecting_node_returns_intersection_for_lists_of_same_length():
     # Assert
     assert result == node_one
 
+
 def test_find_intersecting_node_returns_none_with_one_empty_list():
     # Arrange
     node_d = Node("D")
@@ -345,17 +344,66 @@ How do we know if two nodes are the same in memory?
 ##### !end-hint
 ##### !explanation 
 
-1. Initialize a pointer to the head node of list 1
-2. Iterate through the nodes of list 1. For each node in list 1:
+1. If either input list is empty, return `None`
+2. Initialize a pointer to the head node of list 1
+3. Iterate through the nodes of list 1. For each node in list 1:
     1. Initialize a pointer to the head of list 2
     2. Iterate through the nodes of list 2. For each node in list 2:
         1. Check if the current node of list 1 from the outer loop is the same node in memory as the current node of list 2
-           1. If they are the same nodes, return the current node
-           2. If they are not the same node, update the list 2 pointer to the next node of list 2 to continue iterating through list 2
+            1. If they are the same nodes, return the current node
+            2. If they are not the same node, update the list 2 pointer to the next node of list 2 to continue iterating through list 2
     3. Update the list 1 pointer to the next node of list 1 to continue iterating
-3. If we reach the end of either list 1 or list 2 and have not returned, then return `None` since there was no intersection 
+4. If we reach the end of either list 1 or list 2 and have not returned, then return `None` since there was no intersection 
 
 ##### !end-explanation
 ### !end-challenge
 <!-- prettier-ignore-end -->
 
+<!-- prettier-ignore-start -->
+### !challenge
+* type: paragraph
+* id: 2fa7f8df-60ad-43f9-9424-9780a6b6d1e3
+* title: Review Logical Steps
+* topics: pse
+##### !question
+
+We want to know if we are laying out an approach to the coding problem that makes sense for our context and if that approach is clearly conveying our thoughts on technical topics to others. Let’s once more use an AI tool like ChatGPT, this time to review the Logical Steps we wrote above. Our goals are to check if:
+- the steps make sense for the problem being solved
+- the steps are not missing important steps or scenarios
+- the steps are agnostic of any particular language – steps should not include code syntax.
+- the steps are written with enough detail for another developer to understand how to create a solution
+
+<br>
+
+For this question we will:
+1. Build a prompt using [the template linked here](https://gist.githubusercontent.com/ada-instructors/670252696f1625cf0ed77c0997cd165d/raw/pse_logical_steps_review_template.md)
+2. Share the completed prompt with an AI tool like ChatGPT
+3. After the initial review, ask *at least one* follow up question using the AI tool. We want to ask questions that help us understand: 
+    - areas where we could add clarity
+    - edge cases we might have missed
+    - places where our steps do not meet the expectations of the problem statement
+4. Reflect on the information shared by the AI tool and summarize its findings and your learnings
+
+<br>
+
+In the box below, please submit:
+1. A shareable link to your conversation in ChatGPT
+    - [Documentation for creating a shareable link in ChatGPT](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq)
+2. Your reflections and summary of the discussion with ChatGPT
+
+##### !end-question
+##### !explanation
+
+As an example, let’s say we used logical steps similar to the explanation for the question above in our prompt. Depending on how the supplied steps differ and exactly what ChatGPT shares, a reflection and summary might look like:
+
+<br>
+
+Chat Link: `<url to your conversation>`
+
+<br>
+
+Most of the suggested tweaks were stylistic rather than functional, such as emphasizing iterating will finish before returning `None` at the end and noting the nested loop fully iterates list 2 for each node in list 1. Both of these are covered by my steps but could be slightly expanded. The main piece of feedback I want to keep in mind is efficiency awareness, some strategies like aligning list lengths were mentioned to help improve the overall complexity of the nested loops. 
+
+##### !end-explanation
+### !end-challenge
+<!-- prettier-ignore-end -->
