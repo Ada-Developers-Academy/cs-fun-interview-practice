@@ -3,7 +3,7 @@
 An example of a working implementation:
 
 ```python
-def intersection_node(head_a, head_b):
+def find_intersecting_node(head_a, head_b):
     l1, l2 = head_a, head_b
     while l1 != l2:
         l1 = l1.next if l1 else head_b

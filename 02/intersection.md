@@ -14,7 +14,7 @@ The following two linked lists do _not_ intersect at all.
 
 For this problem, we want to focus on the nodes themselves and not necessarily the *value* inside of the node.
 
-For example, while the following linked lists have tails that share the same values, they are not considered to intersect because the nodes of the linked lists are not the same nodes in memory.
+For example, while the following linked lists have tails that share the same values, they are not considered intersecting because the nodes of the linked lists are not the same nodes in memory.
 
 ![intersecting linked lists example 3](../images/intersection_linked_list_example_3.png)
 
@@ -24,7 +24,6 @@ The linked lists must retain their original structure after the function returns
 
 ## Prompts
 
-<!-- Question 1 -->
 <!-- prettier-ignore-start -->
 ### !challenge
 * type: paragraph
@@ -38,7 +37,6 @@ List three or more questions whose answers would clarify the problem statement.
 For each question, provide an explanation which includes the effect your decision would have on how you would approach the problem.
 
 ##### !end-question
-
 ##### !explanation
 
 Here are some example clarifying questions:
@@ -47,13 +45,10 @@ Here are some example clarifying questions:
 2. What kind of data is stored in the nodes?
 
 ##### !end-explanation
-
 ### !end-challenge
 <!-- prettier-ignore-end -->
 
-<!-- Question 2 -->
 <!-- prettier-ignore-start -->
-
 ### !challenge
 * type: code-snippet
 * language: python3.6
@@ -66,7 +61,7 @@ Here are some example clarifying questions:
     * Consider at least one nominal and one edge case.
     * What is the expected output for the given input?
     * You can use the examples provided in the prompt, or other examples.
-2. Write unit tests for `intersection_node` for the nominal and edge cases you identified in the first step.
+2. Write unit tests for `find_intersecting_node` for the nominal and edge cases you identified in the first step.
 
 *Note: Click the **Run Tests** button to save your tests for instructor feedback. No real tests are actually run again your unit tests.*
 
@@ -102,7 +97,6 @@ def test_edge_case():
     # assert
 ```
 ##### !end-placeholder
-
 ##### !tests
 
 ```py
@@ -141,7 +135,7 @@ def test_will_return_intersection_for_lists_of_same_length():
     head_b = node_x
 
     # Act
-    answer = intersection_node(head_a, head_b)
+    answer = find_intersecting_node(head_a, head_b)
 
     # Assert
     assert answer == node_one
@@ -159,7 +153,7 @@ def test_will_return_none_with_one_empty_list():
     # List B: None, the list is empty
 
     # Act
-    answer = intersection_node(node_d, None)
+    answer = find_intersecting_node(node_d, None)
 
     # Assert
     assert answer is None
@@ -178,7 +172,7 @@ def test_will_return_none_with_one_empty_list():
 * topics: pse
 ##### !question
 
-Without writing code, describe how you would implement `intersection_node` in enough detail that someone else could write the code. 
+Without writing code, describe how you would implement `find_intersecting_node` in enough detail that someone else could write the code. 
 * It may be helpful to break up the problem/algorithm into smaller subproblems/algorithms. For example, 1. Handle invalid input, 2. Given valid input, perform the computation/solve the problem/etc.
 * Your logical steps could take the form of a numbered list, pseudo code, or anywhere in between. What's important at this stage is to think through and outline the implementation before writing code.
 
