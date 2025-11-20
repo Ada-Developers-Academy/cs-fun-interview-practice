@@ -4,19 +4,40 @@
 
 Given the heads of two singly linked-lists `head_a` and `head_b`, return the node at which the two lists intersect. If the two linked lists do not intersect, the function should return `None`.
 
-For example, the following two linked lists begin to intersect at the node 8:
+For example, the following two linked lists begin to intersect at the node containing 8:
 
 ![intersecting linked lists example 1](../images/intersection_linked_list_example_1.png)
+
+Text representation for ChatGPT reviews:
+```
+A:      4 -> 1 ->
+                  8 -> 4 -> 5
+B: 5 -> 6 -> 1 ->
+```
 
 The following two linked lists do _not_ intersect at all.
 
 ![intersecting linked lists example 2](../images/intersection_linked_list_example_2.png)
+
+Text representation for ChatGPT reviews:
+```
+A: 2 -> 6 -> 4
+                  
+B:      1 -> 5
+```
 
 For this problem, we want to focus on the nodes themselves and not necessarily the *value* inside of the node.
 
 For example, while the following linked lists have tails that share the same values, they are not considered intersecting because the nodes of the linked lists are not the same nodes in memory.
 
 ![intersecting linked lists example 3](../images/intersection_linked_list_example_3.png)
+
+Text representation for ChatGPT reviews:
+```
+A: 5 -> 2 -> 4 -> 1
+
+B: 3 -> 8 -> 4 -> 1
+```
 
 There are no cycles anywhere in the linked list structures. Assume any intersection includes the tails of each list.
 
@@ -28,21 +49,145 @@ The linked lists must retain their original structure after the function returns
 ### !challenge
 * type: paragraph
 * id: c273469f-8ac2-4c98-a876-521b74d6e7e0
-* title: Ask Clarifying Questions
+* title: Describe Your Understanding
 * topics: pse
 ##### !question
 
-List three or more questions whose answers would clarify the problem statement.
+Before you begin solving this problem, take a moment to think like a professional software engineer. 
+- What do we know about the problem? 
+- What assumptions can we make based on the information in the problem statement? 
+- What further information do the example inputs and outputs give us?
+- What questions would you ask a teammate, product manager, or interviewer to better understand the problem before writing any code?
 
-For each question, provide an explanation which includes the effect your decision would have on how you would approach the problem.
+<br>
+
+In the box below, list 5 or more observations about the problem or questions whose answers would clarify the problem statement. For each observation or question, include information on why that observation is important or why you are asking the question.
+- For each observation, answer how that observation will affect your approach to the problem.
+- For each question, describe what you are hoping to clarify about the problem and provide an answer which includes the effect your decision would have on how you might approach the problem.
+
+<br>
+
+As you come up with observations and questions, assume that error handling for invalid data is managed outside the function. We want to focus on the core behavior of the function we will write. 
 
 ##### !end-question
+##### !hint
+
+Further questions to ask as you read through the problem statement and examples:
+- What is the goal of the function?
+- What are the types of the expected inputs and outputs?
+- Are there any restrictions on any of the inputs?
+  - For example: if any of the inputs are a list, do we know anything about how the list is ordered?
+- What do the examples show us about the data types and values that are allowed for our inputs?
+- What do the examples tell us about the return value in different scenarios?
+- Reflecting on the observations you have made so far, what questions would give you new information?
+
+<br>
+
+Consider the following for inspiration:
+- [About PSEs](../about-pses/about-pses.md)
+- [Our example PSE with example answers](../about-pses/example-pse.md)
+- Previous PSEs
+
+##### !end-hint
 ##### !explanation
 
 Here are some example clarifying questions:
 
 1. What should be returned if one or both lists are empty?
-2. What kind of data is stored in the nodes?
+    - If either list is empty there can be no intersection, so by the problem description we should return `None`.
+
+2. Can the lists intersect more than once?
+    - The examples do not clarify this, but the problem statement has the line "Assume any intersection includes the tails of each list." Since the tail is the last element of a list I can assume that this means that from the point of intersection the entire rest of the lists will be part of the intersection.
+
+3. Based on the problem statement, I recognize that the data type or types held by the nodes will not impact the implementation. 
+    - Because we are only interested in where the nodes intersect in memory, we will not need to examine the held values. 
+
+4. There are no cycles anywhere in the linked list structures
+    - This means the solution does not need to worry about detecting cycles to avoid getting stuck in an infinite loop. If I start at the head of one list and keep moving through the pointers from node to node, I will eventaully reach a `None` value for the next node when I reach the end of the list. 
+
+5. The problem statement says "The linked lists must retain their original structure after the function returns."
+    - This tells me that however I move through the lists, I should not change the links between the nodes, I should only traverse the nodes to ensure there are no side effects to the function. 
+
+##### !end-explanation
+### !end-challenge
+<!-- prettier-ignore-end -->
+
+<!-- prettier-ignore-start -->
+### !challenge
+* type: paragraph
+* id: 83f03637-f3af-42b0-8b21-feb42f4646e0
+* title: Review Observations & Questions
+* topics: pse
+##### !question
+
+While we build our skills in breaking down a problem and choosing clarifying questions, let’s use an external tool like ChatGPT to review the observations and questions we wrote while describing our understanding. 
+
+<br>
+
+Our goals are to: 
+- confirm if our observations and assumptions make sense in the context of the code problem
+- ensure we are asking questions that will tell us new information about the problem space
+- check our understanding of the information we expect to get from those questions
+- uncover other observations that would help shape our approach and understand how they would affect our approach
+- uncover further questions that could be useful to ask and understand why those other questions could be helpful
+
+<br>
+
+For this question we will:
+1. Build a prompt using [the template linked here](https://gist.githubusercontent.com/ada-instructors/16c97dc4b16ab2bf449d9d7a81caeb16/raw/pse_observations_questions_review_template.md)
+2. Share the completed prompt with an AI tool like ChatGPT
+3. After the initial review, ask the AI tool *at least one* follow up question that furthers your understanding of the problem and why certain observations or questions are useful. Some examples could be asking questions to: 
+    - ensure your understanding of the analysis of the observations
+    - get more details on the information we could get from asking particular questions
+    - learn more about new information shared by the tool
+4. Reflect on the information shared by the AI tool and summarize its findings and your learnings
+
+<br>
+
+In the box below, please submit:
+1. A shareable link to your conversation in ChatGPT
+    - [Documentation for creating a shareable link in ChatGPT](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq)
+2. Your reflections and summary of the discussion with ChatGPT
+
+##### !end-question
+##### !hint
+
+**Troubleshooting**
+- If you are having issues with the tool understanding the prompt, try formatting the problem statement or examples differently.
+- If you’ve reformatted the information and are still not getting useful results, reach out in #study-hall and share what you are experiencing and the link to your chat so folks can take a look and help you troubleshoot!
+
+<br>
+
+**Summarizing the Review**
+- Did the AI tool uncover anything about the observations you made that you hadn’t considered?
+- Did the AI tool uncover anything about the questions you asked that you hadn’t considered?
+- Did the AI tool suggest updates to the observations you made or questions you asked? 
+    - If so, what updates and why?
+- Did the AI tool suggest any new observations or questions?
+    - If so, what? Why would they be useful?
+
+##### !end-hint
+##### !explanation 
+
+For an example of what a review response might look like, let’s say that we provided observations similar to the example response from the "Explanation" section of the previous question to complete the review prompt. 
+
+<br>
+
+Depending on exactly what ChatGPT shares, a reflection and summary might look like:
+
+<br>
+
+Chat link: `<url to your conversation>`
+
+<br>
+
+Here’s a concise, learner-style summary in 10 sentences or fewer:
+
+The feedback confirmed that empty lists, single intersections, and the importance of node identity were all correctly understood. It also reinforced that cycles are not part of this problem, so normal traversal is safe. 
+
+<br>
+
+The reviewer pointed out additional useful observations, like the fact that the two lists can have different lengths, which affects how their positions relate before the intersection, and that it could be helpful to check whether the intersection can occur at the head. There were suggestions such as confirming list validity that are less useful for this specific problem space but would be handled somewhere in a real project.
 
 ##### !end-explanation
 ### !end-challenge
@@ -113,7 +258,7 @@ class TestPython1(unittest.TestCase):
 Example tests:
 
 ```python
-def test_will_return_intersection_for_lists_of_same_length():
+def test_find_intersecting_node_returns_intersection_for_lists_of_same_length():
     # Arrange
     node_d = Node("D")
 
@@ -135,12 +280,12 @@ def test_will_return_intersection_for_lists_of_same_length():
     head_b = node_x
 
     # Act
-    answer = find_intersecting_node(head_a, head_b)
+    result = find_intersecting_node(head_a, head_b)
 
     # Assert
-    assert answer == node_one
+    assert result == node_one
 
-def test_will_return_none_with_one_empty_list():
+def test_find_intersecting_node_returns_none_with_one_empty_list():
     # Arrange
     node_d = Node("D")
     node_e = Node("E")
@@ -153,10 +298,10 @@ def test_will_return_none_with_one_empty_list():
     # List B: None, the list is empty
 
     # Act
-    answer = find_intersecting_node(node_d, None)
+    result = find_intersecting_node(node_d, None)
 
     # Assert
-    assert answer is None
+    assert result is None
 ```
 
 ##### !end-explanation
