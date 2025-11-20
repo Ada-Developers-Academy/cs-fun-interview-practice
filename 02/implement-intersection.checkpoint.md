@@ -91,10 +91,10 @@ class TestChallenge(unittest.TestCase):
         head_b = node_x
 
         # Act
-        answer = find_intersecting_node(head_a, head_b)
+        result = find_intersecting_node(head_a, head_b)
 
         # Assert
-        self.assertEqual(answer, node_one)
+        self.assertEqual(result, node_one)
 
     def test_find_intersecting_node_returns_intersection_with_different_len_inputs(self):
         # Arrange
@@ -122,10 +122,10 @@ class TestChallenge(unittest.TestCase):
         head_b = node_x
 
         # Act
-        answer = find_intersecting_node(head_a, head_b)
+        result = find_intersecting_node(head_a, head_b)
 
         # Assert
-        self.assertEqual(answer, node_one)
+        self.assertEqual(result, node_one)
 
     def test_find_intersecting_node_returns_none_with_one_empty_list(self):
         # Arrange
@@ -140,10 +140,10 @@ class TestChallenge(unittest.TestCase):
         # List B: [] <-- empty list
 
         # Act
-        answer = find_intersecting_node(node_d, None)
+        result = find_intersecting_node(node_d, None)
 
         # Assert
-        self.assertEqual(answer, None)
+        self.assertEqual(result, None)
 
     def test_find_intersecting_node_returns_none_for_no_intersection(self):
         # Arrange
@@ -167,10 +167,10 @@ class TestChallenge(unittest.TestCase):
         head_b = node_x
 
         # Act
-        answer = find_intersecting_node(head_a, head_b)
+        result = find_intersecting_node(head_a, head_b)
 
         # Assert
-        self.assertEqual(answer, None)
+        self.assertEqual(result, None)
 
     def test_find_intersecting_node_returns_none_for_two_empty_lists(self):
         # Arrange
@@ -179,10 +179,10 @@ class TestChallenge(unittest.TestCase):
         # List B: [] <-- empty list
 
         # Act
-        answer = find_intersecting_node(None, None)
+        result = find_intersecting_node(None, None)
 
         # Assert
-        self.assertEqual(answer, None)
+        self.assertEqual(result, None)
 
     def test_find_intersecting_node_returns_none_if_no_intersection_but_matching_tail_values(self):
         # Arrange
@@ -203,10 +203,10 @@ class TestChallenge(unittest.TestCase):
         node_e2.next = node_f2
 
         # Act
-        answer = find_intersecting_node(node_d, node_x)
+        result = find_intersecting_node(node_d, node_x)
 
         # Assert
-        self.assertEqual(answer, None)
+        self.assertEqual(result, None)
 ```
 ### !end-tests
 ### !explanation
@@ -433,10 +433,10 @@ def test_find_intersecting_node_returns_intersection_for_same_length_inputs(self
     head_b = node_x
 
     # Act
-    answer = find_intersecting_node(head_a, head_b)
+    result = find_intersecting_node(head_a, head_b)
 
     # Assert
-    self.assertEqual(answer, node_one)
+    self.assertEqual(result, node_one)
 
 
 def test_find_intersecting_node_returns_intersection_with_different_len_inputs(self):
@@ -465,10 +465,10 @@ def test_find_intersecting_node_returns_intersection_with_different_len_inputs(s
     head_b = node_x
 
     # Act
-    answer = find_intersecting_node(head_a, head_b)
+    result = find_intersecting_node(head_a, head_b)
 
     # Assert
-    self.assertEqual(answer, node_one)
+    self.assertEqual(result, node_one)
 
 
 def test_find_intersecting_node_returns_none_with_one_empty_list(self):
@@ -484,10 +484,10 @@ def test_find_intersecting_node_returns_none_with_one_empty_list(self):
     # List B: [] <-- empty list
 
     # Act
-    answer = find_intersecting_node(node_d, None)
+    result = find_intersecting_node(node_d, None)
 
     # Assert
-    self.assertEqual(answer, None)
+    self.assertEqual(result, None)
 
 
 def test_find_intersecting_node_returns_none_for_no_intersection(self):
@@ -512,10 +512,10 @@ def test_find_intersecting_node_returns_none_for_no_intersection(self):
     head_b = node_x
 
     # Act
-    answer = find_intersecting_node(head_a, head_b)
+    result = find_intersecting_node(head_a, head_b)
 
     # Assert
-    self.assertEqual(answer, None)
+    self.assertEqual(result, None)
 
 
 def test_find_intersecting_node_returns_none_for_two_empty_lists(self):
@@ -525,10 +525,10 @@ def test_find_intersecting_node_returns_none_for_two_empty_lists(self):
     # List B: [] <-- empty list
 
     # Act
-    answer = find_intersecting_node(None, None)
+    result = find_intersecting_node(None, None)
 
     # Assert
-    self.assertEqual(answer, None)
+    self.assertEqual(result, None)
 
 
 def test_find_intersecting_node_returns_none_if_no_intersection_but_matching_tail_values(self):
@@ -550,10 +550,10 @@ def test_find_intersecting_node_returns_none_if_no_intersection_but_matching_tai
     node_e2.next = node_f2
 
     # Act
-    answer = find_intersecting_node(node_d, node_x)
+    result = find_intersecting_node(node_d, node_x)
 
     # Assert
-    self.assertEqual(answer, None)
+    self.assertEqual(result, None)
 ```
 </details>
 
