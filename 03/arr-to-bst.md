@@ -6,7 +6,7 @@ Given a sorted array of integers, `arr`, write a function to create a balanced B
 * There will not be any duplicate elements in the array
 * It is not required to implement a self-balancing Binary Search Tree in order to solve this exercise. For an extra challenge, consider why it is unnecessary!
 
-Example:
+**Example:**
 
 `arr = [5, 10, 15, 20, 25, 30, 35, 40, 45]`
 
