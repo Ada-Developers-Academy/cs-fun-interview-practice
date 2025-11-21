@@ -91,7 +91,7 @@ Consider the following for inspiration:
 ##### !end-hint
 ##### !explanation
 
-Here are some example clarifying questions:
+One of many possible responses could look like:
 
 1. What should be returned if one or both lists are empty?
     - If either list is empty there can be no intersection, so by the problem description we should return `None`.
