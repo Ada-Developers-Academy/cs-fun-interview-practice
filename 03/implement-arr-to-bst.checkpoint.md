@@ -193,6 +193,7 @@ def test_will_return_balanced_bst_for_odd_lengthed_list(self):
     self.assertTrue(self.is_bst(result))
     self.assertTrue(self.is_balanced_tree(result))
 
+
 def test_will_return_balanced_bst_for_even_lengthed_list(self):
     # Arrange
     arr = [1, 3, 9, 27, 81, 243]
@@ -203,6 +204,7 @@ def test_will_return_balanced_bst_for_even_lengthed_list(self):
     # Assert
     self.assertTrue(self.is_bst(result))
     self.assertTrue(self.is_balanced_tree(result))
+
 
 def test_will_return_balanced_bst_for_long_list(self):
     # Arrange
@@ -219,6 +221,7 @@ def test_will_return_balanced_bst_for_long_list(self):
     self.assertTrue(self.is_bst(result))
     self.assertTrue(self.is_balanced_tree(result))
 
+
 def test_will_return_none_for_empty_list(self):
     # Arrange
     arr = []
@@ -232,32 +235,76 @@ def test_will_return_none_for_empty_list(self):
 
 </details>
 
-<!-- >>>>>>>>>>>>>>>>>>>>>> BEGIN CHALLENGE >>>>>>>>>>>>>>>>>>>>>> -->
-<!-- Replace everything in square brackets [] and remove brackets  -->
+<br>
+<details style="max-width: 700px; margin: auto;">
+<summary>Click here to see examples of functions used to check if a given tree is a balanced Binary Search Tree.</summary>
+
+```py
+# Returns True if the BST provided is a valid BST.
+def is_bst(root):
+    if root is None:
+        return True
+
+    left = root.left
+    if left is not None and root.val <= left.val:
+        return False
+
+    right = root.right
+    if right is not None and root.val >= right.val:
+        return False
+
+    return is_bst(left) and is_bst(right)
+
+
+# Returns the height of a tree
+def height(root):
+    if root is None:
+        return 0
+    
+    left_height = height(root.left)
+    right_height = height(root.right)
+
+    if left_height > right_height:
+        return left_height + 1
+    else:
+        return right_height + 1
+
+
+# Returns True if a tree is balanced
+def is_balanced_tree(root):
+    if root is None:
+        return True
+
+    left_height = height(root.left)
+    right_height = height(root.right)
+
+    if abs(left_height - right_height) > 1:
+        return False
+
+    left_check = is_balanced_tree(root.left)
+    right_check = is_balanced_tree(root.right)
+
+    return left_check and right_check
+```
+
+</details>
 
 ### !challenge
-
 * type: paragraph
 * id: 4b02044b-128b-4df6-be11-2756c347b882
 * title: Time Complexity of Solution
 * points: 1
-
 ##### !question
 
 What is the time complexity of your solution? Please define and explain your variables.
 
 ##### !end-question
-
 ##### !placeholder
 
 ##### !end-placeholder
-
 ### !end-challenge
 
-<!-- ======================= END CHALLENGE ======================= -->
 
-<!-- >>>>>>>>>>>>>>>>>>>>>> BEGIN CHALLENGE >>>>>>>>>>>>>>>>>>>>>> -->
-<!-- Replace everything in square brackets [] and remove brackets  -->
 
 ### !challenge
 
