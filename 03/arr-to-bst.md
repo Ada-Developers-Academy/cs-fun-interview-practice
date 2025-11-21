@@ -278,7 +278,6 @@ def is_balanced_tree(root):
     return left_check and right_check
 ```
 ##### !end-placeholder
-
 ##### !tests
 
 ```py
@@ -323,7 +322,6 @@ def test_arr_to_bst_returns_none_for_empty_list():
 ### !end-challenge
 <!-- prettier-ignore-end -->
 
-<!-- Question 3 -->
 <!-- prettier-ignore-start -->
 ### !challenge
 * type: paragraph
@@ -332,17 +330,41 @@ def test_arr_to_bst_returns_none_for_empty_list():
 * topics: pse
 ##### !question
 
-Without writing code, describe how you would implement `arr_to_bst` in enough detail that someone else could write the code. 
-* It may be helpful to break up the problem/algorithm into smaller subproblems/algorithms. For example, 1. Handle invalid input, 2. Given valid input, perform the computation/solve the problem/etc.
-* Your logical steps could take the form of a numbered list, pseudo code, or anywhere in between. What's important at this stage is to think through and outline the implementation before writing code.
+Without writing code, describe how you would implement `arr_to_bst` in enough detail that another developer could reasonably implement a solution. We should capture the main use cases, but the steps do not need to be a detailed plan for every contingency. 
+- The objective is to create a roadmap that we can use to keep ourselves oriented towards our goal
+- It is okay to leave some of the finer details to be worked out in the implementation itself!
+
+As you write your steps, keep the following guidelines in mind:
+* We want to think about a general approach rather than what the code would look like line-by-line. 
+* It may be helpful to break up the problem/algorithm into smaller subproblems/algorithms. 
+    * For example: 1. Handle edge cases, 2. Perform the computation/solve the problem/etc.
+* The steps should be a description as if you were talking out the problem with another person and should be agnostic of any particular language. 
+    * As such, they should not include code syntax in the description.
+
+What's important at this stage is to think through and outline the implementation before writing code.
 
 ##### !end-question
-
 ##### !placeholder
 
 Write the logical steps here.
 
 ##### !end-placeholder
+##### !explanation 
 
+Example steps:
+
+1. If the input `arr` is empty, return `None`.
+2. Find the middle element of `arr`. 
+3. Create a node holding the value at the middle of `arr`, this is the head of the BST
+4. To create the left and right branches of the BST:
+    - Left: 
+        1. Create a list that contains the values of `arr` from index 0 through the index _before_ the middle element used for the head (all the values that are smaller than `arr`'s middle value that we used in the head node). 
+        2. Assign the left node of the new BST head to the result of recursively calling `arr_to_bst` passing in the list created in the previous step for the input `arr`. 
+    - Right:
+        1. Create a list that contains all the values that are larger than `arr`'s middle value that we used in the head node (all the values in `arr` that are to the right of the middle index we used when creating the head node).
+        2. Assign the right node of the new BST head to the result of recursively calling `arr_to_bst` passing in the list created in the previous step for the input `arr`.
+5. Return the new head node.
+
+##### !end-explanation
 ### !end-challenge
 <!-- prettier-ignore-end -->
