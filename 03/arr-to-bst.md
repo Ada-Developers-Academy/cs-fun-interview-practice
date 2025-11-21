@@ -358,12 +358,70 @@ Example steps:
 3. Create a node holding the value at the middle of `arr`, this is the head of the BST
 4. To create the left and right branches of the BST:
     - Left: 
-        1. Create a list that contains the values of `arr` from index 0 through the index _before_ the middle element used for the head (all the values that are smaller than `arr`'s middle value that we used in the head node). 
+        1. Create a list containing all the values in `arr` that are smaller than our `head`'s value, maintaining their sorted order. 
         2. Assign the left node of the new BST head to the result of recursively calling `arr_to_bst` passing in the list created in the previous step for the input `arr`. 
     - Right:
-        1. Create a list that contains all the values that are larger than `arr`'s middle value that we used in the head node (all the values in `arr` that are to the right of the middle index we used when creating the head node).
+        1. Create a list containing all the values in `arr` that are larger than our `head`'s value, maintaining their sorted order.
         2. Assign the right node of the new BST head to the result of recursively calling `arr_to_bst` passing in the list created in the previous step for the input `arr`.
 5. Return the new head node.
+
+##### !end-explanation
+### !end-challenge
+<!-- prettier-ignore-end -->
+
+<!-- prettier-ignore-start -->
+### !challenge
+* type: paragraph
+* id: 59b49996-4089-419d-91c1-4a0192ecbc60
+* title: Review Logical Steps
+* topics: pse
+##### !question
+
+We want to know if we are laying out an approach to the coding problem that makes sense for our context and if that approach is clearly conveying our thoughts on technical topics to others. Let’s once more use an AI tool like ChatGPT, this time to review the Logical Steps we wrote above. Our goals are to check if:
+- the steps make sense for the problem being solved
+- the steps are not missing important steps or scenarios
+- the steps are agnostic of any particular language – steps should not include code syntax.
+- the steps are written with enough detail for another developer to understand how to create a solution
+
+<br>
+
+For this question we will:
+1. Build a prompt using [the template linked here](https://gist.githubusercontent.com/ada-instructors/670252696f1625cf0ed77c0997cd165d/raw/pse_logical_steps_review_template.md)
+2. Share the completed prompt with an AI tool like ChatGPT
+3. After the initial review, ask *at least one* follow up question using the AI tool. We want to ask questions that help us understand: 
+    - areas where we could add clarity
+    - edge cases we might have missed
+    - places where our steps do not meet the expectations of the problem statement
+4. Reflect on the information shared by the AI tool and summarize its findings and your learnings
+
+<br>
+
+In the box below, please submit:
+1. A shareable link to your conversation in ChatGPT
+    - [Documentation for creating a shareable link in ChatGPT](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq)
+2. Your reflections and summary of the discussion with ChatGPT
+
+##### !end-question
+##### !explanation
+
+As an example, let’s say we used logical steps similar to the explanation for the question above in our prompt. Depending on how the supplied steps differ and exactly what ChatGPT shares, a reflection and summary might look like:
+
+<br>
+
+Chat Link: `<url to your conversation>`
+
+<br>
+
+
+From the feedback, my approach shows a solid understanding of building a height-balanced BST using the middle element and recursion, and correctly handles the empty-array case and describing recursion for subtrees. 
+
+<br>
+
+Areas highlighted to improve clarity and reinforce understanding include explaining the recursive pattern up front, clarifying that each node is the root of its subtree and mentioning that recursion stops naturally when lists are empty reinforces understanding.
+
+<br>
+
+There was a suggestion to explicitly state why the left and right sublists are created, which I found less useful since that information is provided on the very next line of my steps. 
 
 ##### !end-explanation
 ### !end-challenge
