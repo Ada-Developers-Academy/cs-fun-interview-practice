@@ -192,6 +192,10 @@ ChatGPT also brought up negative values, and the meaning of the values themselve
     * You can use the examples provided in the prompt, or other examples.
 2. Write unit tests for `arr_to_bst` for the nominal and edge cases you identified in the first step.
 
+To assist with testing `arr_to_bst`, you can assume that you have access to the following functions:
+- `is_bst(root)` - returns whether the tree with the given root is a valid BST
+- `is_balanced(root)` - returns whether the tree with the given root is height balanced
+
 *Note: Click the **Run Tests** button to save your tests for instructor feedback. No real tests are actually run again your unit tests.*
 
 ##### !end-question
@@ -204,10 +208,6 @@ ChatGPT also brought up negative values, and the meaning of the values themselve
 # example input 2:
 # expected output 2:
 
-# To assist with testing, you also have access to the following functions:
-#   is_bst(root) - returns whether the tree with the given root is a valid BST
-#   is_balanced(root) - returns whether the tree with the given root is height balanced
-
 def test_nominal_case():
     # ^rename with meaningful test name
     # and complete test implementation below
@@ -217,6 +217,7 @@ def test_nominal_case():
     # act
 
     # assert
+
 
 def test_edge_case():
     # ^rename with meaningful test name
@@ -228,6 +229,53 @@ def test_edge_case():
     # act
     
     # assert
+
+
+# Returns True if the BST provided is a valid BST.
+def is_bst(root):
+    if root is None:
+        return True
+
+    left = root.left
+    if left is not None and root.val <= left.val:
+        return False
+
+    right = root.right
+    if right is not None and root.val >= right.val:
+        return False
+
+    return is_bst(left) and is_bst(right)
+
+
+# Returns the height of a tree
+def height(root):
+    if root is None:
+        return 0
+    
+    left_height = height(root.left)
+    right_height = height(root.right)
+
+    if left_height > right_height:
+        return left_height + 1
+    else:
+        return right_height + 1
+
+
+# Returns True if a tree is balanced
+def is_balanced_tree(root):
+    if root is None:
+        return True
+
+    left_height = height(root.left)
+    right_height = height(root.right)
+
+    if abs(left_height - right_height) > 1:
+        return False
+
+    left_check = is_balanced_tree(root.left)
+    right_check = is_balanced_tree(root.right)
+
+    return left_check and right_check
 ```
 ##### !end-placeholder
 
