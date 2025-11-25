@@ -54,23 +54,141 @@ is_connected = [
 ### !challenge
 * type: paragraph
 * id: 660061e6-a250-4f94-8b51-dccd6c402075
-* title: Ask Clarifying Questions
+* title: Describe Your Understanding
 * topics: pse
 ##### !question
 
-List three or more questions whose answers would clarify the problem statement.
+Before you begin solving this problem, take a moment to think like a professional software engineer. 
+- What do we know about the problem? 
+- What assumptions can we make based on the information in the problem statement? 
+- What further information do the example inputs and outputs give us?
+- What questions would you ask a teammate, product manager, or interviewer to better understand the problem before writing any code?
 
-For each question, provide an explanation which includes the effect your decision would have on how you would approach the problem.
+<br>
+
+In the box below, list 5 or more observations about the problem or questions whose answers would clarify the problem statement. For each observation or question, include information on why that observation is important or why you are asking the question.
+- For each observation, answer how that observation will affect your approach to the problem.
+- For each question, describe what you are hoping to clarify about the problem and provide an answer which includes the effect your decision would have on how you might approach the problem.
+
+<br>
+
+As you come up with observations and questions, assume that error handling for invalid data is managed outside the function. We want to focus on the core behavior of the function we will write. 
 
 ##### !end-question
+##### !hint
+
+Further questions to ask as you read through the problem statement and examples:
+- What is the goal of the function?
+- What are the types of the expected inputs and outputs?
+- Are there any restrictions on any of the inputs?
+  - For example: if any of the inputs are a list, do we know anything about how the list is ordered?
+- What do the examples show us about the data types and values that are allowed for our inputs?
+- What do the examples tell us about the return value in different scenarios?
+- Reflecting on the observations you have made so far, what questions would give you new information?
+
+<br>
+
+Consider the following for inspiration:
+- [About PSEs](../about-pses/about-pses.md)
+- [Our example PSE with example answers](../about-pses/example-pse.md)
+- Previous PSEs
+
+##### !end-hint
 ##### !explanation
 
-Here are some example clarifying questions:
+One of many possible responses could look like:
 
-1. What should be returned for an empty graph?
-2. Will the graph edges always be undirected?
-3. Will there be self loops in the graph?
-4. What should we do in case of a malformed graph structure? *(Think about how the graph could be malformed and what the effects on your approach might be.)*
+1. In the problem statement it says that 2 cities belong to the same province if there is a path from one city to the other
+    - To solve this problem, I will need to determine how many subsets of connected nodes exist in the input `is_connected`.
+
+2. The problem statement says that a path between 2 cities which runs through an intermediary city is a valid path.
+    - This tells me that when determining a province, I am not only interested in directly connected nodes, but all nodes that can create a path to each other. We only have a separate province if a city or set of cities has no path through any node to the cities of another province.
+
+3. The problem statement does not state if the graph is directed or undircted. The images in the examples show undirected edges connecting the nodes, and the example inputs for `is_connected` show each edge as bidirectional. 
+    - I will assume this is an undirected graph based on the examples. This impacts whether we need to follow directional edges to see if nodes have a path between them, or if it can be assumed that if there is a path in one direction, there must be a path back.
+
+4. What should be returned if the graph `is_connected` is empty (has no rows or columns representing cities)?
+    - It would depend on if this counts as a valid graph or invalid data that would be removed by a validation function before `num_provinces` was called. If an empty graph is valid, then since there are no cities, the data is not representing any provinces, so I will assume that we can return 0 in that scenario. 
+
+5. Can a node be connected to itself by an edge?
+    - I want to better understand the expected allowed structure of the input data. If a node can be connected to itself, as we process that node, we need to ensure that we do not repeat effort by processing the same node more than once as we move through the connected nodes. 
+
+##### !end-explanation
+### !end-challenge
+<!-- prettier-ignore-end -->
+
+<!-- prettier-ignore-start -->
+### !challenge
+* type: paragraph
+* id: 31a03295-400d-4a99-b0f6-d772987b9cdf
+* title: Review Observations & Questions
+* topics: pse
+##### !question
+
+While we build our skills in breaking down a problem and choosing clarifying questions, let’s use an external tool like ChatGPT to review the observations and questions we wrote while describing our understanding. 
+
+<br>
+
+Our goals are to: 
+- confirm if our observations and assumptions make sense in the context of the code problem
+- ensure we are asking questions that will tell us new information about the problem space
+- check our understanding of the information we expect to get from those questions
+- uncover other observations that would help shape our approach and understand how they would affect our approach
+- uncover further questions that could be useful to ask and understand why those other questions could be helpful
+
+<br>
+
+For this question we will:
+1. Build a prompt using [the template linked here](https://gist.githubusercontent.com/ada-instructors/16c97dc4b16ab2bf449d9d7a81caeb16/raw/pse_observations_questions_review_template.md)
+2. Share the completed prompt with an AI tool like ChatGPT
+3. After the initial review, ask the AI tool *at least one* follow up question that furthers your understanding of the problem and why certain observations or questions are useful. Some examples could be asking questions to: 
+    - ensure your understanding of the analysis of the observations
+    - get more details on the information we could get from asking particular questions
+    - learn more about new information shared by the tool
+4. Reflect on the information shared by the AI tool and summarize its findings and your learnings
+
+<br>
+
+In the box below, please submit:
+1. A shareable link to your conversation in ChatGPT
+    - [Documentation for creating a shareable link in ChatGPT](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq)
+2. Your reflections and summary of the discussion with ChatGPT
+
+##### !end-question
+##### !hint
+
+**Troubleshooting**
+- If you are having issues with the tool understanding the prompt, try formatting the problem statement or examples differently.
+- If you’ve reformatted the information and are still not getting useful results, reach out in #study-hall and share what you are experiencing and the link to your chat so folks can take a look and help you troubleshoot!
+
+<br>
+
+**Summarizing the Review**
+- Did the AI tool uncover anything about the observations you made that you hadn’t considered?
+- Did the AI tool uncover anything about the questions you asked that you hadn’t considered?
+- Did the AI tool suggest updates to the observations you made or questions you asked? 
+    - If so, what updates and why?
+- Did the AI tool suggest any new observations or questions?
+    - If so, what? Why would they be useful?
+
+##### !end-hint
+##### !explanation 
+
+For an example of what a review response might look like, let’s say that we provided observations similar to the example response from the "Explanation" section of the previous question to complete the review prompt. 
+
+<br>
+
+Depending on exactly what ChatGPT shares, a reflection and summary might look like:
+
+<br>
+
+Chat link: `<url to your conversation>`
+
+<br>
+
+
+
+<br>
 
 ##### !end-explanation
 ### !end-challenge
