@@ -22,7 +22,7 @@ is_connected = [
     [1, 0, 0]
 ]
 ```
-*Output:* 2
+*Output:* `2`
 
 ## Example 2
 ![A graph consisting of three nodes. All three nodes are connected to each other.](../images/number_of_provinces_example_2.png)
@@ -34,7 +34,7 @@ is_connected = [
     [1, 1, 0]
 ]
 ```
-*Output*: 1
+*Output*: `1`
 
 ## Example 3
 ![A graph consisting of three nodes. None of the nodes are connected to any other nodes.](../images/number_of_provinces_example_3.png)
@@ -46,11 +46,10 @@ is_connected = [
     [0, 0, 0]
 ]
 ```
-*Output:* 3
+*Output:* `3`
 
 ## Prompts
 
-<!-- Question 1 -->
 <!-- prettier-ignore-start -->
 ### !challenge
 * type: paragraph
@@ -64,7 +63,6 @@ List three or more questions whose answers would clarify the problem statement.
 For each question, provide an explanation which includes the effect your decision would have on how you would approach the problem.
 
 ##### !end-question
-
 ##### !explanation
 
 Here are some example clarifying questions:
@@ -75,13 +73,10 @@ Here are some example clarifying questions:
 4. What should we do in case of a malformed graph structure? *(Think about how the graph could be malformed and what the effects on your approach might be.)*
 
 ##### !end-explanation
-
 ### !end-challenge
 <!-- prettier-ignore-end -->
 
-<!-- Question 2 -->
 <!-- prettier-ignore-start -->
-
 ### !challenge
 * type: code-snippet
 * language: python3.6

@@ -30,7 +30,7 @@ is_connected = [
     [1, 0, 0]
 ]
 ```
-*Output:* 2
+*Output:* `2`
 
 ## Example 2
 ![A graph consisting of three nodes. All three nodes are connected to each other.](../images/number_of_provinces_example_2.png)
@@ -42,7 +42,7 @@ is_connected = [
     [1, 1, 0]
 ]
 ```
-*Output*: 1
+*Output*: `1`
 
 ## Example 3
 ![A graph consisting of three nodes. None of the nodes are connected to any other nodes.](../images/number_of_provinces_example_3.png)
@@ -54,7 +54,7 @@ is_connected = [
     [0, 0, 0]
 ]
 ```
-*Output:* 3
+*Output:* `3`
 ### !end-question
 ### !placeholder
 
