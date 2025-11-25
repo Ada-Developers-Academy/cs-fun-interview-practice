@@ -294,45 +294,121 @@ def test_num_provinces_returns_zero_if_input_empty():
 <!-- prettier-ignore-start -->
 ### !challenge
 * type: paragraph
-* id: 647614a1-13b7-42f8-aaa4-4487184cac43
+* id: a195485b-2f22-498c-ae19-8aba00d821fb
 * title: Create Logical Steps
 * topics: pse
 ##### !question
 
-Without writing code, describe how you would implement `num_provinces` in enough detail that someone else could write the code. 
-* It may be helpful to break up the problem/algorithm into smaller subproblems/algorithms. For example, 1. Handle invalid input, 2. Given valid input, perform the computation/solve the problem/etc.
-* Your logical steps could take the form of a numbered list, pseudo code, or anywhere in between. What's important at this stage is to think through and outline the implementation before writing code.
+Without writing code, describe how you would implement `num_provinces` in enough detail that another developer could reasonably implement a solution. We should capture the main use cases, but the steps do not need to be a detailed plan for every contingency. 
+- The objective is to create a roadmap that we can use to keep ourselves oriented towards our goal
+- It is okay to leave some of the finer details to be worked out in the implementation itself!
+
+As you write your steps, keep the following guidelines in mind:
+* We want to think about a general approach rather than what the code would look like line-by-line. 
+* It may be helpful to break up the problem/algorithm into smaller subproblems/algorithms. 
+    * For example: 1. Handle edge cases, 2. Perform the computation/solve the problem/etc.
+* The steps should be a description as if you were talking out the problem with another person and should be agnostic of any particular language. 
+    * As such, they should not include code syntax in the description.
+
+What's important at this stage is to think through and outline the implementation before writing code.
 
 ##### !end-question
-
 ##### !placeholder
 
 Write the logical steps here.
 
 ##### !end-placeholder
-
 ##### !hint
+
 When thinking about whether two cities are in the same province, do we need to consider all pairwise cities, or is there another way for us to find all of the cities in a particular province?
-##### !end-hint
 
+##### !end-hint
 ##### !hint
+
 If we assume only undirected graphs, what would it mean when we have have visited everything reachable from some arbitrary starting node?
-##### !end-hint
 
+##### !end-hint
 ##### !hint
+
 When starting from a node, how do we know whether or not the city is part of a province we've already counted?
 
 The next hint presents the steps for one possible approach.
-##### !end-hint
 
+##### !end-hint
 ##### !hint
+
 1. Initialize a list to keep track of the nodes we have visited.
 2. Iterate over the nodes in the graph (in the adjacency matrix order, irrespective of edge connections).
 3. For each node, if we have not yet visited it, increment the province count and perform a search (either depth-first or breadth-first could work) to find all of the nodes reachable from the current node.
 4. For each node we find in the search, mark it as being visited.
 5. Upon completing each search, we will have found all of the cities in a province. Continue iterating over the nodes in the graph.
 6. Once we have iterated over all of the nodes in the graph, we will have found all of the provinces, so return the province count.
-##### !end-hint
 
+##### !end-hint
+##### !explanation 
+
+Example steps:
+
+1. Initialize a list to keep track of the nodes we have visited.
+2. Iterate over the nodes in the graph (in the adjacency matrix order, irrespective of edge connections).
+3. For each node, if we have not yet visited it, increment the province count and perform a search (either depth-first or breadth-first could work) to find all of the nodes reachable from the current node.
+4. For each node we find in the search, mark it as being visited.
+5. Upon completing each search, we will have found all of the cities in a province. Continue iterating over the nodes in the graph.
+6. Once we have iterated over all of the nodes in the graph, we will have found all of the provinces, so return the province count.
+
+##### !end-explanation
+### !end-challenge
+<!-- prettier-ignore-end -->
+
+<!-- prettier-ignore-start -->
+### !challenge
+* type: paragraph
+* id: d424be4c-55d2-4c7f-be56-e14240f51c01
+* title: Review Logical Steps
+* topics: pse
+##### !question
+
+We want to know if we are laying out an approach to the coding problem that makes sense for our context and if that approach is clearly conveying our thoughts on technical topics to others. Let’s once more use an AI tool like ChatGPT, this time to review the Logical Steps we wrote above. Our goals are to check if:
+- the steps make sense for the problem being solved
+- the steps are not missing important steps or scenarios
+- the steps are agnostic of any particular language – steps should not include code syntax.
+- the steps are written with enough detail for another developer to understand how to create a solution
+
+<br>
+
+For this question we will:
+1. Build a prompt using [the template linked here](https://gist.githubusercontent.com/ada-instructors/670252696f1625cf0ed77c0997cd165d/raw/pse_logical_steps_review_template.md)
+2. Share the completed prompt with an AI tool like ChatGPT
+3. After the initial review, ask *at least one* follow up question using the AI tool. We want to ask questions that help us understand: 
+    - areas where we could add clarity
+    - edge cases we might have missed
+    - places where our steps do not meet the expectations of the problem statement
+4. Reflect on the information shared by the AI tool and summarize its findings and your learnings
+
+<br>
+
+In the box below, please submit:
+1. A shareable link to your conversation in ChatGPT
+    - [Documentation for creating a shareable link in ChatGPT](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq)
+2. Your reflections and summary of the discussion with ChatGPT
+
+##### !end-question
+##### !explanation
+
+As an example, let’s say we used logical steps similar to the explanation for the question above in our prompt. Depending on how the supplied steps differ and exactly what ChatGPT shares, a reflection and summary might look like:
+
+<br>
+
+Chat Link: `<url to your conversation>`
+
+<br>
+
+The AI review noted that my steps correctly separates iterating over nodes and exploring reachable nodes. Overall, the information ChatGPT shared was about making my steps more robust and sharing more of my reasoning to demonstrate understanding, like explicitly stating how adjacency information is interpreted and highlighting isolated nodes. 
+
+<br>
+
+Suggestions about tracking visited nodes, iterating over all nodes, performing searches, marking nodes, and returning the province count mostly overlapped with what I had already described. ChatGPT did clarify after I asked about it that mentioning self-connections isn’t needed for correctness but demonstrates conceptual awareness of adjacency matrices. 
+
+##### !end-explanation
 ### !end-challenge
 <!-- prettier-ignore-end -->
