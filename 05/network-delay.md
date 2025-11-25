@@ -3,7 +3,10 @@
 ## Problem Statement  
 
 For this exercise, create a function `network_delay_time` which accepts the following parameters:
-- A list of travel times, `times`. Each element of `times` represents a directed edge `times[i] = (uᵢ, vᵢ, wᵢ)` where `uᵢ` is the source node, `vᵢ` is the target node, and `wᵢ` is the time it takes for a signal to travel from the source node to the target node
+- A list of travel times, `times`. Each element of `times` represents a directed edge `times[i] = (uᵢ, vᵢ, wᵢ)` where:
+    - `uᵢ` is the source node
+    - `vᵢ` is the target node 
+    - `wᵢ` is the time it takes for a signal to travel from the source node to the target node
 - The total number of nodes in the graph, `n`
 - The node from which a signal is being sent, `source`
 
@@ -11,43 +14,49 @@ The nodes in the graph are labeled from `1` to `n`.
 
 Return the **minimum** time it takes for **all** of the nodes in the graph to receive the signal from the `source` node. If it is not possible for all of the nodes to receive the signal, return `-1`.
 
-**Example 1**
-<br>
+### Example 1
+
 ![example graph 1](../images/network_delay_example-1.png)
-```
-Input: times = [[2,1,1], [2,3,1], [3,4,1]], source = 2, n = 4
+
+```py
+Inputs: times = [[2,1,1], [2,3,1], [3,4,1]], n = 4, source = 2 
+
 Output: 2
-Explanation:
-Starting from node 2: it takes 1 unit of time to reach node 1, 1 unit of 
+```
+
+**Explanation:** Starting from node 2: it takes 1 unit of time to reach node 1, 1 unit of 
 time to reach node 3, and 2 units of time to reach node 4 (1 unit of time from 
 2 -> 3 and 1 unit of time from 3 -> 4 so 2 units overall). 
 
 Therefore, to reach all of the nodes, it would take a minimum of 2 units of time. 
+
+### Example 2
+
+![example graph 2](../images/network_delay_example-2.png)  
+
+```py
+Inputs: times =[[2,1,1], [2, 3, 2], [3, 1, 1]], n = 3, source = 1
+
+Output: -1
 ```
 
-**Example 2**
-<br>
-![example graph 2](../images/network_delay_example-2.png)
-```
-Input: times =[[2,1,1], [2, 3, 2], [3, 1, 1]], source = 1, n = 3
-Output: -1
-It is not possible to reach any other node from node 1, so the function would 
+**Explanation:** It is not possible to reach any other node from node 1, so the function would 
 return -1 to indicate it is not possible to reach all of the nodes in the graph
 from the given source node.
+
+### Example 3
+
+![example graph 3](../images/network_delay_example-3.png)
+
+```py
+Input: times =[[2, 3, 2]], n = 3, source = 2
+
+Output: -1
 ```
 
-**Example 3**
-<br>
-![example graph 3](../images/network_delay_example-3.png)
-```
-Input: times =[[2, 3, 2]], source = 2, n = 3
-Output: -1
-It is not possible to reach all of the nodes in the graph due to the graph being 
+**Explanation:** It is not possible to reach all of the nodes in the graph due to the graph being 
 disconnected, so the function would return -1 to indicate it is not possible to 
 reach all of the nodes in the graph from the given source node.
-```
-
-<br>
 
 ## Prompts
 
