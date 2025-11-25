@@ -60,34 +60,70 @@ reach all of the nodes in the graph from the given source node.
 
 ## Prompts
 
-<!-- Question 1 -->
 <!-- prettier-ignore-start -->
 ### !challenge
 * type: paragraph
 * id: a2a0a745-a920-41b2-aa75-0a3659528e59
-* title: Ask Clarifying Questions
+* title: Describe Your Understanding
 * topics: pse
 ##### !question
 
-List three or more questions whose answers would clarify the problem statement.
+Before you begin solving this problem, take a moment to think like a professional software engineer. 
+- What do we know about the problem? 
+- What assumptions can we make based on the information in the problem statement? 
+- What further information do the example inputs and outputs give us?
+- What questions would you ask a teammate, product manager, or interviewer to better understand the problem before writing any code?
 
-For each question, provide an explanation which includes the effect your decision would have on how you would approach the problem.
+<br>
+
+In the box below, list 5 or more observations about the problem or questions whose answers would clarify the problem statement. For each observation or question, include information on why that observation is important or why you are asking the question.
+- For each observation, answer how that observation will affect your approach to the problem.
+- For each question, describe what you are hoping to clarify about the problem and provide an answer which includes the effect your decision would have on how you might approach the problem.
+
+<br>
+
+As you come up with observations and questions, assume that error handling for invalid data is managed outside the function. We want to focus on the core behavior of the function we will write.
 
 ##### !end-question
+##### !hint
 
+Further questions to ask as you read through the problem statement and examples:
+- What is the goal of the function?
+- What are the types of the expected inputs and outputs?
+- Are there any restrictions on any of the inputs?
+  - For example: if any of the inputs are a list, do we know anything about how the list is ordered?
+- What do the examples show us about the data types and values that are allowed for our inputs?
+- What do the examples tell us about the return value in different scenarios?
+- Reflecting on the observations you have made so far, what questions would give you new information?
+
+<br>
+
+Consider the following for inspiration:
+- [About PSEs](../about-pses/about-pses.md)
+- [Our example PSE with example answers](../about-pses/example-pse.md)
+- Previous PSEs
+
+##### !end-hint
 ##### !explanation
 
-Here are some example clarifying questions:
+One of many possible responses could look like:
 
-1. In which way is the graph being represented?
-2. Do the nodes start at 0 or 1?
-3. Will the graph ever be empty? What should the result be?
-4. Will the graph edges always be directed?
-5. What if there are duplicate edges in the list?
-6. What should we do in case of malformed graph data?
+1. The problem statement gives our node and edge information in a non-standard graph representation which is not set up to work easily with traditional graph searching algorithms.
+    - The `times` list still tells us which nodes are connected and their edge weights. Using this I could convert the data into something like an adjacency matrix that would allow me to apply common graph searching techniques.
+
+2. Each entry in `times` represents a directed edge and the problem statement says to return -1 if it's not possible for all nodes to receive the signal.
+    - There are 2 cases where the node might not reach the signal: the node is fully disconnected from the graph, or there is no path through the directed edges to a node from the source. 
+
+3. I see that the nodes will be labeled from 1 - `n`
+    - I need to keep indexing in mind as I create my own representation of the graph data and index into it as we traverse nodes to avoid off by 1 index errors.
+
+4. We need to return the minimum time it takes for all nodes to receive a signal from the `source` node.
+    - If we know the minimum distance it takes to get from the source node to each other node, then the minimum time to reach all nodes would be the largest of these minimum path values from source to nodes. 
+
+5. We are given the total number of nodes in the graph, and can find the shortest distance paths between the source and other nodes.
+    - If we find all the minimum length paths from the source to other reachable nodes, if the number of paths found is less than the total nodes in the graph, some node must be disconnected
 
 ##### !end-explanation
-
 ### !end-challenge
 <!-- prettier-ignore-end -->
 
