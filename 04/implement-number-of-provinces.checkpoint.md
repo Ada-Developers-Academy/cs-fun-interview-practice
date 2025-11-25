@@ -62,7 +62,7 @@ is_connected = [
 ```python
 def num_provinces(is_connected):
     """
-    A function that takes in an adjacency list representing a graph of
+    A function that takes in an adjacency matrix representing a graph of
     cities, and returns the total number of provinces represented by
     the graph.
 
