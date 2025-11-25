@@ -186,9 +186,11 @@ Chat link: `<url to your conversation>`
 
 <br>
 
-
+ChatGPT's feedback confirmed that most of my observations were accurate and directly related to understanding the problem, especially the idea that provinces are really connected components in a graph. 
 
 <br>
+
+Suggestion 9 (confirming that “provinces” don’t imply anything beyond connected components) was new to me and helped reinforce that narrative terms can hide potential implied constraints. A few suggestions overlapped with my original questions and thus were less useful, like whether diagonal entries follow a consistent convention which is mostly handeled by my question about the graph being directed or undirected, since that impacts the input's representation. 
 
 ##### !end-explanation
 ### !end-challenge
@@ -243,7 +245,6 @@ def test_edge_case():
     # assert
 ```
 ##### !end-placeholder
-
 ##### !tests
 
 ```py
@@ -255,12 +256,17 @@ class TestPython1(unittest.TestCase):
 ```
 
 ##### !end-tests
+##### !hint
+
+Try drawing out some sample graphs and translating them into an adjacency matrix if coming up with an adjacency matrix representing a graph is challenging.
+
+##### !end-hint
 ##### !explanation 
 
 Example tests:
 
 ```python
-def test_returns_two_for_two_provinces():
+def test_num_provinces_returns_two_for_two_provinces():
     # Arrange
     is_connected = [[0, 0, 1], [0, 0, 0], [1, 0, 0]]
 
@@ -270,7 +276,7 @@ def test_returns_two_for_two_provinces():
     # Assert
     assert result == 2
 
-def test_returns_zero_for_empty_connections():
+def test_num_provinces_returns_zero_if_input_empty():
     # Arrange
     is_connected = []
 
@@ -282,13 +288,9 @@ def test_returns_zero_for_empty_connections():
 ```
 
 ##### !end-explanation
-##### !hint
-Try drawing out some sample graphs and translating them into an adjacency matrix if coming up with an adjacency matrix representing a graph is challenging.
-##### !end-hint
 ### !end-challenge
 <!-- prettier-ignore-end -->
 
-<!-- Question 3 -->
 <!-- prettier-ignore-start -->
 ### !challenge
 * type: paragraph
