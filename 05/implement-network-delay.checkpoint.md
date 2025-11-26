@@ -105,10 +105,10 @@ class TestChallenge(unittest.TestCase):
         source = 2
 
         # Act
-        answer = network_delay_time(times, n, source)
+        result = network_delay_time(times, n, source)
 
         # Assert
-        self.assertEqual(answer, 2)
+        self.assertEqual(result, 2)
 
     def test_network_delay_returns_minus_1_when_node_unreachable(self):
         # Arrange
@@ -121,10 +121,10 @@ class TestChallenge(unittest.TestCase):
         source = 1
 
         # Act
-        answer = network_delay_time(times, n, source)
+        result = network_delay_time(times, n, source)
 
         # Assert
-        self.assertEqual(answer, -1)
+        self.assertEqual(result, -1)
 
     def test_network_delay_returns_minus_1_for_disconnected_graph(self):
         # Arrange
@@ -135,10 +135,10 @@ class TestChallenge(unittest.TestCase):
         source = 2
 
         # Act
-        answer = network_delay_time(times, n, source)
+        result = network_delay_time(times, n, source)
 
         # Assert
-        self.assertEqual(answer, -1)
+        self.assertEqual(result, -1)
 
     def test_network_delay_returns_correct_result_for_larger_graph(self):
         # Arrange
@@ -154,10 +154,10 @@ class TestChallenge(unittest.TestCase):
         source = 1
 
         # Act
-        answer = network_delay_time(times, n, source)
+        result = network_delay_time(times, n, source)
 
         # Assert
-        self.assertEqual(answer, 9)
+        self.assertEqual(result, 9)
 ```
 ### !end-tests
 ### !explanation
@@ -233,10 +233,10 @@ def test_network_delay_returns_correct_result_for_small_connected_graph():
     source = 2
 
     # Act
-    answer = network_delay_time(times, n, source)
+    result = network_delay_time(times, n, source)
 
     # Assert
-    assert answer == 2
+    assert result == 2
 
 def test_network_delay_returns_minus_1_when_node_unreachable():
     # Arrange
@@ -249,10 +249,10 @@ def test_network_delay_returns_minus_1_when_node_unreachable():
     source = 1
 
     # Act
-    answer = network_delay_time(times, n, source)
+    result = network_delay_time(times, n, source)
 
     # Assert
-    assert answer == -1
+    assert result == -1
 
 def test_network_delay_returns_minus_1_for_disconnected_graph():
     # Arrange
@@ -263,10 +263,10 @@ def test_network_delay_returns_minus_1_for_disconnected_graph():
     source = 2
 
     # Act
-    answer = network_delay_time(times, n, source)
+    result = network_delay_time(times, n, source)
 
     # Assert
-    assert answer == -1
+    assert result == -1
 
 def test_network_delay_returns_correct_result_for_larger_graph():
     # Arrange
@@ -282,10 +282,10 @@ def test_network_delay_returns_correct_result_for_larger_graph():
     source = 1
 
     # Act
-    answer = network_delay_time(times, n, source)
+    result = network_delay_time(times, n, source)
 
     # Assert
-    assert answer == 9
+    assert result == 9
 ```
 
 </details>
