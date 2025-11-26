@@ -171,6 +171,7 @@ An example of a working implementation:
 ```python
 import collections
 from heapq import heappush, heappop
+
 def network_delay_time(times, n, source):
     # Initialize dictionary with default value as a list
     # More information about defaultdict can be found in the documentation for Python: https://docs.python.org/3/library/collections.html#collections.defaultdict
