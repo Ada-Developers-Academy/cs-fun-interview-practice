@@ -120,8 +120,8 @@ One of many possible responses could look like:
 4. We need to return the minimum time it takes for all nodes to receive a signal from the `source` node.
     - If we know the minimum distance it takes to get from the source node to each other node, then the minimum time to reach all nodes would be the largest of these minimum path values from source to nodes. 
 
-5. We are given the total number of nodes in the graph, and can find the shortest distance paths between the source and other nodes.
-    - If we find all the minimum length paths from the source to other reachable nodes, if the number of paths found is less than the total nodes in the graph, some node must be disconnected
+5. We are given the total number of nodes in the graph, and we will need some way to track the nodes we have visited.
+    - If we traverse all the connected nodes and our set of visited nodes is less than the total nodes in the graph, some node must be disconnected.
 
 ##### !end-explanation
 ### !end-challenge
@@ -307,7 +307,6 @@ def test_network_delay_returns_minus_1_when_node_unreachable():
 ### !end-challenge
 <!-- prettier-ignore-end -->
 
-<!-- Question 3 -->
 <!-- prettier-ignore-start -->
 ### !challenge
 * type: paragraph
@@ -316,39 +315,51 @@ def test_network_delay_returns_minus_1_when_node_unreachable():
 * topics: pse
 ##### !question
 
-Without writing code, describe how you would implement `network_delay_time` in enough detail that someone else could write the code. 
-* It may be helpful to break up the problem/algorithm into smaller subproblems/algorithms. For example, 1. Handle invalid input, 2. Given valid input, perform the computation/solve the problem/etc.
-* Your logical steps could take the form of a numbered list, pseudo code, or anywhere in between. What's important at this stage is to think through and outline the implementation before writing code.
+Without writing code, describe how you would implement `network_delay_time` in enough detail that another developer could reasonably implement a solution. We should capture the main use cases, but the steps do not need to be a detailed plan for every contingency. 
+- The objective is to create a roadmap that we can use to keep ourselves oriented towards our goal
+- It is okay to leave some of the finer details to be worked out in the implementation itself!
+
+As you write your steps, keep the following guidelines in mind:
+* We want to think about a general approach rather than what the code would look like line-by-line. 
+* It may be helpful to break up the problem/algorithm into smaller subproblems/algorithms. 
+    * For example: 1. Handle edge cases, 2. Perform the computation/solve the problem/etc.
+* The steps should be a description as if you were talking out the problem with another person and should be agnostic of any particular language. 
+    * As such, they should not include code syntax in the description.
+
+What's important at this stage is to think through and outline the implementation before writing code.
 
 ##### !end-question
-
 ##### !placeholder
 
 Write the logical steps here.
 
 ##### !end-placeholder
-
 ##### !hint
+
 One approach could be to figure out the cost from the start node to each of the other nodes individually. However, since weights are involved, we know that plain BFS isn't guaranteed to find the minimum cost to each other node. We'll need another approach.
-##### !end-hint
 
+##### !end-hint
 ##### !hint
+
 Dijkstra's algorithm _does_ find the minimum path to each other node, but it is not guaranteed to work with negative weights. Since we are dealing with delay time, which we can assume to be non-negative, we can use Dijkstra's algorithm. Dijkstra's algorithm also has the benefit that it will find the shortest path to each node in the graph, all at once. So once we've visited all the nodes, we know we're done.
 
 What would it mean if we completed Dijkstra's algorithm and there were still nodes we haven't visited?
-##### !end-hint
 
+##### !end-hint
 ##### !hint
+
 We can't efficiently run Dijkstra's algorithm directly on an edge list, so we should also consider what we need to do to convert the input into a form that Dijkstra's algorithm can work with.
-##### !end-hint
 
+##### !end-hint
 ##### !hint
+
 Once we've run Dijkstra's algorithm over our data, how can we distinguish between a successful result and an unsuccessful result?
 
 The next hint presents the steps for one possible approach.
-##### !end-hint
 
+##### !end-hint
 ##### !hint
+
 1. Convert the input edge data into an adjacency dict.
    1. Iterate over the edges.
    2. For each edge, add the target node (with weight) to the list of edges in the adjacency dict for the source node.
@@ -359,7 +370,23 @@ The next hint presents the steps for one possible approach.
 3. Run Dijkstra's algorithm over the converted graph data, tracking the minimum cost to each node.
 4. Upon completing Dijkstra's algorithm, we will have the minimum cost to each node. If there are nodes whose cost is still infinity, we know that we were unable to reach those nodes from the source node. Alternatively, we could check the length of the visited set against the number of nodes in the graph. If they are not equal, we know that we were unable to reach all of the nodes in the graph from the source node.
 5. If not all nodes were reached, return -1. Otherwise, return the maximum cost from the minimum cost list. Dijkstra's algorithm finds minimum paths, but according to the challenge, we want to return the longest overall (how long it takes for _every_ node to receive a signal). In other words, we are looking for the maximum minimum.
-##### !end-hint
 
+##### !end-hint
+##### !explanation 
+
+Example approach:
+
+1. Convert the input edge data into an adjacency dict.
+   1. Iterate over the edges.
+   2. For each edge, add the target node (with weight) to the list of edges in the adjacency dict for the source node.
+2. Set up the data structures we'll need to track the minimum cost to each node.
+   1. Initialize a list to track the minimum cost to each node, with the value for each node starting at infinity.
+   2. Initialize a set to track the nodes we have visited.
+   3. Initialize a priority queue to track the nodes we have yet to visit.
+3. Run Dijkstra's algorithm over the converted graph data, tracking the minimum cost to each node.
+4. Upon completing Dijkstra's algorithm, we will have the minimum cost to each node. If there are nodes whose cost is still infinity, we know that we were unable to reach those nodes from the source node. Alternatively, we could check the length of the visited set against the number of nodes in the graph. If they are not equal, we know that we were unable to reach all of the nodes in the graph from the source node.
+5. If not all nodes were reached, return -1. Otherwise, return the maximum cost from the minimum cost list. Dijkstra's algorithm finds minimum paths, but according to the challenge, we want to return the longest overall (how long it takes for _every_ node to receive a signal). In other words, we are looking for the maximum minimum.
+
+##### !end-explanation
 ### !end-challenge
 <!-- prettier-ignore-end -->
