@@ -390,3 +390,56 @@ Example approach:
 ##### !end-explanation
 ### !end-challenge
 <!-- prettier-ignore-end -->
+
+<!-- prettier-ignore-start -->
+### !challenge
+* type: paragraph
+* id: 68cf2c87-a448-4e40-b6bc-5cf7f301bd9b
+* title: Review Logical Steps
+* topics: pse
+##### !question
+
+We want to know if we are laying out an approach to the coding problem that makes sense for our context and if that approach is clearly conveying our thoughts on technical topics to others. Let’s once more use an AI tool like ChatGPT, this time to review the Logical Steps we wrote above. Our goals are to check if:
+- the steps make sense for the problem being solved
+- the steps are not missing important steps or scenarios
+- the steps are agnostic of any particular language – steps should not include code syntax.
+- the steps are written with enough detail for another developer to understand how to create a solution
+
+<br>
+
+For this question we will:
+1. Build a prompt using [the template linked here](https://gist.githubusercontent.com/ada-instructors/670252696f1625cf0ed77c0997cd165d/raw/pse_logical_steps_review_template.md)
+2. Share the completed prompt with an AI tool like ChatGPT
+3. After the initial review, ask *at least one* follow up question using the AI tool. We want to ask questions that help us understand: 
+    - areas where we could add clarity
+    - edge cases we might have missed
+    - places where our steps do not meet the expectations of the problem statement
+4. Reflect on the information shared by the AI tool and summarize its findings and your learnings
+
+<br>
+
+In the box below, please submit:
+1. A shareable link to your conversation in ChatGPT
+    - [Documentation for creating a shareable link in ChatGPT](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq)
+2. Your reflections and summary of the discussion with ChatGPT
+
+##### !end-question
+##### !explanation
+
+As an example, let’s say we used logical steps similar to the explanation for the question above in our prompt. Depending on how the supplied steps differ and exactly what ChatGPT shares, a reflection and summary might look like:
+
+<br>
+
+Chat Link: `<url to your conversation>`
+
+<br>
+
+ChatGPT's feedback confirmed my approach using Dijkstra on a directed weighted graph is correct for non-negative weights. New information to consider adding to me steps were details like including all nodes in the adjacency structure, explicitly indexing distances, and defining the priority queue format.
+
+<br>
+
+Suggestions overlapping with my prior notes involved marking nodes visited and checking reachability. Though both options presented in my steps are valid, the review emphasized consistency and clarity in choosing either a distance-based or visited-set-based check when checking if any node is diconnected from the source.
+
+##### !end-explanation
+### !end-challenge
+<!-- prettier-ignore-end -->
