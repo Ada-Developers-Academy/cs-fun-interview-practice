@@ -35,7 +35,7 @@ Therefore, to reach all of the nodes, it would take a minimum of 2 units of time
 ![example graph 2](../images/network_delay_example-2.png)  
 
 ```py
-Inputs: times =[[2,1,1], [2, 3, 2], [3, 1, 1]], n = 3, source = 1
+Inputs: times = [[2,1,1], [2, 3, 2], [3, 1, 1]], n = 3, source = 1
 
 Output: -1
 ```
@@ -49,7 +49,7 @@ from the given source node.
 ![example graph 3](../images/network_delay_example-3.png)
 
 ```py
-Input: times =[[2, 3, 2]], n = 3, source = 2
+Input: times = [[2, 3, 2]], n = 3, source = 2
 
 Output: -1
 ```
