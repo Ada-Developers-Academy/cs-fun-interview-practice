@@ -11,7 +11,7 @@
 
 Given the heads of two singly linked-lists `head_a` and `head_b`, return the node at which the two lists intersect. If the two linked lists do not intersect, the function should return `None`.
 
-For example, the following two linked lists begin to intersect at the node 8:
+For example, the following two linked lists begin to intersect at the node containing 8:
 
 ![intersecting linked lists example 1](../images/intersection_linked_list_example_1.png)
 
@@ -38,7 +38,7 @@ class Node:
         self.val = value
         self.next = None
 
-def intersection_node(head_a, head_b):
+def find_intersecting_node(head_a, head_b):
     """
     Given the heads of two singly linked-lists `head_a` and `head_b`, 
     return the node at which the two lists intersect.
@@ -61,7 +61,7 @@ import unittest
 from main import *
 
 class TestChallenge(unittest.TestCase):
-    def test_will_return_intersection_for_lists_of_same_length(self):
+    def test_find_intersecting_node_returns_intersection_for_same_length_inputs(self):
         # Arrange
         node_d = Node("D")
         node_e = Node("E")
@@ -91,12 +91,12 @@ class TestChallenge(unittest.TestCase):
         head_b = node_x
 
         # Act
-        answer = intersection_node(head_a, head_b)
+        result = find_intersecting_node(head_a, head_b)
 
         # Assert
-        self.assertEqual(answer, node_one)
+        self.assertEqual(result, node_one)
 
-    def test_will_return_intersection_with_lists_of_differing_lengths(self):
+    def test_find_intersecting_node_returns_intersection_with_different_len_inputs(self):
         # Arrange
         node_d = Node("D")
         node_e = Node("E")
@@ -122,12 +122,12 @@ class TestChallenge(unittest.TestCase):
         head_b = node_x
 
         # Act
-        answer = intersection_node(head_a, head_b)
+        result = find_intersecting_node(head_a, head_b)
 
         # Assert
-        self.assertEqual(answer, node_one)
+        self.assertEqual(result, node_one)
 
-    def test_will_return_none_with_one_empty_list(self):
+    def test_find_intersecting_node_returns_none_with_one_empty_list(self):
         # Arrange
         node_d = Node("D")
         node_e = Node("E")
@@ -140,12 +140,12 @@ class TestChallenge(unittest.TestCase):
         # List B: [] <-- empty list
 
         # Act
-        answer = intersection_node(node_d, None)
+        result = find_intersecting_node(node_d, None)
 
         # Assert
-        self.assertEqual(answer, None)
+        self.assertEqual(result, None)
 
-    def test_will_return_none_when_no_intersection(self):
+    def test_find_intersecting_node_returns_none_for_no_intersection(self):
         # Arrange
         node_d = Node("D")
         node_e = Node("E")
@@ -167,24 +167,24 @@ class TestChallenge(unittest.TestCase):
         head_b = node_x
 
         # Act
-        answer = intersection_node(head_a, head_b)
+        result = find_intersecting_node(head_a, head_b)
 
         # Assert
-        self.assertEqual(answer, None)
+        self.assertEqual(result, None)
 
-    def test_will_return_none_for_two_empty_lists(self):
+    def test_find_intersecting_node_returns_none_for_two_empty_lists(self):
         # Arrange
 
         # List A: [] <-- empty list
         # List B: [] <-- empty list
 
         # Act
-        answer = intersection_node(None, None)
+        result = find_intersecting_node(None, None)
 
         # Assert
-        self.assertEqual(answer, None)
+        self.assertEqual(result, None)
 
-    def test_will_return_none_for_tails_with_same_values_but_different_memory_location(self):
+    def test_find_intersecting_node_returns_none_if_no_intersection_but_matching_tail_values(self):
         # Arrange
         node_d = Node("D")
         node_e1 = Node("E")
@@ -203,10 +203,10 @@ class TestChallenge(unittest.TestCase):
         node_e2.next = node_f2
 
         # Act
-        answer = intersection_node(node_d, node_x)
+        result = find_intersecting_node(node_d, node_x)
 
         # Assert
-        self.assertEqual(answer, None)
+        self.assertEqual(result, None)
 ```
 ### !end-tests
 ### !explanation
@@ -216,7 +216,7 @@ Examples of Working Implementations:<br><br>
 An initial approach to this problem is to keep track of visited nodes. The solution would traverse the first linked list and store the addresses of the visited nodes in a set and then traverse the second linked list. While traversing the second list, if you encounter an address that already exists in the set then you've identified the intersecting node and can return it.<br><br>
 
 ```python
-def intersection_node(head_a, head_b):
+def find_intersecting_node(head_a, head_b):
     # create a set for storing the addresses of the nodes of the first linked list
     nodes = set()
 
@@ -371,7 +371,7 @@ the two linked lists do not have an intersection.
 ***
 
 ```python
-def intersection_node(head_a, head_b):
+def find_intersecting_node(head_a, head_b):
     # assign a and b to point to the heads of list A and list B
     a, b = head_a, head_b
 
@@ -395,7 +395,6 @@ The time complexity is O(A + B) where A is the size of list A and B is the size 
 
 The space complexity is O(1) since the space needed for the two additional pointers, a and b, does not scale with the input data.
 ### !end-explanation
-
 ### !end-challenge
 <!-- prettier-ignore-end -->
 
@@ -404,7 +403,7 @@ The space complexity is O(1) since the space needed for the two additional point
 <summary>Click here to see the tests that will be run against your code</summary>
 
 ```py
-def test_will_return_intersection_for_lists_of_same_length(self):
+def test_find_intersecting_node_returns_intersection_for_same_length_inputs(self):
     # Arrange
     node_d = Node("D")
     node_e = Node("E")
@@ -434,12 +433,13 @@ def test_will_return_intersection_for_lists_of_same_length(self):
     head_b = node_x
 
     # Act
-    answer = intersection_node(head_a, head_b)
+    result = find_intersecting_node(head_a, head_b)
 
     # Assert
-    self.assertEqual(answer, node_one)
+    self.assertEqual(result, node_one)
 
-def test_will_return_intersection_with_lists_of_differing_lengths(self):
+
+def test_find_intersecting_node_returns_intersection_with_different_len_inputs(self):
     # Arrange
     node_d = Node("D")
     node_e = Node("E")
@@ -465,12 +465,13 @@ def test_will_return_intersection_with_lists_of_differing_lengths(self):
     head_b = node_x
 
     # Act
-    answer = intersection_node(head_a, head_b)
+    result = find_intersecting_node(head_a, head_b)
 
     # Assert
-    self.assertEqual(answer, node_one)
+    self.assertEqual(result, node_one)
 
-def test_will_return_none_with_one_empty_list(self):
+
+def test_find_intersecting_node_returns_none_with_one_empty_list(self):
     # Arrange
     node_d = Node("D")
     node_e = Node("E")
@@ -483,12 +484,13 @@ def test_will_return_none_with_one_empty_list(self):
     # List B: [] <-- empty list
 
     # Act
-    answer = intersection_node(node_d, None)
+    result = find_intersecting_node(node_d, None)
 
     # Assert
-    self.assertEqual(answer, None)
+    self.assertEqual(result, None)
 
-def test_will_return_none_when_no_intersection(self):
+
+def test_find_intersecting_node_returns_none_for_no_intersection(self):
     # Arrange
     node_d = Node("D")
     node_e = Node("E")
@@ -510,24 +512,26 @@ def test_will_return_none_when_no_intersection(self):
     head_b = node_x
 
     # Act
-    answer = intersection_node(head_a, head_b)
+    result = find_intersecting_node(head_a, head_b)
 
     # Assert
-    self.assertEqual(answer, None)
+    self.assertEqual(result, None)
 
-def test_will_return_none_for_two_empty_lists(self):
+
+def test_find_intersecting_node_returns_none_for_two_empty_lists(self):
     # Arrange
 
     # List A: [] <-- empty list
     # List B: [] <-- empty list
 
     # Act
-    answer = intersection_node(None, None)
+    result = find_intersecting_node(None, None)
 
     # Assert
-    self.assertEqual(answer, None)
+    self.assertEqual(result, None)
 
-def test_will_return_none_for_tails_with_same_values_but_different_memory_location(self):
+
+def test_find_intersecting_node_returns_none_if_no_intersection_but_matching_tail_values(self):
     # Arrange
     node_d = Node("D")
     node_e1 = Node("E")
@@ -546,57 +550,44 @@ def test_will_return_none_for_tails_with_same_values_but_different_memory_locati
     node_e2.next = node_f2
 
     # Act
-    answer = intersection_node(node_d, node_x)
+    result = find_intersecting_node(node_d, node_x)
 
     # Assert
-    self.assertEqual(answer, None)
+    self.assertEqual(result, None)
 ```
 </details>
 
-<!-- >>>>>>>>>>>>>>>>>>>>>> BEGIN CHALLENGE >>>>>>>>>>>>>>>>>>>>>> -->
-<!-- Replace everything in square brackets [] and remove brackets  -->
 
+<!-- prettier-ignore-start -->
 ### !challenge
-
 * type: paragraph
 * id: d0c65caa-97b1-4ffb-8038-33303a412a8f
 * title: Time Complexity of Solution
 * points: 1
-
 ##### !question
 
 What is the time complexity of your solution? Please define and explain your variables.
 
 ##### !end-question
-
 ##### !placeholder
 
 ##### !end-placeholder
-
 ### !end-challenge
+<!-- prettier-ignore-end -->
 
-<!-- ======================= END CHALLENGE ======================= -->
-
-<!-- >>>>>>>>>>>>>>>>>>>>>> BEGIN CHALLENGE >>>>>>>>>>>>>>>>>>>>>> -->
-<!-- Replace everything in square brackets [] and remove brackets  -->
-
+<!-- prettier-ignore-start -->
 ### !challenge
-
 * type: paragraph
 * id: efb51781-bbe5-4a86-9645-6ae1ce49f9f6
 * title: Space Complexity of Solution
 * points: 1 
-
 ##### !question
 
 What is the space complexity of your solution? Please define and explain your variables.
 
 ##### !end-question
-
 ##### !placeholder
 
 ##### !end-placeholder
-
 ### !end-challenge
-
-<!-- ======================= END CHALLENGE ======================= -->
+<!-- prettier-ignore-end -->
