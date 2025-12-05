@@ -10,18 +10,16 @@
 ### !question
 
 Given a sorted array of unique integers, `arr`, write a function to create a balanced Binary Search Tree from the contents of the array. Return the root of the Binary Search Tree.
+* There will not be any duplicate elements in the array
+* It is not required to implement a self-balancing Binary Search Tree in order to solve this exercise. For an extra challenge, consider why it is unnecessary!
 
-Example:
+**Example:**
 
 `arr = [5, 10, 15, 20, 25, 30, 35, 40, 45]`
 
 should result in a tree with the following root/height:
 
 ![Balanced Binary Search Tree](../images/balanced_bst.png)
-
-Please note the following:
-* There will not be any duplicate elements in the array
-* One is not required to implement a self-balancing Binary Search Tree in order to solve this exercise. For an extra challenge, consider why it is unnecessary!
 
 ### !end-question
 ### !placeholder
@@ -54,7 +52,7 @@ import unittest
 from main import *
 
 class TestChallenge(unittest.TestCase):
-    def test_will_return_balanced_bst_for_odd_lengthed_list(self):
+    def test_arr_to_bst_returns_balanced_bst_for_odd_lengthed_list(self):
         # Arrange
         arr = [5, 10, 15, 20, 25, 30, 35, 40, 45]
 
@@ -66,7 +64,7 @@ class TestChallenge(unittest.TestCase):
         self.assertTrue(self.is_bst(result))
         self.assertTrue(self.is_balanced_tree(result))
 
-    def test_will_return_balanced_bst_for_even_lengthed_list(self):
+    def test_arr_to_bst_returns_balanced_bst_for_even_lengthed_list(self):
         # Arrange
         arr = [1, 3, 9, 27, 81, 243]
 
@@ -77,13 +75,13 @@ class TestChallenge(unittest.TestCase):
         self.assertTrue(self.is_bst(result))
         self.assertTrue(self.is_balanced_tree(result))
 
-    def test_will_return_balanced_bst_for_long_list(self):
+    def test_arr_to_bst_returns_balanced_bst_for_long_list(self):
         # Arrange
         arr = []
-        num = 0
-        while num < 100:
-            arr.append(num)
-            num += 1
+        new_arr_value = 0
+        while new_arr_value < 100:
+            arr.append(new_arr_value)
+            new_arr_value += 1
 
         # Act
         result = arr_to_bst(arr)
@@ -92,7 +90,7 @@ class TestChallenge(unittest.TestCase):
         self.assertTrue(self.is_bst(result))
         self.assertTrue(self.is_balanced_tree(result))
 
-    def test_will_return_none_for_empty_list(self):
+    def test_arr_to_bst_returns_none_for_empty_list(self):
         # Arrange
         arr = []
 
@@ -181,7 +179,7 @@ It is recommended to break the problem down recursively by first setting the roo
 <summary>Click here to see the tests that will be run against your code</summary>
 
 ```py
-def test_will_return_balanced_bst_for_odd_lengthed_list(self):
+def test_arr_to_bst_returns_balanced_bst_for_odd_lengthed_list(self):
     # Arrange
     arr = [5, 10, 15, 20, 25, 30, 35, 40, 45]
 
@@ -193,7 +191,8 @@ def test_will_return_balanced_bst_for_odd_lengthed_list(self):
     self.assertTrue(self.is_bst(result))
     self.assertTrue(self.is_balanced_tree(result))
 
-def test_will_return_balanced_bst_for_even_lengthed_list(self):
+
+def test_arr_to_bst_returns_balanced_bst_for_even_lengthed_list(self):
     # Arrange
     arr = [1, 3, 9, 27, 81, 243]
 
@@ -204,13 +203,14 @@ def test_will_return_balanced_bst_for_even_lengthed_list(self):
     self.assertTrue(self.is_bst(result))
     self.assertTrue(self.is_balanced_tree(result))
 
-def test_will_return_balanced_bst_for_long_list(self):
+
+def test_arr_to_bst_returns_balanced_bst_for_long_list(self):
     # Arrange
     arr = []
-    num = 0
-    while num < 100:
-        arr.append(num)
-        num += 1
+    new_arr_value = 0
+    while new_arr_value < 100:
+        arr.append(new_arr_value)
+        new_arr_value += 1
 
     # Act
     result = arr_to_bst(arr)
@@ -219,7 +219,8 @@ def test_will_return_balanced_bst_for_long_list(self):
     self.assertTrue(self.is_bst(result))
     self.assertTrue(self.is_balanced_tree(result))
 
-def test_will_return_none_for_empty_list(self):
+
+def test_arr_to_bst_returns_none_for_empty_list(self):
     # Arrange
     arr = []
 
@@ -232,50 +233,90 @@ def test_will_return_none_for_empty_list(self):
 
 </details>
 
-<!-- >>>>>>>>>>>>>>>>>>>>>> BEGIN CHALLENGE >>>>>>>>>>>>>>>>>>>>>> -->
-<!-- Replace everything in square brackets [] and remove brackets  -->
+<br>
+<details style="max-width: 700px; margin: auto;">
+<summary>Click here to see examples of functions used to check if a given tree is a balanced Binary Search Tree.</summary>
 
+```py
+# Returns True if the BST provided is a valid BST.
+def is_bst(root):
+    if root is None:
+        return True
+
+    left = root.left
+    if left is not None and root.val <= left.val:
+        return False
+
+    right = root.right
+    if right is not None and root.val >= right.val:
+        return False
+
+    return is_bst(left) and is_bst(right)
+
+
+# Returns the height of a tree
+def height(root):
+    if root is None:
+        return 0
+    
+    left_height = height(root.left)
+    right_height = height(root.right)
+
+    if left_height > right_height:
+        return left_height + 1
+    else:
+        return right_height + 1
+
+
+# Returns True if a tree is balanced
+def is_balanced_tree(root):
+    if root is None:
+        return True
+
+    left_height = height(root.left)
+    right_height = height(root.right)
+
+    if abs(left_height - right_height) > 1:
+        return False
+
+    left_check = is_balanced_tree(root.left)
+    right_check = is_balanced_tree(root.right)
+
+    return left_check and right_check
+```
+
+</details>
+
+<!-- prettier-ignore-start -->
 ### !challenge
-
 * type: paragraph
 * id: 4b02044b-128b-4df6-be11-2756c347b882
 * title: Time Complexity of Solution
 * points: 1
-
 ##### !question
 
 What is the time complexity of your solution? Please define and explain your variables.
 
 ##### !end-question
-
 ##### !placeholder
 
 ##### !end-placeholder
-
 ### !end-challenge
+<!-- prettier-ignore-end -->
 
-<!-- ======================= END CHALLENGE ======================= -->
-
-<!-- >>>>>>>>>>>>>>>>>>>>>> BEGIN CHALLENGE >>>>>>>>>>>>>>>>>>>>>> -->
-<!-- Replace everything in square brackets [] and remove brackets  -->
-
+<!-- prettier-ignore-start -->
 ### !challenge
-
 * type: paragraph
 * id: 964cb04f-3bbd-4947-82ba-7662789960f0
 * title: Space Complexity of Solution
 * points: 1 
-
 ##### !question
 
 What is the space complexity of your solution? Please define and explain your variables.
 
 ##### !end-question
-
 ##### !placeholder
 
 ##### !end-placeholder
-
 ### !end-challenge
-
-<!-- ======================= END CHALLENGE ======================= -->
+<!-- prettier-ignore-end -->
