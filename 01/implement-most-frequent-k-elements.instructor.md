@@ -5,23 +5,25 @@ An example of a working implementation:
 ```python
 # Time Complexity: O(N log(N)) where N is the size of the array
 # Space Complexity: O(N) where N is the size of the array
-def most_frequentk_k_elements(arr, k):
-    if len(arr) == 1: return [arr[0]]
+def most_frequent_k_elements(numbers, k):
+    if len(numbers) == 1: 
+        return [numbers[0]]
     
     frequency_map = {}
-    uniques = []
-
-    for num in arr:
-        if num in frequency_map:
-            frequency_map[num] += 1
-            
+    for number in numbers:
+        if number in frequency_map:
+            frequency_map[number] += 1
         else:
-            frequency_map[num] = 1
-            uniques.append(num)
-            
-    result = sorted(uniques, key=lambda num: frequency_map[num], reverse=True)
+            frequency_map[number] = 1
+    
+    unique_numbers = list(frequency_map.keys())
+    sorted_numbers = sorted(
+                unique_numbers, 
+                key=lambda num: frequency_map[num], 
+                reverse=True
+            )
 
-    return result[:k]
+    return sorted_numbers[:k]
 
 # ----- Alternative O(N) solution (provided by Ansel) -----
 
