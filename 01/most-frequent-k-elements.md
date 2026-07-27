@@ -44,6 +44,15 @@ In the box below, list 5 or more observations about the problem or questions who
 As you come up with observations and questions, assume that error handling for invalid data is managed outside the function. We want to focus on the core behavior of the function we will write. 
 
 ##### !end-question
+##### !placeholder
+
+Add observations, assumptions, and questions here:
+
+Eg. from the sample PSE: 
+I observe that the function should return a string indicating the result of the game: "Player 1 wins!", "Player 2 wins!", or "It's a tie!"
+    - Aside from checking if someone wins, I need to consider the edge case where the players could tie.
+
+##### !end-placeholder
 ##### !hint
 
 Further questions to ask as you read through the problem statement and examples:
@@ -94,89 +103,6 @@ One of many possible responses could look like:
 
 <!-- prettier-ignore-start -->
 ### !challenge
-* type: paragraph
-* id: 3b9de43e-7ecf-4f2e-a6f6-5bcc6d70f76d
-* title: Review Observations & Questions
-* topics: pse
-##### !question
-
-While we build our skills in breaking down a problem and choosing clarifying questions, let’s use an external tool like ChatGPT to review the observations and questions we wrote while describing our understanding. 
-
-<br>
-
-Our goals are to: 
-- confirm if our observations and assumptions make sense in the context of the code problem
-- ensure we are asking questions that will tell us new information about the problem space
-- check our understanding of the information we expect to get from those questions
-- uncover other observations that would help shape our approach and understand how they would affect our approach
-- uncover further questions that could be useful to ask and understand why those other questions could be helpful
-
-<br>
-
-For this question we will:
-1. Build a prompt using [the template linked here](https://gist.githubusercontent.com/ada-instructors/16c97dc4b16ab2bf449d9d7a81caeb16/raw/pse_observations_questions_review_template.md)
-2. Share the completed prompt with an AI tool like ChatGPT
-3. After the initial review, ask the AI tool *at least one* follow up question that furthers your understanding of the problem and why certain observations or questions are useful. Some examples could be asking questions to: 
-    - ensure your understanding of the analysis of the observations
-    - get more details on the information we could get from asking particular questions
-    - learn more about new information shared by the tool
-4. Reflect on the information shared by the AI tool and summarize its findings and your learnings
-
-<br>
-
-In the box below, please submit:
-1. A shareable link to your conversation in ChatGPT
-    - [Documentation for creating a shareable link in ChatGPT](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq)
-2. Your reflections and summary of the discussion with ChatGPT
-
-##### !end-question
-##### !hint
-
-**Troubleshooting**
-- If you are having issues with the tool understanding the prompt, try formatting the problem statement or examples differently.
-- If you’ve reformatted the information and are still not getting useful results, reach out in #study-hall and share what you are experiencing and the link to your chat so folks can take a look and help you troubleshoot!
-
-<br>
-
-**Summarizing the Review**
-- Did the AI tool uncover anything about the observations you made that you hadn’t considered?
-- Did the AI tool uncover anything about the questions you asked that you hadn’t considered?
-- Did the AI tool suggest updates to the observations you made or questions you asked? 
-    - If so, what updates and why?
-- Did the AI tool suggest any new observations or questions?
-    - If so, what? Why would they be useful?
-
-##### !end-hint
-##### !explanation 
-
-For an example of what a review response might look like, let’s say that we provided observations similar to the example response from the "Explanation" section of the previous question to complete the review prompt. 
-
-<br>
-
-Depending on exactly what ChatGPT shares, a reflection and summary might look like:
-
-<br>
-
-Chat link: `<url to your conversation>`
-
-<br>
-
-Reviewing the feedback confirmed that most of my observations about the problem were accurate or useful, especially getting clarification around ties, and the ordering of the result list. 
-
-<br>
-
-I received feedback that including implementation-specific details in my observations may be less useful here and distract from clarifying the problem itself. I also learned more about the idea of “stability” when tie breaking for coding problems and how it can be important for some problems to ensure that we always get the same output for a given input. 
-
-<br>
-
-Some additional questions presented were less useful, like whether negative integers are allowed. If they are allowed in the input, it would not change the approach or requirements for this problem space. 
-
-##### !end-explanation
-### !end-challenge
-<!-- prettier-ignore-end -->
-
-<!-- prettier-ignore-start -->
-### !challenge
 * type: code-snippet
 * language: python3.6
 * id: afcb3fb9-b225-4d48-b255-b0f3508de237
@@ -189,6 +115,9 @@ Some additional questions presented were less useful, like whether negative inte
     * What is the expected output for the given input?
     * You can use the examples provided in the prompt, or other examples.
 2. Write unit tests for `most_frequent_k_elements` for the nominal and edge cases you identified in the first step.
+
+When naming a test, we want to ensure the name describes the scenario we are testing by including information like the function being tested, inputs, and expected outputs. 
+* e.g. from the example PSE: if we wanted to test that the function winner returns a tie when `player_1` and `player_2` have the same value, then we might name the test something like `test_winner_both_inputs_paper_returns_tie`.
 
 *Note: Click the **Run Tests** button to save your tests for instructor feedback. No real tests are actually run again your unit tests.*
 
@@ -289,9 +218,9 @@ def test_most_frequent_k_elements_unordered_numbers_succeeds():
 * topics: pse
 ##### !question
 
-Without writing code, describe how you would implement `most k frequent elements` using hash tables in enough detail that another developer could reasonably implement a solution. We should capture the main use cases, but the steps do not need to be a detailed plan for every contingency. 
-- The objective is to create a roadmap that we can use to keep ourselves oriented towards our goal
-- It is okay to leave some of the finer details to be worked out in the implementation itself!
+Without writing code, describe how you would implement `most_frequent_k_elements` as if you were talking through the details with another developer who will have to implement the function. We should capture the main use cases, but the steps do not need to be a detailed plan for every contingency.
+* The objective is to practice describing algorithms and technical concepts while creating a roadmap that we can use to keep ourselves oriented towards our goal during the implementation step.
+* It is okay to leave some of the finer details to be worked out in the implementation itself!
 
 As you write your steps, keep the following guidelines in mind:
 * We want to think about a general approach rather than what the code would look like line-by-line. 
@@ -300,7 +229,7 @@ As you write your steps, keep the following guidelines in mind:
 * The steps should be a description as if you were talking out the problem with another person and should be agnostic of any particular language. 
     * As such, they should not include code syntax in the description.
 
-What's important at this stage is to think through and outline the implementation before writing code.
+What's important at this stage is to think through how you would put an approach into words, and outline the implementation before writing code.
 
 ##### !end-question
 ##### !placeholder
@@ -333,22 +262,31 @@ Write the logical steps here.
 * topics: pse
 ##### !question
 
-We want to know if we are laying out an approach to the coding problem that makes sense for our context and if that approach is clearly conveying our thoughts on technical topics to others. Let’s once more use an AI tool like ChatGPT, this time to review the Logical Steps we wrote above. Our goals are to check if:
-- the steps make sense for the problem being solved
-- the steps are not missing important steps or scenarios
-- the steps are agnostic of any particular language – steps should not include code syntax.
-- the steps are written with enough detail for another developer to understand how to create a solution
+We want to know if we are laying out an approach to the coding problem that makes sense for our context and if that approach is clearly conveying our thoughts on technical topics to others. While we build our skills in breaking down and describing algorithms, let’s use an AI tool like ChatGPT to review the Logical Steps we wrote above. Our goals are to check if the steps:
+- convey the technical concepts and requirements of the problem in a way that another person can understand
+- make sense for the problem being solved
+- are not missing important steps or scenarios
+- are agnostic of any particular language – the steps should not include code syntax.
 
 <br>
 
 For this question we will:
 1. Build a prompt using [the template linked here](https://gist.githubusercontent.com/ada-instructors/670252696f1625cf0ed77c0997cd165d/raw/pse_logical_steps_review_template.md)
 2. Share the completed prompt with an AI tool like ChatGPT
-3. After the initial review, ask *at least one* follow up question using the AI tool. We want to ask questions that help us understand: 
-    - areas where we could add clarity
-    - edge cases we might have missed
-    - places where our steps do not meet the expectations of the problem statement
-4. Reflect on the information shared by the AI tool and summarize its findings and your learnings
+3. Reflect on the information shared by the AI tool, then use the prompts below to summarize its findings and your learnings.
+
+<br>
+
+Reflection Prompts
+
+1. Identify one specific strength the AI highlighted in your explanation. 
+    * Quote or paraphrase the part of the feedback that mentions this strength, and explain why you think that aspect of your explanation was effective.
+2. Point out at least one specific improvement the AI recommended.
+    * Describe exactly which part of your explanation would benefit from strengthening then outline how you would revise that part if you were rewriting it now.
+3. Identify one piece of AI feedback you believe was inaccurate, irrelevant, or unnecessary. 
+    * Explain why it doesn’t apply to this problem, and cite a source (docs, class notes, instructor explanation, or trusted online reference) that supports your reasoning.
+4. Describe one change the AI suggested that was new or surprised you. 
+    * Share how this suggestion shifted your understanding of the problem or your explanation.
 
 <br>
 
@@ -368,11 +306,19 @@ Chat Link: `<url to your conversation>`
 
 <br>
 
-The ChatGPT review surfaced some things that would have been helpful to bring forward like clarifying how we're handling ties and generally adding more of the reasoning behind each step for clarity. 
+One strength the AI tool highlighted was that my steps clearly separated the problem into three distinct phases. It noted that this separation "makes each step easy to reason about and test independently." I think this was effective because it means another developer could implement and verify one phase at a time rather than needing to hold the whole algorithm in their head at once.
 
 <br>
 
-Some suggestions weren't relevant or were already covered, like a suggestion to "explain what criteria should be used when sorting". The language of that step could be clarified further, but the sorting step states that we are sorting the list of unique integers in descending order using their count.   
+One improvement the AI recommended was to be more explicit about how ties should be handled when sorting the unique numbers by frequency. Looking back, the part of my explanation that would benefit most from strengthening is step 2. If I were rewriting it now, I would explicitly state that when two numbers have the same frequency, I will keep whichever one was encountered first while building the frequency map, so the sort is stable and predictable.
+
+<br>
+
+I believe the suggestion that I should consider using a heap instead of sorting the full list of unique numbers was not necessary feedback for this stage of the problem. While a heap-based approach could reduce the time complexity for very large inputs, the prompt didn't ask us to optimize for scale, and my notes on the PSE process point out that logical steps should reflect a working, understandable approach first, with optimizations considered separately once a solution exists. Since my explanation was meant to communicate an approach clearly to another developer, sorting the unique numbers keeps the steps easy to follow without losing correctness.
+
+<br>
+
+One suggestion that surprised me was pointing out that I never explicitly said why we only need to look at the *unique* numbers rather than the whole original input list when sorting. It seemed obvious to me since the frequency map already collapses duplicates, but I can see how stating that connection out loud would help someone unfamiliar with the approach understand why step 2 doesn't need to touch the original list again. It reminded me that even steps that feel "obvious" while I'm thinking through them may not be obvious to someone hearing the explanation for the first time.   
 
 ##### !end-explanation
 ### !end-challenge
