@@ -566,10 +566,12 @@ def test_find_intersecting_node_returns_none_if_no_intersection_but_matching_tai
 * points: 1
 ##### !question
 
-What is the time complexity of your solution? Please define and explain your variables.
+What is the time complexity of your solution? Explain your reasoning. Define your variable(s) (i.e. n is the length of the list).
+* Focus on the major operations and/or contributors that determine the overall complexity. You do not need to analyze every individual line of code.
 
 ##### !end-question
 ##### !placeholder
+ For example, "The time complexity of my solution is linear O(n), where n is ..."
 
 ##### !end-placeholder
 ### !end-challenge
@@ -583,10 +585,12 @@ What is the time complexity of your solution? Please define and explain your var
 * points: 1 
 ##### !question
 
-What is the space complexity of your solution? Please define and explain your variables.
+What is the space complexity of your solution? xplain your reasoning. Define your variable(s) (i.e. n is the length of the list).
+* Focus on the major operations and/or contributors that determine the overall complexity. You do not need to analyze every individual line of code.
 
 ##### !end-question
 ##### !placeholder
+For example, "The space complexity of my solution is linear O(n), where n is ..."
 
 ##### !end-placeholder
 ### !end-challenge
