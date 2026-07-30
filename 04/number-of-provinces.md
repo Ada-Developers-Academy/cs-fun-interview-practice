@@ -312,7 +312,7 @@ We want to know if we are laying out an approach to the coding problem that make
 For this question we will:
 1. Build a prompt using [the template linked here](https://gist.githubusercontent.com/ada-instructors/670252696f1625cf0ed77c0997cd165d/raw/pse_logical_steps_review_template.md)
 2. Share the completed prompt with an AI tool like ChatGPT
-3. 3. Reflect on the information shared by the AI tool, then use the prompts below to summarize its findings and your learnings.
+3. Reflect on the information shared by the AI tool, then use the prompts below to summarize its findings and your learnings.
 
 <br>
 
