@@ -585,7 +585,7 @@ What is the time complexity of your solution? Explain your reasoning. Define you
 * points: 1 
 ##### !question
 
-What is the space complexity of your solution? xplain your reasoning. Define your variable(s) (i.e. n is the length of the list).
+What is the space complexity of your solution? Explain your reasoning. Define your variable(s) (i.e. n is the length of the list).
 * Focus on the major operations and/or contributors that determine the overall complexity. You do not need to analyze every individual line of code.
 
 ##### !end-question
