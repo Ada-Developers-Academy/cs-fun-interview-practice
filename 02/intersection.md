@@ -258,7 +258,7 @@ As you write your steps, keep the following guidelines in mind:
 * The steps should be a description as if you were talking out the problem with another person and should be agnostic of any particular language. 
     * As such, they should not include code syntax in the description.
 
-What's important at this stage is to think through ahow you would put an approach into words, and outline the implementation before writing code.
+What's important at this stage is to think through how you would put an approach into words, and outline the implementation before writing code.
 
 ##### !end-question
 ##### !placeholder
