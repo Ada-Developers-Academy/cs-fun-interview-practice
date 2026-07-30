@@ -14,6 +14,17 @@ should result in a tree with the following root/height:
 
 ![Balanced Binary Search Tree](../images/balanced_bst.png)
 
+Text representation for ChatGPT review:
+```
+       25
+    /      \
+  10        35
+ /  \      /  \
+5   15    30   40
+      \          \
+      20         45
+```
+
 ## Prompts
 
 <!-- prettier-ignore-start -->
