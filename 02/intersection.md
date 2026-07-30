@@ -135,6 +135,7 @@ One of many possible responses could look like:
     * What is the expected output for the given input?
     * You can use the examples provided in the prompt, or other examples.
 2. Write unit tests for `find_intersecting_node` for the nominal and edge cases you identified in the first step.
+
 When naming a test, we want to ensure the name describes the scenario we are testing by including information like the function being tested, inputs, and expected outputs. 
 * e.g. from the example PSE: if we wanted to test that the function winner returns a tie when `player_1` and `player_2` have the same value, then we might name the test something like `test_winner_both_inputs_paper_returns_tie`.
 
