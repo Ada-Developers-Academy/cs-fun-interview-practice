@@ -385,7 +385,7 @@ The main improvement suggested was to say more about why a priority queue is req
 
 <br>
 
-One suggestion I pushed back on was a recommendation to add a step for handling negative edge weights before running Dijkstra. That doesn't apply here — the problem defines wᵢ as a signal travel time, which can't be negative, and the hints for this problem already establish that assumption as the reason Dijkstra's algorithm is a valid choice in the first place. Adding a check for something the problem statement rules out by definition would be solving for a case that can't occur, so I left that out.
+One suggestion I pushed back on was a recommendation to add a step for handling negative edge weights before running Dijkstra. That doesn't apply here — the problem defines wᵢ as a signal travel time, which can't be negative, and the hints for this problem already establish that assumption as the reason Dijkstra's algorithm is a valid choice in the first place. Adding a check for something the problem statement rules out would be solving for a case that can't occur, so I left that out of the implementation.
 
 <br>
 
