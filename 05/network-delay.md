@@ -389,7 +389,7 @@ One suggestion I pushed back on was a recommendation to add a step for handling 
 
 <br>
 
-The part that surprised me was a comment pointing out that my final step, "return the maximum cost from the minimum cost list," is really doing two different jobs at once: confirming reachability (are we sure every node got a cost?) and then computing the answer (what's the slowest of those costs?). I had written it as a single step, but separating those two ideas out loud helped me see more clearly why the problem asks for a "maximum of minimums" instead of a sum or an average — it's because the overall delay is determined by whichever node is slowest to hear the signal, not by the total work done to reach everyone.
+I was surprised by a comment pointing out that my final step, "return the maximum cost from the minimum cost list," is doing two jobs at once: confirming reachability (are we sure every node got a cost?) and then computing the answer (what's the slowest of those costs?). I wrote it as a single step, but separating those two ideas out clarified for me why the problem asks for a "maximum of minimums" instead of a sum or an average. It's because the overall delay is determined by whichever node is slowest to hear the signal, not by the total work done to reach everyone.
 
 ##### !end-explanation
 ### !end-challenge
