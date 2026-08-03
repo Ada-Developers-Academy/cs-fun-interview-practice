@@ -316,6 +316,19 @@ For this question we will:
 
 <br>
 
+Reflection Prompts
+
+1. Identify one specific strength the AI highlighted in your explanation. 
+    * Quote or paraphrase the part of the feedback that mentions this strength, and explain why you think that aspect of your explanation was effective.
+2. Point out at least one specific improvement the AI recommended.
+    * Describe exactly which part of your explanation would benefit from strengthening then outline how you would revise that part if you were rewriting it now.
+3. Identify one piece of AI feedback you believe was inaccurate, irrelevant, or unnecessary. 
+    * Explain why it doesn’t apply to this problem, and cite a source (docs, class notes, instructor explanation, or trusted online reference) that supports your reasoning.
+4. Describe one change the AI suggested that was new or surprised you. 
+    * Share how this suggestion shifted your understanding of the problem or your explanation.
+
+<br>
+
 In the box below, please submit:
 1. A shareable link to your conversation in ChatGPT
     - [Documentation for creating a shareable link in ChatGPT](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq)
